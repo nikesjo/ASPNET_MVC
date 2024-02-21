@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApp.Models.Views;
 
 namespace WebApp.Controllers
 {
@@ -6,7 +7,10 @@ namespace WebApp.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var viewModel = new HomeIndexViewModel();
+            ViewData["Title"] = viewModel.Title;
+
+            return View(viewModel);
         }
     }
 }
