@@ -443,13 +443,13 @@ header .container .btn-switch {
     display: block;
   }
 }
-header .container .account-buttons {
+header .container #account-buttons {
   grid-area: buttons;
   display: none;
   gap: 15px;
 }
 @media (min-width: 992px) {
-  header .container .account-buttons {
+  header .container #account-buttons {
     display: flex;
   }
 }
