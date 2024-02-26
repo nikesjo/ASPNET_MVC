@@ -4,7 +4,8 @@ namespace WebApp.Controllers
 {
     public class AuthController : Controller
     {
-        public IActionResult Index()
+        [Route("/signup")]
+        public IActionResult SignUp()
         {
             return View();
         }

@@ -1,6 +1,6 @@
-﻿using WebApp.Models.Components;
+﻿using WebApp.ViewModels.Components;
 
-namespace WebApp.Models.Sections;
+namespace WebApp.ViewModels.Sections;
 
 public class ShowcaseViewModel
 {

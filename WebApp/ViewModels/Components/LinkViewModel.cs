@@ -1,4 +1,4 @@
-﻿namespace WebApp.Models.Components;
+﻿namespace WebApp.ViewModels.Components;
 
 public class LinkViewModel
 {

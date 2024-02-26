@@ -453,14 +453,26 @@ header .container #account-buttons {
     display: flex;
   }
 }
-header .container .btn-mobile {
+header .container .btn-mobilemenu {
   grid-area: mobile;
   display: block;
+  border: none;
+}
+header .container .btn-mobilemenu:hover {
+  box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
 }
 @media (min-width: 992px) {
-  header .container .btn-mobile {
+  header .container .btn-mobilemenu {
     display: none;
   }
+}
+header .container .hide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
 }
 
 .showcase {
