@@ -1,0 +1,21 @@
+﻿@model FeaturesViewModel
+
+<section id="@Model.Id" class="features">
+    <div class="container">
+        <h1>@Model.Title</h1>
+        <p>@Model.Text</p>
+        <div class="tool-features">
+            @if (Model.Tools != null)
+            {
+                foreach(var tool in Model.Tools)
+                {
+                    <div class="box">
+                        <img src="@tool.ImageUrl" alt="@tool.AltText">
+                        <h5>@tool.ToolTitle</h5>
+                        <p>@tool.ToolText</p>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
