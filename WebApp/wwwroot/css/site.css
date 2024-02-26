@@ -1985,71 +1985,52 @@ footer .container .social-media {
   }
 }
 
+#signin {
+  height: 100%;
+}
 #signin .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
-#signin .container .form-square-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-  box-sizing: border-box;
-  margin-top: 100px;
+@media (min-width: 992px) {
+  #signin .container {
+    width: 60%;
+  }
 }
-#signin .container .form-square-box .header-form {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
+@media (min-width: 1200px) {
+  #signin .container {
+    width: 30%;
+  }
 }
-#signin .container .form-square-box .header-form .header-signup {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
+#signin .container form {
+  padding: 1rem;
 }
-#signin .container .form-square-box .header-form .header-signup a {
-  text-decoration: underline;
+#signin .container form .content {
+  display: grid;
+  gap: 1rem 2rem;
+  grid-template-columns: 1fr;
+  grid-template-areas: "email" "password" "remember" "button" "forgot";
 }
-#signin .container .form-square-box .form-box {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin-bottom: 100px;
+#signin .container form .content #form-email {
+  grid-area: email;
 }
-#signin .container .form-square-box .form-box .form-row {
-  display: block;
+#signin .container form .content #form-password {
+  grid-area: password;
 }
-#signin .container .form-square-box .form-box .form-row label {
-  display: block;
-  margin-bottom: 5px;
-  color: #000000;
-  font-weight: 700;
+#signin .container form .content #form-remember {
+  grid-area: remember;
+  padding: 1rem 0;
 }
-#signin .container .form-square-box .form-box .form-row input {
+#signin .container form .content #form-submit {
+  grid-area: button;
+}
+#signin .container form .content #form-forgot-password {
   width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-  border: 1px solid #D4D7E5;
-  border-radius: 8px;
-  color: #D4D7E5;
-}
-#signin .container .form-square-box .form-box .checkbox-input {
-  margin-top: 10px;
-}
-#signin .container .form-square-box .form-box .btn-theme-s {
-  width: 100%;
-  margin-top: 25px;
-}
-#signin .container .form-square-box .form-box .forgotpassword {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-#signin .container .form-square-box .form-box .forgotpassword a {
-  font-weight: 700;
+  grid-area: terms;
+  margin: 1rem 0 0 0;
+  text-align: center;
 }
 
 #signup {
