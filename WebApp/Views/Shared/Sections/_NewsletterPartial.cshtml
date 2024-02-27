@@ -1,0 +1,50 @@
+﻿@model NewsletterViewModel
+
+<section id="@Model.Id" class="newsletter">
+    <div class="container">
+        <div class="content">
+            <h1>@Model.Title</h1>
+            <img src="@Model.ArrowImage.ImageUrl" alt="@Model.ArrowImage.AltText">
+        </div>
+
+        <form method="post" id="registerNewsletter" asp-controller="Auth" asp-action="Subscribe" novalidate>
+            <div class="choose-newsletter">
+                <h5>Sign up for<br> Newsletters</h5>
+                <div class="checkboxes">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" asp-for="Form.DailyNewsletter" />
+                        <label class="form-check-label" asp-for=Form.DailyNewsletter></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" asp-for="Form.AdvertisingUpdates" />
+                        <label class="form-check-label" asp-for=Form.AdvertisingUpdates></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" asp-for="Form.WeekInReview" />
+                        <label class="form-check-label" asp-for=Form.WeekInReview></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" asp-for="Form.EventUpdates" />
+                        <label class="form-check-label" asp-for=Form.EventUpdates></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" asp-for="Form.StartupsWeekly" />
+                        <label class="form-check-label" asp-for=Form.StartupsWeekly></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" asp-for="Form.Podcasts" />
+                        <label class="form-check-label" asp-for=Form.Podcasts></label>
+                    </div>
+                </div>
+            </div>
+            <div class="subscribe">
+                <i class="fa-regular fa-envelope"></i>
+                <span asp-validation-for="Form.Email"></span>
+                <input id="email" class="form-input" asp-for="Form.Email" />
+                <button id="form-submit" type="submit" class="btn-theme">Subscribe *</button>
+            </div>
+
+            <p class="terms-and-privacy">* Yes, I agree to the <a asp-controller="About" asp-action="Terms">terms</a> and <a asp-controller="About" asp-action="Conditions">privacy policy.</a></p>
+        </form>
+    </div>
+</section>

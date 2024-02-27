@@ -1,5 +1,6 @@
 ﻿using WebApp.ViewModels.Sections;
 using WebApp.ViewModels.Components;
+using WebApp.Models;
 
 namespace WebApp.ViewModels.Views;
 
@@ -93,5 +94,12 @@ public class HomeIndexViewModel
             new() { ToolText = "Ut in turpis consequat odio diam lectus elementum. Est faucibus blandit platea.", ToolImage = new ImageViewModel() { ImageUrl = "images/tools/dropbox.svg", AltText = "Dropbox logo"}},
             new() { ToolText = "Faucibus cursus maecenas lorem cursus nibh. Sociis sit risus id. Sit facilisis dolor arcu.", ToolImage = new ImageViewModel() { ImageUrl = "images/tools/evernote.svg", AltText = "EverNote logo"}},
         ],
+    };
+
+    public NewsletterViewModel Newsletter { get; set; } = new NewsletterViewModel
+    {
+        Id = "newsletter",
+        Title = "Don't Want to Miss Anything?",
+        ArrowImage = new() { ImageUrl = "images/arrows.svg", AltText = "image of an arrow" },
     };
 }

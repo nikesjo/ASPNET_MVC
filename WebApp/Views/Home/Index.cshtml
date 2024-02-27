@@ -4,10 +4,12 @@
 
 @await Html.PartialAsync("~/Views/Shared/Sections/_FeaturesPartial.cshtml", Model.Features);
 
-@await Html.PartialAsync("~/Views/Shared/Sections/_FeaturesPartial.cshtml", Model.LightDarkMode);
+@await Html.PartialAsync("~/Views/Shared/Sections/_LightDarkModePartial.cshtml", Model.LightDarkMode);
 
-@await Html.PartialAsync("~/Views/Shared/Sections/_FeaturesPartial.cshtml", Model.ManageYourWork);
+@await Html.PartialAsync("~/Views/Shared/Sections/_ManageYourWorkPartial.cshtml", Model.ManageYourWork);
 
-@await Html.PartialAsync("~/Views/Shared/Sections/_FeaturesPartial.cshtml", Model.DownloadApps);
+@await Html.PartialAsync("~/Views/Shared/Sections/_DownloadAppsPartial.cshtml", Model.DownloadApps);
 
-@await Html.PartialAsync("~/Views/Shared/Sections/_FeaturesPartial.cshtml", Model.IntegrateTools);
+@await Html.PartialAsync("~/Views/Shared/Sections/_IntegrateToolsPartial.cshtml", Model.IntegrateTools);
+
+@await Html.PartialAsync("~/Views/Shared/Sections/_NewsletterPartial.cshtml", Model.Newsletter);
