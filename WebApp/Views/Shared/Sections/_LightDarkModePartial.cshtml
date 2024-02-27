@@ -1,0 +1,15 @@
+﻿@model LightDarkModeViewModel
+
+<section id="@Model.Id" class="light-dark-mode">
+    <div class="container">
+        <img class="slider-button" src="@Model.SliderButton.ImageUrl" alt="@Model.SliderButton.AltText">
+        <div class="dark-mode">
+            <h1>@Model.TitleD</h1>
+            <img src="@Model.Dark.ImageUrl" alt="@Model.Dark.AltText">
+        </div>
+        <div class="light-mode">
+            <h1 class="dark-text">@Model.TitleL</h1>
+            <img src="@Model.Light.ImageUrl" alt="@Model.Light.AltText">
+        </div>
+    </div>
+</section>
