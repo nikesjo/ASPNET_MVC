@@ -1,0 +1,20 @@
+﻿@model IntegrateToolsViewModel
+
+<section id="@Model.Id" class="integrate-tools">
+    <div class="container">
+        <h1>@Model.Title</h1>
+        <p class="description">@Model.Text</p>
+        <div class="tools">
+            @if (Model.Tools != null)
+            {
+                foreach (var tool in Model.Tools)
+                {
+                    <a href="#" class="box">
+                        <img src="@tool.ToolImage.ImageUrl" alt="@tool.ToolImage.AltText">
+                        <p>@tool.ToolText</p>
+                    </a>
+                }
+            }
+        </div>
+    </div>
+</section>

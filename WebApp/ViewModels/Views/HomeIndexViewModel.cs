@@ -76,4 +76,22 @@ public class HomeIndexViewModel
             new() { Text = "Google Play", Title = "Editor's Choice", Rating = "rating 4.8, 187K+ reviews", AppImage = new ImageViewModel() { ImageUrl = "images/googleplay.svg", AltText = "Link to GooglePlay"}},
         ],
     };
+
+    public IntegrateToolsViewModel IntegrateTools { get; set; } = new IntegrateToolsViewModel
+    {
+        Id = "integrate-tools",
+        Title = "Integrate Top Work Tools",
+        Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat mollis egestas. Nam luctus facilisis ultrices. Pellentesque volutpat ligula est. Mattis fermentum, at nec lacus.",
+        Tools = 
+        [
+            new() { ToolText = "Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis.", ToolImage = new ImageViewModel() { ImageUrl = "images/tools/google.svg", AltText = "Google logo"}},
+            new() { ToolText = "In eget a mauris quis. Tortor dui tempus quis integer est sit natoque placerat dolor.", ToolImage = new ImageViewModel() { ImageUrl = "images/tools/zoom.svg", AltText = "Zoom logo"}},
+            new() { ToolText = "Id mollis consectetur congue egestas egestas suspendisse blandit justo.", ToolImage = new ImageViewModel() { ImageUrl = "images/tools/slack.svg", AltText = "Slack logo"}},
+            new() { ToolText = "Rutrum interdum tortor, sed at nulla. A cursus bibendum elit purus cras praesent.", ToolImage = new ImageViewModel() { ImageUrl = "images/tools/gmail.svg", AltText = "Gmail logo"}},
+            new() { ToolText = "Congue pellentesque amet, viverra curabitur quam diam scelerisque fermentum urna.", ToolImage = new ImageViewModel() { ImageUrl = "images/tools/trello.svg", AltText = "Trello logo"}},
+            new() { ToolText = "A elementum, imperdiet enim, pretium etiam facilisi in aenean quam mauris.", ToolImage = new ImageViewModel() { ImageUrl = "images/tools/mailchimp.svg", AltText = "MailChimp logo"}},
+            new() { ToolText = "Ut in turpis consequat odio diam lectus elementum. Est faucibus blandit platea.", ToolImage = new ImageViewModel() { ImageUrl = "images/tools/dropbox.svg", AltText = "Dropbox logo"}},
+            new() { ToolText = "Faucibus cursus maecenas lorem cursus nibh. Sociis sit risus id. Sit facilisis dolor arcu.", ToolImage = new ImageViewModel() { ImageUrl = "images/tools/evernote.svg", AltText = "EverNote logo"}},
+        ],
+    };
 }
