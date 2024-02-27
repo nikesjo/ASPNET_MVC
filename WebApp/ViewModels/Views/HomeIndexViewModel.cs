@@ -1,4 +1,5 @@
 ﻿using WebApp.ViewModels.Sections;
+using WebApp.ViewModels.Components;
 
 namespace WebApp.ViewModels.Views;
 
@@ -62,5 +63,17 @@ public class HomeIndexViewModel
             new() { Text = "Easiest way to track time spent on tasks"},
         ],
         Link = new() { ControllerName = "Downloads", ActionName = "Index", Text = "Learn more " },
+    };
+
+    public DownloadAppsViewModel DownloadApps { get; set; } = new DownloadAppsViewModel
+    {
+        Id = "download-apps",
+        PhoneImage = new() { ImageUrl = "images/phone-app.svg", AltText = "Image of a phone" },
+        Title = "Download Our App for Any Devices:",
+        Apps = 
+        [
+            new() { Text = "App Store", Title = "Editor's Choice", Rating = "rating 4.7, 187K+ reviews", AppImage = new ImageViewModel() { ImageUrl = "images/appstore.svg", AltText = "Link to Appstore"}},
+            new() { Text = "Google Play", Title = "Editor's Choice", Rating = "rating 4.8, 187K+ reviews", AppImage = new ImageViewModel() { ImageUrl = "images/googleplay.svg", AltText = "Link to GooglePlay"}},
+        ],
     };
 }

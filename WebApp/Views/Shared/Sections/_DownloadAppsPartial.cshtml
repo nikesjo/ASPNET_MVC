@@ -1,0 +1,32 @@
+﻿@model DownloadAppsViewModel
+
+<section id="@Model.Id" class="download-apps">
+    <div class="container">
+        <img class="phone-app" src="@Model.PhoneImage.ImageUrl" alt="@Model.PhoneImage.AltText">
+        <div class="apps">
+            <h1>@Model.Title</h1>
+
+            @if (Model.Apps != null)
+            {
+                foreach (var app in Model.Apps)
+                {
+                    <div class="app-name">
+                        <div>
+                            <p class="light-text">@app.Text</p>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <h4>@app.Title</h4>
+                            <p>@app.Rating</p>
+                        </div>
+                        <a href="#"><img src="@app.AppImage.ImageUrl" alt="@app.AppImage.AltText"></a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
