@@ -47,4 +47,20 @@ public class HomeIndexViewModel
         TitleL = "Light & Dark Mode",
         Light = new() { ImageUrl = "images/macbook-pro-light.svg", AltText = "Macbook pro" },
     };
+
+    public ManageYourWorkViewModel ManageYourWork { get; set; } = new ManageYourWorkViewModel
+    {
+        Id = "manage-your-work",
+        ManageImage = new() { ImageUrl = "images/manage-your-work.svg", AltText = "Manage your work image" },
+        Title = "Manage Your Work",
+        Item = 
+        [
+            new() { Text = "Powerful project management"},
+            new() { Text = "Transparent work management"},
+            new() { Text = "Manage work & focus on the most important tasks"},
+            new() { Text = "Track your progress with interactive charts"},
+            new() { Text = "Easiest way to track time spent on tasks"},
+        ],
+        Link = new() { ControllerName = "Downloads", ActionName = "Index", Text = "Learn more " },
+    };
 }
