@@ -5,12 +5,16 @@ namespace WebApp.Models;
 
 public class SignUpModel
 {
+    [DataType(DataType.Text)]
     [Display(Name = "First name", Prompt = "Enter your first name", Order = 0)]
     [Required(ErrorMessage = "Invalid first name")]
+    [MinLength(2, ErrorMessage = "Invalid first name")]
     public string FirstName { get; set; } = null!;
 
+    [DataType(DataType.Text)]
     [Display(Name = "Last name", Prompt = "Enter your last name", Order = 1)]
     [Required(ErrorMessage = "Invalid last name")]
+    [MinLength(2, ErrorMessage = "Invalid last name")]
     public string LastName { get; set;} = null!;
 
     [Display(Name = "Email address", Prompt = "Enter your email address", Order = 2)]
