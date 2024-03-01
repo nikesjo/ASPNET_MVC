@@ -60,4 +60,8 @@
     <None Include="wwwroot\images\tools\zoom.svg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
