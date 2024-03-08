@@ -1,6 +1,4 @@
-﻿using WebApp.Models;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using Infrastructure.Models;
 
 namespace WebApp.ViewModels.Views;
 

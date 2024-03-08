@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using WebApp.Helpers;
+using Infrastructure.Helpers;
 
-namespace WebApp.Models;
+namespace Infrastructure.Models;
 
 public class SignUpModel
 {

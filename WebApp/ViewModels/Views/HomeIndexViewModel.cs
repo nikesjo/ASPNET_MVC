@@ -1,6 +1,5 @@
 ﻿using WebApp.ViewModels.Sections;
 using WebApp.ViewModels.Components;
-using WebApp.Models;
 
 namespace WebApp.ViewModels.Views;
 

@@ -1,4 +1,4 @@
-﻿using WebApp.Models;
+﻿using Infrastructure.Models;
 using WebApp.ViewModels.Components;
 
 namespace WebApp.ViewModels.Sections;
