@@ -5,6 +5,7 @@ namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
+        [Route("/")]
         public IActionResult Index()
         {
             var viewModel = new HomeIndexViewModel();
@@ -12,5 +13,8 @@ namespace WebApp.Controllers
 
             return View(viewModel);
         }
+
+        [Route("/error")]
+        public IActionResult Error404(int statusCode) => View();
     }
 }
