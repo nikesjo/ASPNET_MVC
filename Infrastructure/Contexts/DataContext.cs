@@ -6,7 +6,7 @@ namespace Infrastructure.Contexts;
 
 public class DataContext : IdentityDbContext<UserEntity>
 {
-    public DataContext(DbContextOptions options) : base(options)
+    public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
     }
 
