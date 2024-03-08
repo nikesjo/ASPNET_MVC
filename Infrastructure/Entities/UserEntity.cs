@@ -17,4 +17,7 @@ public class UserEntity : IdentityUser
     public string? ProfileImageUrl { get; set; } = "/images/profile-image.svg";
 
     public bool IsExternalAccount { get; set; } = false;
+
+
+    public ICollection<AddressEntity> Addresses { get; set; } = [];
 }
