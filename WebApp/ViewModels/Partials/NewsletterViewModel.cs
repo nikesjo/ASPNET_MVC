@@ -1,7 +1,7 @@
 ﻿using Infrastructure.Models;
 using WebApp.ViewModels.Components;
 
-namespace WebApp.ViewModels.Sections;
+namespace WebApp.ViewModels.Partials;
 
 public class NewsletterViewModel
 {

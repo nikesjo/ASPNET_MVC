@@ -1,11 +1,11 @@
 ﻿using WebApp.ViewModels.Components;
 
-namespace WebApp.ViewModels.Sections;
+namespace WebApp.ViewModels.Partials;
 
-public class FeaturesViewModel
+public class IntegrateToolsViewModel
 {
     public string? Id { get; set; }
     public string? Title { get; set; }
     public string? Text { get; set; }
-    public List<FeaturesBoxViewModel>? Tools { get; set; }
+    public List<ToolsBoxViewModel>? Tools { get; set; }
 }
