@@ -1,0 +1,8 @@
+﻿@if (ViewData["StatusMessage"] != null)
+{
+    var messageParts = ViewData["StatusMessage"]?.ToString()!.Split('|');
+    var messageType = messageParts?[0];
+    var messageText = messageParts?[1];
+
+    <div id="statusMessage" class="alert alert-@messageType">@messageText</div>
+}
