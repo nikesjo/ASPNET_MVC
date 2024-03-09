@@ -1,4 +1,4 @@
-﻿namespace WebApp.ViewModels.Components;
+﻿namespace WebApp.ViewModels.Home.Partials.PartialComponents;
 
 public class FeaturesBoxViewModel
 {

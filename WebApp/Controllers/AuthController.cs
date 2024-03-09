@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebApp.ViewModels.Views;
+using WebApp.ViewModels.Auth;
 
 namespace WebApp.Controllers
 {

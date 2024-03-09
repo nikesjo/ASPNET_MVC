@@ -1,6 +1,6 @@
 ﻿using WebApp.ViewModels.Components;
 
-namespace WebApp.ViewModels.Partials;
+namespace WebApp.ViewModels.Home.Partials;
 
 public class ShowcaseViewModel
 {

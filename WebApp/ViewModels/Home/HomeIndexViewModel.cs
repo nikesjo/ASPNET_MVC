@@ -1,7 +1,7 @@
-﻿using WebApp.ViewModels.Partials;
-using WebApp.ViewModels.Components;
+﻿using WebApp.ViewModels.Components;
+using WebApp.ViewModels.Home.Partials;
 
-namespace WebApp.ViewModels.Views;
+namespace WebApp.ViewModels.Home;
 
 public class HomeIndexViewModel
 {
@@ -42,7 +42,7 @@ public class HomeIndexViewModel
     public LightDarkModeViewModel LightDarkMode { get; set; } = new LightDarkModeViewModel
     {
         Id = "light-dark-mode",
-        SliderButton = new() { ImageUrl = "images/slider-button.svg", AltText = "Slider button"},
+        SliderButton = new() { ImageUrl = "images/slider-button.svg", AltText = "Slider button" },
         TitleD = "Switch Between",
         Dark = new() { ImageUrl = "images/macbook-pro-dark.svg", AltText = "Macbook pro" },
         TitleL = "Light & Dark Mode",
@@ -54,7 +54,7 @@ public class HomeIndexViewModel
         Id = "manage-your-work",
         ManageImage = new() { ImageUrl = "images/manage-your-work.svg", AltText = "Manage your work image" },
         Title = "Manage Your Work",
-        Item = 
+        Item =
         [
             new() { Text = "Powerful project management"},
             new() { Text = "Transparent work management"},
@@ -70,7 +70,7 @@ public class HomeIndexViewModel
         Id = "download-apps",
         PhoneImage = new() { ImageUrl = "images/phone-app.svg", AltText = "Image of a phone" },
         Title = "Download Our App for Any Devices:",
-        Apps = 
+        Apps =
         [
             new() { Text = "App Store", Title = "Editor's Choice", Rating = "rating 4.7, 187K+ reviews", AppImage = new ImageViewModel() { ImageUrl = "images/appstore.svg", AltText = "Link to Appstore"}},
             new() { Text = "Google Play", Title = "Editor's Choice", Rating = "rating 4.8, 187K+ reviews", AppImage = new ImageViewModel() { ImageUrl = "images/googleplay.svg", AltText = "Link to GooglePlay"}},
@@ -82,7 +82,7 @@ public class HomeIndexViewModel
         Id = "integrate-tools",
         Title = "Integrate Top Work Tools",
         Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat mollis egestas. Nam luctus facilisis ultrices. Pellentesque volutpat ligula est. Mattis fermentum, at nec lacus.",
-        Tools = 
+        Tools =
         [
             new() { ToolText = "Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis.", ToolImage = new ImageViewModel() { ImageUrl = "images/tools/google.svg", AltText = "Google logo"}},
             new() { ToolText = "In eget a mauris quis. Tortor dui tempus quis integer est sit natoque placerat dolor.", ToolImage = new ImageViewModel() { ImageUrl = "images/tools/zoom.svg", AltText = "Zoom logo"}},

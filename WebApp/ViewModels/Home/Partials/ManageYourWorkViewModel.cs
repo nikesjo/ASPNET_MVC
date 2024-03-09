@@ -1,6 +1,7 @@
 ﻿using WebApp.ViewModels.Components;
+using WebApp.ViewModels.Home.Partials.PartialComponents;
 
-namespace WebApp.ViewModels.Partials;
+namespace WebApp.ViewModels.Home.Partials;
 
 public class ManageYourWorkViewModel
 {

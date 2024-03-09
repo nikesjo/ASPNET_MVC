@@ -1,6 +1,6 @@
 ﻿using Infrastructure.Models;
 
-namespace WebApp.ViewModels.Views;
+namespace WebApp.ViewModels.Auth;
 
 public class SignUpViewModel
 {

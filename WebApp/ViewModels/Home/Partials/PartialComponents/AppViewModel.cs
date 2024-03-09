@@ -1,4 +1,6 @@
-﻿namespace WebApp.ViewModels.Components;
+﻿using WebApp.ViewModels.Components;
+
+namespace WebApp.ViewModels.Home.Partials.PartialComponents;
 
 public class AppViewModel
 {
