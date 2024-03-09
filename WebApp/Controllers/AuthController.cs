@@ -1,10 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Infrastructure.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using WebApp.ViewModels.Views;
 
 namespace WebApp.Controllers
 {
-    public class AuthController : Controller
+    public class AuthController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager) : Controller
     {
+        private readonly UserManager<UserEntity> _userManager = userManager;
+        private readonly SignInManager<UserEntity> _signInManager = signInManager;
+
+
+        #region Sign Up
         [Route("/signup")]
         [HttpGet]
         public IActionResult SignUp()
@@ -23,31 +30,54 @@ namespace WebApp.Controllers
             }
             return RedirectToAction("SignIn", "Auth");
         }
+        #endregion
 
 
-        [Route("/signin")]
+        #region Sign In
+        
         [HttpGet]
-        public IActionResult SignIn()
+        [Route("/signin")]
+        public IActionResult SignIn(string returnUrl)
         {
-            var viewModel = new SignInViewModel();
-            return View(viewModel);
+            if (_signInManager.IsSignedIn(User))
+                return RedirectToAction("Details", "Account");
+
+            ViewData["ReturnUrl"] = returnUrl ?? Url.Content("~/");
+            return View();
         }
 
-        [Route("/signin")]
+        
         [HttpPost]
-        public IActionResult SignIn(SignInViewModel viewModel)
+        [Route("/signin")]
+        public async Task<IActionResult> SignIn(SignInViewModel viewModel, string returnUrl)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(viewModel);
+                var result = await _signInManager.PasswordSignInAsync(viewModel.Form.Email, viewModel.Form.Password, viewModel.Form.RememberMe, false);
+                if (result.Succeeded)
+                {
+                    if(!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        return RedirectToAction(returnUrl);
+
+                    return RedirectToAction("Details", "Account");
+                }
             }
 
-            //var result = _authService.SignIn(viewModel.Form);
-            //if (result)
-            //      return RedirectToAction("Account", "Details");
-
+            ModelState.AddModelError("IncorrectValues", "Incorrect email address or password");
             viewModel.ErrorMessage = "Incorrect email or password";
             return View(viewModel);
         }
+        #endregion
+
+
+        #region Sign Out
+        [HttpGet]
+        [Route("/signout")]
+        public new async Task<IActionResult> SignOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+        #endregion
     }
 }
