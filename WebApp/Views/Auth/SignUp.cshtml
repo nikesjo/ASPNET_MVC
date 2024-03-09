@@ -5,6 +5,8 @@
 
 <section id="signup">
     <div class="container">
+        <partial name="~/Views/Shared/Partials/_StatusMessage.cshtml" />
+
         <form method="post" asp-controller="Auth" asp-action="SignUp" novalidate>
             <h1>Create Account</h1>
             <p>Already have an account? <a asp-controller="Auth" asp-action="SignIn">Sign in here</a>.</p>

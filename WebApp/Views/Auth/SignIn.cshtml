@@ -5,11 +5,9 @@
 
 <section id="signin">
     <div class="container">
-        <form method="post" asp-controller="Auth" asp-action="SignIn" novalidate>
-            <div>
-                @Model.ErrorMessage
-            </div>
+        <partial name="~/Views/Shared/Partials/_StatusMessage.cshtml" />
 
+        <form method="post" asp-controller="Auth" asp-action="SignIn" asp-route-ReturnUrl="@ViewData["ReturnUrl"]" novalidate>
             <h1>Welcome Back</h1>
             <p>Don't have an account yet? <a asp-controller="Auth" asp-action="SignUp">Sign up here</a>.</p>
 

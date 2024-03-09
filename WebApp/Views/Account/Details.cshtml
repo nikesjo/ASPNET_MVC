@@ -21,6 +21,8 @@
             </nav>
         </aside>
         <div class="details">
+            <partial name="~/Views/Shared/Partials/_StatusMessage.cshtml" />
+
             <section class="basic-info">
                 <form method="post" asp-controller="Account" asp-action="BasicInfo" novalidate>
                     <h2>Account Details</h2>
