@@ -17,7 +17,17 @@ builder.Services.AddDefaultIdentity<UserEntity>(x =>
     x.Password.RequiredLength = 8;
 }).AddEntityFrameworkStores<DataContext>();
 
+builder.Services.ConfigureApplicationCookie(x =>
+{
+    x.LoginPath = "/signin";
+    x.LogoutPath = "signout";
+    x.AccessDeniedPath = "/denied";
 
+    x.Cookie.HttpOnly = true;
+    x.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    x.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    x.SlidingExpiration = true;
+});
 
 
 var app = builder.Build();
