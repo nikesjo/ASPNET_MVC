@@ -30,6 +30,14 @@ builder.Services.ConfigureApplicationCookie(x =>
     x.SlidingExpiration = true;
 });
 
+builder.Services.AddAuthentication().AddFacebook(x =>
+{
+    x.AppId = "1477856659826934";
+    x.AppSecret = "0ea4df4b97209bf7538c3e7f1bf12567";
+    x.Fields.Add("first_name");
+    x.Fields.Add("last_name");
+});
+
 builder.Services.AddScoped<AddressManager>();
 
 
