@@ -1,3 +1,4 @@
+using Infrastructure;
 using Infrastructure.Contexts;
 using Infrastructure.Entities;
 using Infrastructure.Helpers.Middlewares;
@@ -28,6 +29,9 @@ builder.Services.ConfigureApplicationCookie(x =>
     x.ExpireTimeSpan = TimeSpan.FromMinutes(60);
     x.SlidingExpiration = true;
 });
+
+builder.Services.AddScoped<AddressManager>();
+
 
 
 var app = builder.Build();
