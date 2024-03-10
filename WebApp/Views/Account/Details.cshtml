@@ -1,16 +1,16 @@
 ﻿@model AccountDetailsViewModel
 @{
-    ViewData["Title"] = $"{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}'s profile";
+    ViewData["Title"] = $"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}'s profile";
 }
 
 <section class="container">
     <div id="account-details">
         <aside>
             <div class="profile">
-                <img src="@Model.BasicInfo.ProfileImage" alt="@($"{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}")">
+                <img src="@Model.ProfileInfo?.ProfileImageUrl" alt="@($"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}")">
                 <a class="btn-refresh" href="#"><i class="fa-sharp fa-regular fa-arrows-rotate"></i></a>
-                <h5>@($"{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}")</h5>
-                <p>@Model.BasicInfo.Email</p>
+                <h5>@($"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}")</h5>
+                <p>@Model.ProfileInfo?.Email</p>
             </div>
 
             <nav>
