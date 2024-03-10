@@ -1,16 +1,17 @@
 ﻿@model AccountDetailsViewModel
 @{
-    ViewData["Title"] = $"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}'s profile";
+    ViewData["Title"] = $"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}'s profile";
 }
 
 <section class="container">
     <div id="account-details">
+        <partial name="~/Views/Shared/Partials/_AsidePartial.cshtml" />
         <aside>
             <div class="profile">
-                <img src="@Model.ProfileInfo.ProfileImageUrl" alt="@($"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}")">
+                <img src="@Model.ProfileInfo?.ProfileImageUrl" alt="@($"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}")">
                 <a class="btn-refresh" href="#"><i class="fa-sharp fa-regular fa-arrows-rotate"></i></a>
-                <h5>@($"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}")</h5>
-                <p>@Model.ProfileInfo.Email</p>
+                <h5>@($"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}")</h5>
+                <p>@Model.ProfileInfo?.Email</p>
             </div>
 
             <nav>
@@ -21,7 +22,7 @@
             </nav>
         </aside>
         <div class="details">
-            <partial name="~/Views/Shared/Partials/_StatusMessage.cshtml" />
+            <partial name="~/Views/Shared/Partials/_StatusMessagePartial.cshtml" />
 
             <section class="basic-info">
                 <form method="post" asp-controller="Account" asp-action="BasicInfo" novalidate>
@@ -30,53 +31,53 @@
 
                     <div class="content">
                         <div id="form-firstname" class="input-group">
-                            <label asp-for=BasicInfo.FirstName></label>
-                            @if (Model.ProfileInfo.IsExternalAccount)
+                            <label asp-for=BasicInfo!.FirstName></label>
+                            @if (Model.ProfileInfo!.IsExternalAccount)
                             {
-                                <input asp-for="BasicInfo.FirstName" disabled />
+                                <input asp-for="BasicInfo!.FirstName" disabled />
                             }
                             else
                             {
-                                <span asp-validation-for="BasicInfo.FirstName"></span>
-                                <input asp-for="BasicInfo.FirstName" />
+                                <span asp-validation-for="BasicInfo!.FirstName"></span>
+                                <input asp-for="BasicInfo!.FirstName" />
                             }
                         </div>
 
                         <div id="form-lastname" class="input-group">
-                            <label asp-for=BasicInfo.LastName></label>
+                            <label asp-for=BasicInfo!.LastName></label>
                             @if (Model.ProfileInfo.IsExternalAccount)
                             {
-                                <input asp-for="BasicInfo.LastName" disabled />
+                                <input asp-for="BasicInfo!.LastName" disabled />
                             }
                             else
                             {
-                                <span asp-validation-for="BasicInfo.LastName"></span>
-                                <input asp-for="BasicInfo.LastName" />
+                                <span asp-validation-for="BasicInfo!.LastName"></span>
+                                <input asp-for="BasicInfo!.LastName" />
                             }
                         </div>
 
                         <div id="form-email" class="input-group">
-                            <label asp-for=BasicInfo.Email></label>
+                            <label asp-for=BasicInfo!.Email></label>
                             @if (Model.ProfileInfo.IsExternalAccount)
                             {
-                                <input asp-for="BasicInfo.Email" disabled />
+                                <input asp-for="BasicInfo!.Email" disabled />
                             }
                             else
                             {
-                                <span asp-validation-for="BasicInfo.Email"></span>
-                                <input asp-for="BasicInfo.Email" />
+                                <span asp-validation-for="BasicInfo!.Email"></span>
+                                <input asp-for="BasicInfo!.Email" />
                             }
                         </div>
 
                         <div id="form-phone" class="input-group">
-                            <label asp-for=BasicInfo.Phone></label>
-                            <span asp-validation-for="BasicInfo.Phone"></span>
-                            <input asp-for="BasicInfo.Phone" />
+                            <label asp-for=BasicInfo!.Phone></label>
+                            <span asp-validation-for="BasicInfo!.Phone"></span>
+                            <input asp-for="BasicInfo!.Phone" />
                         </div>
 
                         <div id="form-bio" class="input-group">
-                            <label asp-for=BasicInfo.Biography>Bio <span>(optional)</span></label>
-                            <textarea asp-for="BasicInfo.Biography"></textarea>
+                            <label asp-for=BasicInfo!.Biography>Bio <span>(optional)</span></label>
+                            <textarea asp-for="BasicInfo!.Biography"></textarea>
                         </div>
 
                         <div class="form-buttons">
@@ -93,27 +94,27 @@
 
                     <div class="content">
                         <div id="form-addressline_1" class="input-group">
-                            <label asp-for=AddressInfo.Addressline_1></label>
-                            <span asp-validation-for="AddressInfo.Addressline_1"></span>
-                            <input asp-for="AddressInfo.Addressline_1" />
+                            <label asp-for=AddressInfo!.Addressline_1></label>
+                            <span asp-validation-for="AddressInfo!.Addressline_1"></span>
+                            <input asp-for="AddressInfo!.Addressline_1" />
                         </div>
 
                         <div id="form-addressline_2" class="input-group">
-                            <label asp-for=AddressInfo.Addressline_2>Address line 2 <span>(optional)</span></label>
-                            <span asp-validation-for="AddressInfo.Addressline_2"></span>
-                            <input asp-for="AddressInfo.Addressline_2" />
+                            <label asp-for=AddressInfo!.Addressline_2>Address line 2 <span>(optional)</span></label>
+                            <span asp-validation-for="AddressInfo!.Addressline_2"></span>
+                            <input asp-for="AddressInfo!.Addressline_2" />
                         </div>
 
                         <div id="form-poastalcode" class="input-group">
-                            <label asp-for=AddressInfo.PostalCode></label>
-                            <span asp-validation-for="AddressInfo.PostalCode"></span>
-                            <input asp-for="AddressInfo.PostalCode" />
+                            <label asp-for=AddressInfo!.PostalCode></label>
+                            <span asp-validation-for="AddressInfo!.PostalCode"></span>
+                            <input asp-for="AddressInfo!.PostalCode" />
                         </div>
 
                         <div id="form-city" class="input-group">
-                            <label asp-for=AddressInfo.City></label>
-                            <span asp-validation-for="AddressInfo.City"></span>
-                            <input asp-for="AddressInfo.City" />
+                            <label asp-for=AddressInfo!.City></label>
+                            <span asp-validation-for="AddressInfo!.City"></span>
+                            <input asp-for="AddressInfo!.City" />
                         </div>
 
                         <div class="form-buttons">

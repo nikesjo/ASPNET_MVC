@@ -1,11 +1,11 @@
 ﻿@model SignUpViewModel
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData["Title"] = "Sign Up";
 }
 
 <section id="signup">
     <div class="container">
-        <partial name="~/Views/Shared/Partials/_StatusMessage.cshtml" />
+        <partial name="~/Views/Shared/Partials/_StatusMessagePartial.cshtml" />
 
         <form method="post" asp-controller="Auth" asp-action="SignUp" novalidate>
             <h1>Create Account</h1>
@@ -46,7 +46,7 @@
                     <span asp-validation-for="Form.TermsAndConditions"></span>
                 </div>
             </div>
-            <button id="form-submit" class="btn-theme-s" type="submit">@Model.Title</button>
+            <button id="form-submit" class="btn-theme-s" type="submit">Sign Up</button>
         </form>
     </div>
 </section>
