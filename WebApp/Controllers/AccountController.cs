@@ -213,4 +213,18 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
     }
     #endregion
 
+
+    #region Saved Courses
+    [HttpGet]
+    [Route("/account/savedcourses")]
+    public async Task<IActionResult> SavedCourses()
+    {
+        var viewModel = new AccountDetailsViewModel
+        {
+            ProfileInfo = await PopulateProfileInfoAsync()
+        };
+
+        return View(viewModel);
+    }
+    #endregion
 }

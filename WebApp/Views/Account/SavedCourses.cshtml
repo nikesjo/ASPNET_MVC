@@ -1,0 +1,77 @@
+﻿@model AccountDetailsViewModel
+
+<section id="saved-courses">
+    <div class="container">
+        <aside>
+            <div class="profile">
+                <img src="@Model.ProfileInfo?.ProfileImageUrl" alt="@($"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}")">
+                <a class="btn-refresh" href="#"><i class="fa-sharp fa-regular fa-arrows-rotate"></i></a>
+                <h5>@($"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}")</h5>
+                <p>@Model.ProfileInfo?.Email</p>
+            </div>
+
+            <nav>
+                <a class="btn-theme-s" asp-controller="Account" asp-action="Details"><i class="fa-regular fa-gear"></i><span>Account Details</span></a>
+                <a class="btn-transparent" asp-controller="Account" asp-action="Security"><i class="fa-regular fa-lock"></i><span>Security</span></a>
+                <a class="btn-transparent" asp-controller="Account" asp-action="SavedCourses"><i class="fa-regular fa-bookmark"></i><span>Saved Courses</span></a>
+                <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></a>
+            </nav>
+        </aside>
+        <div class="box-savedcourses">
+            <div class="saved-header">
+                <h1>Saved items</h1>
+                <a class="btn-gray" href="#"><i class="fa-regular fa-trash-can"></i></i><span>Delete all</span></a>
+            </div>
+            <div class="courses-square">
+                <div class="grid-item">
+                    <img src="images/courses/computer-course.svg" alt="">
+                    <div class="text-info">
+                        <h5>Fullstack Web Developer Course from Scratch</h5>
+                        <p class="creator">By Robert Fox</p>
+                        <p class="price">$12.50</p>
+                        <div class="clock">
+                            <i class="fa-regular fa-clock"></i>
+                            <p>220 hours</p>
+                            <div class="thumbs-up">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <p>92% (3,1K)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="images/courses/computer-course.svg" alt="">
+                    <div class="text-info">
+                        <h5>Fullstack Web Developer Course from Scratch</h5>
+                        <p class="creator">By Robert Fox</p>
+                        <p class="price">$12.50</p>
+                        <div class="clock">
+                            <i class="fa-regular fa-clock"></i>
+                            <p>220 hours</p>
+                            <div class="thumbs-up">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <p>92% (3,1K)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="images/courses/computer-course.svg" alt="">
+                    <div class="text-info">
+                        <h5>Fullstack Web Developer Course from Scratch</h5>
+                        <p class="creator">By Robert Fox</p>
+                        <p class="price">$12.50</p>
+                        <div class="clock">
+                            <i class="fa-regular fa-clock"></i>
+                            <p>220 hours</p>
+                            <div class="thumbs-up">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <p>92% (3,1K)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
