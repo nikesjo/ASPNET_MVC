@@ -1,0 +1,72 @@
+﻿@model ContactFormViewModel
+
+<section id="contact">
+    <div class="container">
+
+        <div class="left-side">
+            <div class="breadcrumb">
+                <i class="fa-solid fa-house"></i>
+                <a href="home.html">Home</a>
+                <i class="fa-solid fa-angles-right"></i>
+                <a class="active" href="#">Contact</a>
+            </div>
+            <h1>Contact Us</h1>
+            <div class="info">
+                <div class="box">
+                    <div class="icon">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <div class="text">
+                        <h4>Email us</h4>
+                        <p>Please feel free to drop us a line. We will respond as soon as possible.</p>
+                        <a href="">Leave a message <i class="fa-regular fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="icon">
+                        <i class="fa-regular fa-user-plus"></i>
+                    </div>
+                    <div class="text">
+                        <h4>Careers</h4>
+                        <p>Sit ac ipsum leo lorem magna nunc mattis maecenas non vestibulum.</p>
+                        <a href="">Send an application <i class="fa-regular fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form">
+            <form method="post" asp-controller="Home" asp-action="Contact" class="row g-4" novalidate>
+                <h2>Get In Contact With Us</h2>
+                <div class="col-12">
+                    <label class="form-label" asp-for=FullName></label>
+                    <span asp-validation-for="FullName"></span>
+                    <input class="form-control" asp-for="FullName" />
+                </div>
+                <div class="col-12">
+                    <label class="form-label" asp-for=Email></label>
+                    <span asp-validation-for="Email"></span>
+                    <input class="form-control" asp-for="Email" />
+                </div>
+                <div class="col-12">
+                    <label asp-for=Service class="form-label">Service <span>(optional)</span></label>
+                    <select asp-for=Service class="form-select">
+                        <option selected>Choose the service you are interested in</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" asp-for=Message></label>
+                    <textarea class="form-control" asp-for="Message" cols="30" rows="8"></textarea>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn-theme">Send Contact Request</button>
+                </div>
+            </form>
+        </div>
+        <img src="images/map.svg" alt="">
+    </div>
+
+</section>
