@@ -1295,16 +1295,16 @@ footer .container .social-media {
   margin-bottom: 50px;
 }
 
-.account-security .container {
+#account-security .container {
   display: flex;
   flex-direction: column;
 }
 @media (min-width: 992px) {
-  .account-security .container {
+  #account-security .container {
     flex-direction: row;
   }
 }
-.account-security .container .sidebar {
+#account-security .container aside {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1312,25 +1312,25 @@ footer .container .social-media {
   padding: 30px 0 0 0;
 }
 @media (min-width: 992px) {
-  .account-security .container .sidebar {
+  #account-security .container aside {
     flex-direction: column;
     padding: 50px 20px 0 10px;
     justify-content: start;
   }
 }
-.account-security .container .sidebar .profile {
+#account-security .container aside .profile {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.account-security .container .sidebar .profile img {
+#account-security .container aside .profile img {
   width: 120px;
   height: 120px;
   margin-bottom: 20px;
 }
-.account-security .container .sidebar .profile .btn-refresh {
+#account-security .container aside .profile .btn-refresh {
   box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
   position: absolute;
   top: 80px;
@@ -1344,56 +1344,72 @@ footer .container .social-media {
   width: 40px;
   height: 40px;
 }
-.account-security .container .sidebar .profile .btn-refresh i {
+#account-security .container aside .profile .btn-refresh i {
   color: #33354D;
   font-size: 16px;
   font-weight: 600;
 }
-.account-security .container .sidebar .profile .btn-refresh:hover {
+#account-security .container aside .profile .btn-refresh:hover {
   text-decoration: none;
   background: #9397AD;
 }
-.account-security .container .sidebar .profile .btn-refresh:hover i {
+#account-security .container aside .profile .btn-refresh:hover i {
   color: #FFFFFF;
 }
-.account-security .container .sidebar .btn-theme-s {
-  max-width: 306px;
-  justify-content: start;
-  font-size: 16px;
-  padding: 10px 10px 10px 20px;
-}
-@media (min-width: 768px) {
-  .account-security .container .sidebar .btn-theme-s {
-    width: 306px;
-    padding: 10px 28px 10px;
-  }
-}
-.account-security .container .sidebar .link-list {
+#account-security .container aside nav {
   display: flex;
   flex-direction: column;
 }
-.account-security .container .sidebar .link-list .menu-link {
+#account-security .container aside nav a {
+  color: #33354D;
+  padding: 10px;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  color: #33354D;
+  font-weight: 600 !important;
+  text-decoration: none;
+}
+#account-security .container aside nav .btn-transparent {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-left: 20px;
 }
-.account-security .container .sidebar .link-list .menu-link i {
+#account-security .container aside nav .btn-transparent i {
   color: #9397AD;
   margin-right: 10px;
 }
-.account-security .container .security-preview {
+#account-security .container aside nav .btn-transparent:hover {
+  color: #6366F1;
+}
+#account-security .container aside nav .btn-theme-s {
+  max-width: 306px;
+  justify-content: start;
+  font-size: 16px;
+  padding: 10px;
+  color: #FFFFFF;
+}
+@media (min-width: 768px) {
+  #account-security .container aside nav .btn-theme-s {
+    width: 306px;
+    padding: 10px 28px 10px;
+  }
+}
+#account-security .container .security-preview {
   padding: 50px 20px;
   display: flex;
   flex-direction: column;
   gap: 60px;
 }
 @media (min-width: 992px) {
-  .account-security .container .security-preview {
+  #account-security .container .security-preview {
     padding: 50px 100px;
     border-left: 1px solid #E2E5F1;
   }
 }
-.account-security .container .security-preview h2 {
+#account-security .container .security-preview h2 {
   line-height: 160%;
   font-weight: 400;
   color: #565973;
@@ -1403,7 +1419,7 @@ footer .container .social-media {
   font-size: 28px !important;
 }
 @media (min-width: 992px) {
-  .account-security .container .security-preview h2 {
+  #account-security .container .security-preview h2 {
     line-height: 160%;
     font-weight: 400;
     color: #565973;
@@ -1413,54 +1429,54 @@ footer .container .social-media {
     font-size: 32px !important;
   }
 }
-.account-security .container .security-preview form h5 {
+#account-security .container .security-preview form h5 {
   color: #6366F1;
 }
-.account-security .container .security-preview form label {
+#account-security .container .security-preview form label {
   color: #0B0F19;
   font-weight: 600;
 }
-.account-security .container .security-preview form label span {
+#account-security .container .security-preview form label span {
   color: #9397AD;
 }
-.account-security .container .security-preview form input {
+#account-security .container .security-preview form input {
   padding: 10px 15px;
   border-radius: 8px;
 }
-.account-security .container .security-preview form input::placeholder {
+#account-security .container .security-preview form input::placeholder {
   color: #B4B7C9;
 }
-.account-security .container .security-preview form input:focus {
+#account-security .container .security-preview form input:focus {
   box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
   border-color: rgba(99, 101, 241, 0.0784313725);
 }
-.account-security .container .security-preview form textarea {
+#account-security .container .security-preview form textarea {
   resize: none;
 }
-.account-security .container .security-preview form textarea::placeholder {
+#account-security .container .security-preview form textarea::placeholder {
   color: #B4B7C9;
 }
-.account-security .container .security-preview form textarea:focus {
+#account-security .container .security-preview form textarea:focus {
   box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
   border-color: rgba(99, 101, 241, 0.0784313725);
 }
-.account-security .container .security-preview #deleteAccount {
+#account-security .container .security-preview #deleteAccount {
   border-top: 1px solid #E2E5F1;
   margin-bottom: 50px;
 }
-.account-security .container .security-preview #deleteAccount .form-check {
+#account-security .container .security-preview #deleteAccount .form-check {
   margin-left: 10px;
 }
-.account-security .container .security-preview #deleteAccount .form-check .form-check-input {
+#account-security .container .security-preview #deleteAccount .form-check .form-check-input {
   border: 2px solid #B4B7C9;
   padding: 0;
   border-radius: 0.25em;
 }
-.account-security .container .security-preview #deleteAccount .form-check .form-check-input:checked {
+#account-security .container .security-preview #deleteAccount .form-check .form-check-input:checked {
   background-color: #6366F1;
   border-color: #6366F1;
 }
-.account-security .container .security-preview #deleteAccount .form-check .form-check-label {
+#account-security .container .security-preview #deleteAccount .form-check .form-check-label {
   color: #565973;
 }
 

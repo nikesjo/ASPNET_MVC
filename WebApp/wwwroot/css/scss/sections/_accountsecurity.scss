@@ -1,4 +1,4 @@
-.account-security {
+#account-security {
     .container {
         display: flex;
         flex-direction: column;
@@ -7,7 +7,7 @@
             flex-direction: row;
         }
 
-        .sidebar {
+        aside {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -46,48 +46,60 @@
                     border-radius: 100%;
                     width: 40px;
                     height: 40px;
-    
+
                     i {
                         color: $gray-800;
                         font-size: 16px;
-                        font-weight: 600;   
+                        font-weight: 600;
                     }
-    
+
                     &:hover {
                         text-decoration: none;
                         background: $gray-600;
-    
+
                         i {
                             color: $white;
                         }
-                    } 
+                    }
                 }
             }
 
-            .btn-theme-s {
-                max-width: 306px;
-                justify-content: start;
-                font-size: 16px;
-                padding: 10px 10px 10px 20px;
-
-                @include md {
-                    width: 306px;
-                    padding: 10px 28px 10px;
-                }
-            }
-
-            .link-list {
+            nav {
                 display: flex;
                 flex-direction: column;
 
-                .menu-link {
+                a {
+                    color: $gray-800;
+                    padding: 10px;
+                    @include text-nav;
+                    text-decoration: none;
+                }
+
+                .btn-transparent {
                     padding-top: 10px;
                     padding-bottom: 10px;
                     margin-left: 20px;
-    
+
                     i {
                         color: $gray-600;
                         margin-right: 10px;
+                    }
+
+                    &:hover {
+                        color: $theme;
+                    }
+                }
+
+                .btn-theme-s {
+                    max-width: 306px;
+                    justify-content: start;
+                    font-size: 16px;
+                    padding: 10px;
+                    color: $white;
+
+                    @include md {
+                        width: 306px;
+                        padding: 10px 28px 10px;
                     }
                 }
             }
@@ -120,7 +132,7 @@
                 label {
                     color: $gray-900;
                     font-weight: 600;
-                    
+
                     span {
                         color: $gray-600;
                     }
@@ -142,6 +154,7 @@
 
                 textarea {
                     resize: none;
+
                     &::placeholder {
                         color: $gray-500;
                     }
@@ -170,8 +183,9 @@
                             border-color: $theme;
                         }
                     }
+
                     .form-check-label {
-                        color:$gray-700;
+                        color: $gray-700;
                     }
                 }
             }

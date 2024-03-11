@@ -3,7 +3,9 @@ using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApp.ViewModels.Account;
+using WebApp.ViewModels.Auth;
 using WebbApp.ViewModels.Account;
 
 namespace WebApp.Controllers;
@@ -173,4 +175,42 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
         return new AddressInfoFormViewModel();
     }
     #endregion
+
+
+    #region Security
+    [HttpGet]
+    [Route("/account/security")]
+    public IActionResult Security()
+    {
+        return View();
+    }
+    #endregion
+
+
+    #region [HttpPost] Security
+    [HttpPost]
+    [Route("/account/security")]
+    public async Task<IActionResult> Security(AccountSecurityViewModel viewModel)
+    {
+        if (ModelState.IsValid)
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            var currentPassword = viewModel!.CurrentPassword;
+            var newPassword = viewModel.NewPassword;
+
+
+            var userEntity = new UserEntity();
+
+            var result = await _userManager.ChangePasswordAsync(userEntity, currentPassword, newPassword);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("SignIn", "Auth");
+            }
+        }
+
+        return View(viewModel);
+    }
+    #endregion
+
 }

@@ -1,10 +1,10 @@
-﻿@model ProfileInfoViewModel
+﻿@model AccountDetailsViewModel
 <aside>
     <div class="profile">
-        <img src="@Model.ProfileImageUrl" alt="@($"{Model.FirstName} {Model.LastName}")">
+        <img src="@Model.ProfileInfo?.ProfileImageUrl" alt="@($"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}")">
         <a class="btn-refresh" href="#"><i class="fa-sharp fa-regular fa-arrows-rotate"></i></a>
-        <h5>@($"{Model.FirstName} {Model.LastName}")</h5>
-        <p>@Model.Email</p>
+        <h5>@($"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}")</h5>
+        <p>@Model.ProfileInfo?.Email</p>
     </div>
 
     <nav>
