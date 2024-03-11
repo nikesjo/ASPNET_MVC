@@ -1,5 +1,5 @@
-﻿using Infrastructure;
-using Infrastructure.Entities;
+﻿using Infrastructure.Entities;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -54,8 +54,8 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
                     var result = await _userManager.UpdateAsync(user);
                     if (!result.Succeeded)
                     {
-                        ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to save data.");
-                        ViewData["StatusMessage"] = "danger|Something went wrong! Unable to save data.";
+                        ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to update basic information.");
+                        ViewData["StatusMessage"] = "danger|Something went wrong! Unable to update basic information.";
                     }else
                     {
                         ViewData["StatusMessage"] = "success|Basic Information was saved successfully.";
@@ -82,8 +82,12 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
                         var result = await _addressManager.UpdateAddressAsync(address);
                         if (!result)
                         {
-                            ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to save data.");
-                            ViewData["StatusMessage"] = "danger|Something went wrong! Unable to save data.";
+                            ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to update address information.");
+                            ViewData["StatusMessage"] = "danger|Something went wrong! Unable to update address information.";
+                        }
+                        else
+                        {
+                            ViewData["StatusMessage"] = "success|Address Information was saved successfully.";
                         }
                     }
                     else
@@ -100,8 +104,8 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
                         var result = await _addressManager.CreateAddressAsync(address);
                         if (!result)
                         {
-                            ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to save data.");
-                            ViewData["StatusMessage"] = "danger|Something went wrong! Unable to save data.";
+                            ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to update address information.");
+                            ViewData["StatusMessage"] = "danger|Something went wrong! Unable to update address information.";
                         }
                         else
                         {

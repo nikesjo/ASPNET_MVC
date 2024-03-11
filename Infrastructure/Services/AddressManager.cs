@@ -3,7 +3,7 @@ using Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
-namespace Infrastructure;
+namespace Infrastructure.Services;
 
 public class AddressManager(DataContext context)
 {
