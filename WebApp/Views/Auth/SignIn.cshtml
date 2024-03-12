@@ -13,12 +13,10 @@
             <div class="content row g-4">
                 <div class="col-12">
                     <label class="form-label" asp-for=Form.Email></label>
-                    <span asp-validation-for="Form.Email"></span>
                     <input class="form-control" asp-for="Form.Email" />
                 </div>
                 <div class="col-12">
                     <label class="form-label" asp-for=Form.Password></label>
-                    <span asp-validation-for="Form.Password"></span>
                     <input class="form-control" asp-for="Form.Password" />
                 </div>
 
@@ -45,5 +43,3 @@
         </form>
     </div>
 </section>
-
-@await Html.PartialAsync("_ValidationScriptPartial")
