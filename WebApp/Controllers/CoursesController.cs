@@ -1,12 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
-namespace WebApp.Controllers
+namespace WebApp.Controllers;
+
+//[Authorize]
+public class CoursesController : Controller
 {
-    public class CoursesController : Controller
+    [HttpGet]
+    [Route("/courses")]
+    public IActionResult Courses()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View();
+    }
+
+    [HttpGet]
+    [Route("/courses/singlecourse")]
+    public IActionResult SingleCourse()
+    {
+        return View();
     }
 }

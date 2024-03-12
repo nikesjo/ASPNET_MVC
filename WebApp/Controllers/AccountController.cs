@@ -10,7 +10,7 @@ using WebbApp.ViewModels.Account;
 
 namespace WebApp.Controllers;
 
-[Authorize]
+//[Authorize]
 public class AccountController(UserManager<UserEntity> userManager, AddressManager addressManager) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
