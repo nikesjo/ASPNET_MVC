@@ -10,7 +10,7 @@ public class SignInModel
     public string Email { get; set; } = null!;
 
 
-    [Display(Name = "Password", Prompt = "Enter your password", Order = 1)]
+    [Display(Name = "Password", Prompt = "********", Order = 1)]
     [DataType(DataType.Password)]
     [Required(ErrorMessage = "Password is required")]
     public string Password { get; set; } = null!;

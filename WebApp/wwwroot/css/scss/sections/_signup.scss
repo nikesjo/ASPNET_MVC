@@ -12,50 +12,62 @@
         }
 
         @include xl {
-            width: 40%;
+            width: 30%;
         }
 
         form {
-            padding: 1rem;
-
             .content {
-                display: grid;
-                gap: 1rem 2rem;
-                grid-template-columns: 1fr;
-                grid-template-areas: "firstname" "lastname" "email" "password" "confirm" "terms" "button";
+                label {
+                    color: $gray-900;
+                    font-weight: 600;
 
-                @include md {
-                    grid-template-columns: 1fr 1fr;
-                    grid-template-areas: "firstname lastname" "email email" "password password" "confirm confirm" "terms terms" "button button";
+                    span {
+                        color: $gray-600;
+                    }
                 }
 
-                #form-firstname {
-                    grid-area: firstname;
+                .form-control {
+                    padding: 10px 15px;
+                    border-radius: 8px;
                 }
 
-                #form-lastname {
-                    grid-area: lastname;
+                input {
+
+
+                    &::placeholder {
+                        color: $gray-500;
+                    }
+
+                    &:focus {
+                        @include theme-secondary-shadow;
+                        border-color: $theme-opacity;
+                    }
                 }
 
-                #form-email {
-                    grid-area: email;
-                }
+                .checkbox {
+                    position: relative;
 
-                #form-password {
-                    grid-area: password;
-                }
+                    span {
+                        position: absolute;
+                    }
 
-                #form-confirm {
-                    grid-area: confirm;
-                }
+                    .form-check {
+                        .form-check-input {
+                            border: 2px solid $gray-500;
+                            height: 18px;
+                            width: 18px;
+                            margin-bottom: 30px;
 
-                #form-terms {
-                    grid-area: terms;
+                            &:checked {
+                                background-color: $theme;
+                                border-color: $theme;
+                            }
+                        }
+                    }
                 }
+            }
 
-                #form-submit {
-                    grid-area: button;
-                }
+            button {
             }
         }
     }

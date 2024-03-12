@@ -402,6 +402,15 @@ a:hover {
   color: #FFFFFF;
 }
 
+/*.alert-danger {
+    background: #F5D7Da;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+}
+*/
 header {
   padding: 15px 0;
 }
@@ -2004,46 +2013,43 @@ footer .container .social-media {
 }
 @media (min-width: 1200px) {
   #signup .container {
-    width: 40%;
+    width: 30%;
   }
 }
-#signup .container form {
-  padding: 1rem;
+#signup .container form .content label {
+  color: #0B0F19;
+  font-weight: 600;
 }
-#signup .container form .content {
-  display: grid;
-  gap: 1rem 2rem;
-  grid-template-columns: 1fr;
-  grid-template-areas: "firstname" "lastname" "email" "password" "confirm" "terms" "button";
+#signup .container form .content label span {
+  color: #9397AD;
 }
-@media (min-width: 768px) {
-  #signup .container form .content {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "firstname lastname" "email email" "password password" "confirm confirm" "terms terms" "button button";
-  }
+#signup .container form .content .form-control {
+  padding: 10px 15px;
+  border-radius: 8px;
 }
-#signup .container form .content #form-firstname {
-  grid-area: firstname;
+#signup .container form .content input::placeholder {
+  color: #B4B7C9;
 }
-#signup .container form .content #form-lastname {
-  grid-area: lastname;
+#signup .container form .content input:focus {
+  box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
+  border-color: rgba(99, 101, 241, 0.0784313725);
 }
-#signup .container form .content #form-email {
-  grid-area: email;
+#signup .container form .content .checkbox {
+  position: relative;
 }
-#signup .container form .content #form-password {
-  grid-area: password;
+#signup .container form .content .checkbox span {
+  position: absolute;
 }
-#signup .container form .content #form-confirm {
-  grid-area: confirm;
+#signup .container form .content .checkbox .form-check .form-check-input {
+  border: 2px solid #B4B7C9;
+  height: 18px;
+  width: 18px;
+  margin-bottom: 30px;
 }
-#signup .container form .content #form-terms {
-  grid-area: terms;
+#signup .container form .content .checkbox .form-check .form-check-input:checked {
+  background-color: #6366F1;
+  border-color: #6366F1;
 }
-#signup .container form .content #form-submit {
-  grid-area: button;
-}
-
 #singlecourseshowcase {
   position: relative;
 }

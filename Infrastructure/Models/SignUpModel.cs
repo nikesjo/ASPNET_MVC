@@ -23,13 +23,13 @@ public class SignUpModel
     [RegularExpression("^[^@\\s]+@[^@\\s]+\\.[^@\\s]{2,}$", ErrorMessage = "Your email address is invalid")]
     public string Email { get; set; } = null!;
 
-    [Display(Name = "Password", Prompt = "Enter your password", Order = 3)]
+    [Display(Name = "Password", Prompt = "********", Order = 3)]
     [DataType(DataType.Password)]
     [Required(ErrorMessage = "Invalid password")]
     [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*]).{8,}", ErrorMessage = "Invalid password, must be a strong password")]
     public string Password { get; set; } = null!;
 
-    [Display(Name = "Confirm password", Prompt = "Confirm your password", Order = 4)]
+    [Display(Name = "Confirm password", Prompt = "********", Order = 4)]
     [DataType(DataType.Password)]
     [Required(ErrorMessage = "Password must be confirmed")]
     [Compare(nameof(Password), ErrorMessage = "Password does not match")]
