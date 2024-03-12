@@ -49,6 +49,11 @@ header {
                 display: flex;
             }
 
+            img {
+                width: 44px;
+                height: 44px;
+            }
+
             .btn-gray {
                 font-size: 16px;
                 font-weight: 600;
@@ -73,8 +78,7 @@ header {
                 display: none;
             }
         }
-
-/*        .hide {
+        /*        .hide {
             display: flex;
             flex-direction: column;
             align-items: center;

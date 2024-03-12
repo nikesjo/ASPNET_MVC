@@ -10,7 +10,7 @@ using WebbApp.ViewModels.Account;
 
 namespace WebApp.Controllers;
 
-//[Authorize]
+[Authorize]
 public class AccountController(UserManager<UserEntity> userManager, AddressManager addressManager) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
@@ -180,9 +180,17 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
     #region Security
     [HttpGet]
     [Route("/account/security")]
-    public IActionResult Security()
+    public async Task<IActionResult> Security()
     {
-        return View();
+        var viewModel = new AccountSecurityViewModel
+        {
+            AccountDetailsInfo = new AccountDetailsViewModel
+            {
+                ProfileInfo = await PopulateProfileInfoAsync()
+            }
+        };
+
+        return View(viewModel);
     }
     #endregion
 

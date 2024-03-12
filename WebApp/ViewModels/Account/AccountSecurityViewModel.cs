@@ -24,4 +24,6 @@ public class AccountSecurityViewModel
 
     [Display(Name = "Yes, I want to delete my account", Order = 3)]
     public bool DeleteAccount { get; set; } = false;
+
+    public AccountDetailsViewModel? AccountDetailsInfo { get; set; }
 }

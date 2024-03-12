@@ -422,13 +422,13 @@ header .container {
   grid-template-areas: "logo mobile";
   gap: 40px;
   /*        .hide {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              width: 100%;
-              height: auto;
-          }*/
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: auto;
+  }*/
 }
 @media (min-width: 992px) {
   header .container {
@@ -470,6 +470,10 @@ header .container #account-buttons {
   header .container #account-buttons {
     display: flex;
   }
+}
+header .container #account-buttons img {
+  width: 44px;
+  height: 44px;
 }
 header .container #account-buttons .btn-gray {
   font-size: 16px;
