@@ -17,7 +17,7 @@
 
             @include lg {
                 flex-direction: column;
-                padding: 50px 20px 0 10px;
+                padding: 50px 10px 0 10px;
                 justify-content: start;
             }
 
@@ -110,11 +110,10 @@
         .box-savedcourses {
             display: flex;
             flex-direction: column;
-            margin-top: 50px;
-            padding: 30px;
+            padding: 50px 20px;
 
             @include lg {
-                padding: 50px 100px;
+                padding: 50px 0 0 100px;
                 border-left: 1px solid $gray-300;
             }
 

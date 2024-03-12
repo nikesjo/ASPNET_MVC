@@ -1168,7 +1168,7 @@ footer .container .social-media {
 @media (min-width: 992px) {
   #account-details .container aside {
     flex-direction: column;
-    padding: 50px 20px 0 10px;
+    padding: 50px 10px 0 10px;
     justify-content: start;
   }
 }
@@ -1255,11 +1255,10 @@ footer .container .social-media {
   padding: 50px 20px;
   display: flex;
   flex-direction: column;
-  gap: 60px;
 }
 @media (min-width: 992px) {
   #account-details .container .details-preview {
-    padding: 50px 100px;
+    padding: 50px 0 0 100px;
     border-left: 1px solid #E2E5F1;
   }
 }
@@ -1274,6 +1273,7 @@ footer .container .social-media {
   font-weight: 800;
   color: #0B0F19;
   font-size: 28px !important;
+  padding-bottom: 20px;
 }
 @media (min-width: 992px) {
   #account-details .container .details-preview h2 {
@@ -1285,6 +1285,9 @@ footer .container .social-media {
     color: #0B0F19;
     font-size: 32px !important;
   }
+}
+#account-details .container .details-preview form {
+  margin-bottom: 40px;
 }
 #account-details .container .details-preview form h5 {
   color: #6366F1;
@@ -1317,9 +1320,9 @@ footer .container .social-media {
   box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
   border-color: rgba(99, 101, 241, 0.0784313725);
 }
-#account-details .container .details-preview #addressChanges {
+#account-details .container .details-preview #addressChanges h5 {
   border-top: 1px solid #E2E5F1;
-  margin-bottom: 50px;
+  padding-top: 25px;
 }
 
 #account-security .container {
@@ -1341,7 +1344,7 @@ footer .container .social-media {
 @media (min-width: 992px) {
   #account-security .container aside {
     flex-direction: column;
-    padding: 50px 20px 0 10px;
+    padding: 50px 10px 0 10px;
     justify-content: start;
   }
 }
@@ -1428,11 +1431,10 @@ footer .container .social-media {
   padding: 50px 20px;
   display: flex;
   flex-direction: column;
-  gap: 60px;
 }
 @media (min-width: 992px) {
   #account-security .container .security-preview {
-    padding: 50px 100px;
+    padding: 50px 0 0 100px;
     border-left: 1px solid #E2E5F1;
   }
 }
@@ -1444,6 +1446,7 @@ footer .container .social-media {
   font-weight: 800;
   color: #0B0F19;
   font-size: 28px !important;
+  padding-bottom: 20px;
 }
 @media (min-width: 992px) {
   #account-security .container .security-preview h2 {
@@ -1455,6 +1458,9 @@ footer .container .social-media {
     color: #0B0F19;
     font-size: 32px !important;
   }
+}
+#account-security .container .security-preview form {
+  margin-bottom: 40px;
 }
 #account-security .container .security-preview form h5 {
   color: #6366F1;
@@ -1487,9 +1493,9 @@ footer .container .social-media {
   box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
   border-color: rgba(99, 101, 241, 0.0784313725);
 }
-#account-security .container .security-preview #deleteAccount {
+#account-security .container .security-preview #deleteAccount h5 {
   border-top: 1px solid #E2E5F1;
-  margin-bottom: 50px;
+  padding-top: 25px;
 }
 #account-security .container .security-preview #deleteAccount .form-check {
   margin-left: 10px;
@@ -2553,7 +2559,7 @@ footer .container .social-media {
 @media (min-width: 992px) {
   #saved-courses .container aside {
     flex-direction: column;
-    padding: 50px 20px 0 10px;
+    padding: 50px 10px 0 10px;
     justify-content: start;
   }
 }
@@ -2639,12 +2645,11 @@ footer .container .social-media {
 #saved-courses .container .box-savedcourses {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
-  padding: 30px;
+  padding: 50px 20px;
 }
 @media (min-width: 992px) {
   #saved-courses .container .box-savedcourses {
-    padding: 50px 100px;
+    padding: 50px 0 0 100px;
     border-left: 1px solid #E2E5F1;
   }
 }

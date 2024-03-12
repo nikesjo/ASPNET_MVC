@@ -16,7 +16,7 @@
 
             @include lg {
                 flex-direction: column;
-                padding: 50px 20px 0 10px;
+                padding: 50px 10px 0 10px;
                 justify-content: start;
             }
 
@@ -109,10 +109,9 @@
             padding: 50px 20px;
             display: flex;
             flex-direction: column;
-            gap: 60px;
 
             @include lg {
-                padding: 50px 100px;
+                padding: 50px 0 0 100px;
                 border-left: 1px solid $gray-300;
             }
 
@@ -122,6 +121,7 @@
 
             h2 {
                 @include h3;
+                padding-bottom: 20px;
 
                 @include lg {
                     @include h2;
@@ -129,6 +129,8 @@
             }
 
             form {
+                margin-bottom: 40px;
+
                 h5 {
                     color: $theme;
                 }
@@ -171,8 +173,10 @@
             }
 
             #addressChanges {
-                border-top: 1px solid $gray-300;
-                margin-bottom: 50px;
+                h5 {
+                    border-top: 1px solid $gray-300;
+                    padding-top: 25px;
+                }
             }
         }
     }

@@ -20,7 +20,7 @@
     <None Include="wwwroot\css\scss\core\_typography.scss" />
     <None Include="wwwroot\css\scss\sections\_accountdetails.scss" />
     <None Include="wwwroot\css\scss\sections\_accountsecurity.scss" />
-    <None Include="wwwroot\css\scss\sections\_albert.scss" />
+    <None Include="wwwroot\css\scss\sections\_author.scss" />
     <None Include="wwwroot\css\scss\sections\_contact.scss" />
     <None Include="wwwroot\css\scss\sections\_courses.scss" />
     <None Include="wwwroot\css\scss\sections\_signup.scss" />
