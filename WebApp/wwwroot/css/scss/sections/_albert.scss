@@ -1,14 +1,14 @@
-.albert-flores {
+#author {
 
     .container {
 
-        .albert-img-text {
+        .author-img-text {
             display: flex;
             background-color: rgb(21, 21, 44);
             border-radius: 10px;
             margin-top: 85px;
 
-            .albert-pic {
+            .author-pic {
                 border-radius: 10px;
                 display: none;
 
@@ -17,7 +17,7 @@
                 }
             }
     
-            .albert-text {
+            .author-text {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -56,7 +56,7 @@
 
                 }
 
-                .albert-buttons {
+                .author-buttons {
                     display: flex;
                     gap: 25px;
 
