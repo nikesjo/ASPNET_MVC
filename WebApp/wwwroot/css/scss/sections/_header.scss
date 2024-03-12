@@ -48,6 +48,16 @@ header {
             @include lg {
                 display: flex;
             }
+
+            .btn-gray {
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            .btn-theme {
+                font-size: 16px;
+                font-weight: 600;
+            }
         }
 
         .btn-mobilemenu {
@@ -64,13 +74,13 @@ header {
             }
         }
 
-        .hide {
+/*        .hide {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             width: 100%;
             height: auto;
-        }
+        }*/
     }
 }

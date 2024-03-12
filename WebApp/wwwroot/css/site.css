@@ -243,7 +243,7 @@ a:hover {
 .btn-theme {
   border-radius: 6px;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   padding: 8px 28px;
   display: flex;
   justify-content: center;
@@ -262,7 +262,7 @@ a:hover {
 .btn-theme-s {
   border-radius: 6px;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   padding: 8px 28px;
   display: flex;
   justify-content: center;
@@ -273,6 +273,7 @@ a:hover {
   color: #FFFFFF;
   padding-top: 10px;
   padding-bottom: 10px;
+  border: none;
 }
 .btn-theme-s:hover {
   box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
@@ -284,7 +285,7 @@ a:hover {
 .btn-gray {
   border-radius: 6px;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   padding: 8px 28px;
   display: flex;
   justify-content: center;
@@ -303,7 +304,7 @@ a:hover {
 .btn-red {
   border-radius: 6px;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   padding: 8px 28px;
   display: flex;
   justify-content: center;
@@ -420,6 +421,14 @@ header .container {
   grid-template-columns: 1fr auto;
   grid-template-areas: "logo mobile";
   gap: 40px;
+  /*        .hide {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: auto;
+          }*/
 }
 @media (min-width: 992px) {
   header .container {
@@ -462,6 +471,14 @@ header .container #account-buttons {
     display: flex;
   }
 }
+header .container #account-buttons .btn-gray {
+  font-size: 16px;
+  font-weight: 600;
+}
+header .container #account-buttons .btn-theme {
+  font-size: 16px;
+  font-weight: 600;
+}
 header .container .btn-mobilemenu {
   grid-area: mobile;
   display: block;
@@ -474,14 +491,6 @@ header .container .btn-mobilemenu:hover {
   header .container .btn-mobilemenu {
     display: none;
   }
-}
-header .container .hide {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: auto;
 }
 
 .showcase {
@@ -1062,6 +1071,8 @@ header .container .hide {
 }
 .newsletter .container #registerNewsletter .choose-newsletter .checkboxes .form-check .form-check-input {
   border: 2px solid #B4B7C9;
+  height: 18px;
+  width: 18px;
 }
 .newsletter .container #registerNewsletter .choose-newsletter .checkboxes .form-check .form-check-input:checked {
   background-color: #6366F1;
@@ -1247,6 +1258,9 @@ footer .container .social-media {
     padding: 50px 100px;
     border-left: 1px solid #E2E5F1;
   }
+}
+#account-details .container .details-preview #statusMessage {
+  margin-top: 20px;
 }
 #account-details .container .details-preview h2 {
   line-height: 160%;
@@ -1954,6 +1968,7 @@ footer .container .social-media {
 }
 #signin .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -1971,30 +1986,64 @@ footer .container .social-media {
 #signin .container form {
   padding: 1rem;
 }
-#signin .container form .content {
-  display: grid;
-  gap: 1rem 2rem;
-  grid-template-columns: 1fr;
-  grid-template-areas: "email" "password" "remember" "button" "forgot";
+#signin .container form #statusMessage {
+  margin-top: 20px;
 }
-#signin .container form .content #form-email {
-  grid-area: email;
+#signin .container form .content label {
+  color: #0B0F19;
+  font-weight: 600;
 }
-#signin .container form .content #form-password {
-  grid-area: password;
+#signin .container form .content .form-control {
+  padding: 10px 15px;
+  border-radius: 8px;
 }
-#signin .container form .content #form-remember {
-  grid-area: remember;
-  padding: 1rem 0;
+#signin .container form .content input::placeholder {
+  color: #B4B7C9;
 }
-#signin .container form .content #form-submit {
-  grid-area: button;
+#signin .container form .content input:focus {
+  box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
+  border-color: rgba(99, 101, 241, 0.0784313725);
+}
+#signin .container form .content .form-check .form-check-label {
+  color: #565973;
+  font-weight: 400;
+}
+#signin .container form .content .form-check .form-check-input {
+  border: 2px solid #B4B7C9;
+  height: 18px;
+  width: 18px;
+}
+#signin .container form .content .form-check .form-check-input:checked {
+  background-color: #6366F1;
+  border-color: #6366F1;
 }
 #signin .container form .content #form-forgot-password {
-  width: 100%;
-  grid-area: terms;
-  margin: 1rem 0 0 0;
   text-align: center;
+  padding: 15px 0 30px 0;
+}
+#signin .container form .content .external-providers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-top: 1px solid #E2E5F1;
+  padding: 0;
+  margin: 0;
+}
+#signin .container form .content .external-providers h6 {
+  padding: 20px 0 10px 0;
+}
+#signin .container form .content .external-providers .providers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+#signin .container form .content .external-providers .providers a {
+  width: 50%;
+  padding: 10px 50px;
+  font-weight: 600;
 }
 
 #signup {
@@ -2016,12 +2065,15 @@ footer .container .social-media {
     width: 30%;
   }
 }
+#signup .container form {
+  padding: 1rem;
+}
+#signup .container form #statusMessage {
+  margin-top: 20px;
+}
 #signup .container form .content label {
   color: #0B0F19;
   font-weight: 600;
-}
-#signup .container form .content label span {
-  color: #9397AD;
 }
 #signup .container form .content .form-control {
   padding: 10px 15px;
@@ -2034,22 +2086,17 @@ footer .container .social-media {
   box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
   border-color: rgba(99, 101, 241, 0.0784313725);
 }
-#signup .container form .content .checkbox {
-  position: relative;
-}
-#signup .container form .content .checkbox span {
-  position: absolute;
-}
-#signup .container form .content .checkbox .form-check .form-check-input {
+#signup .container form .content .form-check .form-check-input {
   border: 2px solid #B4B7C9;
   height: 18px;
   width: 18px;
   margin-bottom: 30px;
 }
-#signup .container form .content .checkbox .form-check .form-check-input:checked {
+#signup .container form .content .form-check .form-check-input:checked {
   background-color: #6366F1;
   border-color: #6366F1;
 }
+
 #singlecourseshowcase {
   position: relative;
 }

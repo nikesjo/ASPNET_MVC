@@ -3,6 +3,7 @@
 
     .container {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100%;
@@ -18,34 +19,82 @@
         form {
             padding: 1rem;
 
+            #statusMessage {
+                margin-top: 20px;
+            }
+
             .content {
-                display: grid;
-                gap: 1rem 2rem;
-                grid-template-columns: 1fr;
-                grid-template-areas: "email" "password" "remember" "button" "forgot";
-
-                #form-email {
-                    grid-area: email;
+                label {
+                    color: $gray-900;
+                    font-weight: 600;
                 }
 
-                #form-password {
-                    grid-area: password;
+                .form-control {
+                    padding: 10px 15px;
+                    border-radius: 8px;
                 }
 
-                #form-remember {
-                    grid-area: remember;
-                    padding: 1rem 0;
+                input {
+                    &::placeholder {
+                        color: $gray-500;
+                    }
+
+                    &:focus {
+                        @include theme-secondary-shadow;
+                        border-color: $theme-opacity;
+                    }
                 }
 
-                #form-submit {
-                    grid-area: button;
+                .form-check {
+                    .form-check-label {
+                        color: $gray-700;
+                        font-weight: 400;
+                    }
+
+                    .form-check-input {
+                        border: 2px solid $gray-500;
+                        height: 18px;
+                        width: 18px;
+
+
+                        &:checked {
+                            background-color: $theme;
+                            border-color: $theme;
+                        }
+                    }
                 }
 
                 #form-forgot-password {
-                    width: 100%;
-                    grid-area: terms;
-                    margin: 1rem 0 0 0;
                     text-align: center;
+                    padding: 15px 0 30px 0;
+                }
+
+                .external-providers {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    border-top: 1px solid $gray-300;
+                    padding: 0;
+                    margin: 0;
+
+                    h6 {
+                        padding: 20px 0 10px 0;
+                    }
+
+                    .providers {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        gap: 20px;
+
+                        a {
+                            width: 50%;
+                            padding: 10px 50px;
+                            font-weight: 600;
+                        }
+                    }
                 }
             }
         }

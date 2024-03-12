@@ -5,9 +5,8 @@
 
 <section id="signup">
     <div class="container">
-        <partial name="~/Views/Shared/Partials/_StatusMessagePartial.cshtml" />
-
         <form method="post" asp-controller="Auth" asp-action="SignUp" novalidate>
+            <partial name="~/Views/Shared/Partials/_StatusMessagePartial.cshtml" />
             <h1>Create Account</h1>
             <p>Already have an account? <a asp-controller="Auth" asp-action="SignIn">Sign in here</a>.</p>
             
@@ -38,7 +37,7 @@
                     <input class="form-control" asp-for="Form.ConfirmPassword" />
                 </div>
 
-                <div class="col-12 checkbox">
+                <div class="col-12">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" asp-for="Form.TermsAndConditions" />
                         <label class="form-check-label" asp-for=Form.TermsAndConditions>I agree to the <a asp-controller="About" asp-action="Terms">Terms</a> & <a asp-controller="About" asp-action="Conditions">Conditions</a>.</label>
@@ -47,7 +46,7 @@
                 </div>
             </div>
             <div class="d-grid">
-                <button id="form-submit" class="btn-theme" type="submit">Sign Up</button>
+                <button id="form-submit" class="btn-theme-s" type="submit">Sign Up</button>
             </div>
 
         </form>

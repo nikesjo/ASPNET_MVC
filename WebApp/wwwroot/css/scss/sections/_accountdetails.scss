@@ -87,7 +87,6 @@
 
                     &:hover {
                         color: $theme;
-                        
                     }
                 }
 
@@ -115,6 +114,10 @@
             @include lg {
                 padding: 50px 100px;
                 border-left: 1px solid $gray-300;
+            }
+
+            #statusMessage {
+                margin-top: 20px;
             }
 
             h2 {

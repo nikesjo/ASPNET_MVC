@@ -1,7 +1,7 @@
 @mixin button {
     border-radius: 6px;
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
     padding: 8px 28px;
     display: flex;
     justify-content: center;
@@ -29,13 +29,14 @@
     color: $white;
     padding-top: 10px;
     padding-bottom: 10px;
+    border: none;
 
     &:hover {
         @include theme-secondary-shadow;
         text-decoration: none;
         background: $gray-700;
         color: $white;
-    } 
+    }
 }
 
 .btn-gray { 
