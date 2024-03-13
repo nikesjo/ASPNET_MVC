@@ -2,12 +2,14 @@
 
 <section id="courses">
     <div class="container">
-        <div class="action-buttons">
-            <i class="fa-solid fa-house"></i>
-            <a href="home.html">Home</a>
-            <i class="fa-solid fa-angles-right"></i>
-            <a href="course.html">Courses</a>
-        </div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <i class="fa-solid fa-house"></i>
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <i class="fa-solid fa-angles-right"></i>
+                <li class="breadcrumb-item active" aria-current="page">Courses</li>
+            </ol>
+        </nav>
         <div class="header-courses">
             <h1>Courses</h1>
             <div class="categorylist">

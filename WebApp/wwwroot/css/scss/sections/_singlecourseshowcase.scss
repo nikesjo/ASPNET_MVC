@@ -18,35 +18,33 @@
                 top: 10px;
             }
 
-            .action-buttons {
+            .breadcrumb {
                 display: flex;
                 align-items: center;
                 gap: 15px;
+                margin-bottom: 20px;
+                font-size: 14px;
 
-                @media(max-width: 638px) {
-                    @include text-xs;
+                i {
+                    color: $gray-600;
                 }
-    
-                .a-courses {
-                    color: #ffff;
-                }
-    
-                .a-developer {
-                    color: #ffff;
-                }
-    
+
                 a {
                     text-decoration: none;
                     color: $gray-600;
-    
+
                     &:hover {
                         transition: all 0.15s ease-in-out;
                         cursor: pointer;
                         color: $info;
                     }
                 }
+
+                .active {
+                    color: $white;
+                }
             }
-    
+
             .seller-square {
                 position: relative;
                 display: flex;
@@ -56,9 +54,8 @@
 
                 @media(max-width: 741px) {
                     margin-top: 15px;
-
                 }
-    
+
                 .green-box {
                     background-color: $success;
                     border-radius: 8px;
@@ -73,7 +70,7 @@
                         color: #ffff;
                     }
                 }
-    
+
                 .white-box {
                     background-color: $gray-200;
                     border-radius: 8px;
@@ -171,7 +168,7 @@
                     .fa-regular {
                         color: $gray-400;
                     }
-                
+
                     .fa-thumbs-up {
                         color: $gray-400;
                     }
@@ -190,7 +187,7 @@
                     .fa-regular {
                         color: $gray-400;
                     }
-                
+
                     .fa-clock {
                         color: $gray-400;
                     }

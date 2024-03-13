@@ -1,15 +1,20 @@
 ﻿@model ContactFormViewModel
+@{
+    ViewData["Title"] = "Contact";
+}
 
 <section id="contact">
     <div class="container">
 
         <div class="left-side">
-            <div class="breadcrumb">
-                <i class="fa-solid fa-house"></i>
-                <a href="home.html">Home</a>
-                <i class="fa-solid fa-angles-right"></i>
-                <a class="active" href="#">Contact</a>
-            </div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <i class="fa-solid fa-house"></i>
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <i class="fa-solid fa-angles-right"></i>
+                    <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                </ol>
+            </nav>
             <h1>Contact Us</h1>
             <div class="info">
                 <div class="box">

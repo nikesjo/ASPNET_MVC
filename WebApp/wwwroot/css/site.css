@@ -403,15 +403,6 @@ a:hover {
   color: #FFFFFF;
 }
 
-/*.alert-danger {
-    background: #F5D7Da;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    border-radius: 8px;
-}
-*/
 header {
   padding: 15px 0;
 }
@@ -1735,20 +1726,27 @@ footer .container .social-media {
   margin-top: 30px;
 }
 
-#courses .container .action-buttons {
+#courses .container .breadcrumb {
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: 14px;
 }
-#courses .container .action-buttons a {
+#courses .container .breadcrumb i {
+  color: #9397AD;
+}
+#courses .container .breadcrumb a {
   text-decoration: none;
   color: #9397AD;
 }
-#courses .container .action-buttons a:hover {
+#courses .container .breadcrumb a:hover {
   transition: all 0.15s ease-in-out;
   cursor: pointer;
   color: #4C82F7;
+}
+#courses .container .breadcrumb .active {
+  color: #6366F1;
 }
 #courses .container .header-courses {
   margin-top: 30px;
@@ -2127,34 +2125,27 @@ footer .container .social-media {
     top: 10px;
   }
 }
-#singlecourseshowcase .container .header-singlecourse .action-buttons {
+#singlecourseshowcase .container .header-singlecourse .breadcrumb {
   display: flex;
   align-items: center;
   gap: 15px;
+  margin-bottom: 20px;
+  font-size: 14px;
 }
-@media (max-width: 638px) {
-  #singlecourseshowcase .container .header-singlecourse .action-buttons {
-    line-height: 160%;
-    font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
-    font-size: 12px !important;
-  }
+#singlecourseshowcase .container .header-singlecourse .breadcrumb i {
+  color: #9397AD;
 }
-#singlecourseshowcase .container .header-singlecourse .action-buttons .a-courses {
-  color: white;
-}
-#singlecourseshowcase .container .header-singlecourse .action-buttons .a-developer {
-  color: white;
-}
-#singlecourseshowcase .container .header-singlecourse .action-buttons a {
+#singlecourseshowcase .container .header-singlecourse .breadcrumb a {
   text-decoration: none;
   color: #9397AD;
 }
-#singlecourseshowcase .container .header-singlecourse .action-buttons a:hover {
+#singlecourseshowcase .container .header-singlecourse .breadcrumb a:hover {
   transition: all 0.15s ease-in-out;
   cursor: pointer;
   color: #4C82F7;
+}
+#singlecourseshowcase .container .header-singlecourse .breadcrumb .active {
+  color: #FFFFFF;
 }
 #singlecourseshowcase .container .header-singlecourse .seller-square {
   position: relative;

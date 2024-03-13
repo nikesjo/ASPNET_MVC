@@ -1,12 +1,16 @@
 #courses {
 
     .container {
-
-        .action-buttons {
+        .breadcrumb {
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-top: 50px;
+            margin-bottom: 20px;
+            font-size: 14px;
+
+            i {
+                color: $gray-600;
+            }
 
             a {
                 text-decoration: none;
@@ -17,6 +21,10 @@
                     cursor: pointer;
                     color: $info;
                 }
+            }
+
+            .active {
+                color: $theme;
             }
         }
 
@@ -31,7 +39,6 @@
                 @media (max-width: 992px ) {
                     display: none;
                 }
-
             }
 
             .categorylist {
@@ -72,7 +79,7 @@
                 }
             }
         }
-        
+
         .courses-square {
             display: grid;
             grid-template-columns: auto;
@@ -100,7 +107,7 @@
                 &:hover {
                     box-shadow: 0 6px 12px rgba(0, 0, 0, 10);
                 }
-                
+
                 img {
                     width: 100%;
                     height: auto;
@@ -113,7 +120,7 @@
                     h5 {
                         margin-top: 10px;
                     }
-    
+
                     .creator {
                         color: $gray-600;
                     }
@@ -121,7 +128,6 @@
                     .price {
                         font-weight: 700;
                         color: $theme;
-
                         border-bottom: 1px solid #DAD9D3;
                         padding-bottom: 15px;
                     }
@@ -172,7 +178,7 @@
                 i {
                     font-size: 0.8rem;
                 }
-              
+
                 &.active,
                 &:hover {
                     color: #FFFFFF;
