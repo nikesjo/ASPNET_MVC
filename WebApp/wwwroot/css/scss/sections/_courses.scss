@@ -36,19 +36,13 @@
             margin-bottom: 30px;
 
             h1 {
-                @media (max-width: 992px ) {
-                    display: none;
-                }
+
             }
 
             .categorylist {
                 border: 1px solid #DAD9D3;
                 padding: 8px;
                 border-radius: 15px;
-
-                @media (max-width: 768px) {
-                    display: none;
-                }
 
                 form {
 

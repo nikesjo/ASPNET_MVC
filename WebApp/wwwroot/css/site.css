@@ -1755,20 +1755,10 @@ footer .container .social-media {
   align-items: center;
   margin-bottom: 30px;
 }
-@media (max-width: 992px) {
-  #courses .container .header-courses h1 {
-    display: none;
-  }
-}
 #courses .container .header-courses .categorylist {
   border: 1px solid #DAD9D3;
   padding: 8px;
   border-radius: 15px;
-}
-@media (max-width: 768px) {
-  #courses .container .header-courses .categorylist {
-    display: none;
-  }
 }
 #courses .container .header-courses .categorylist form input {
   color: #191919;

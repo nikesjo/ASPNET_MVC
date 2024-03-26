@@ -12,6 +12,17 @@
         </nav>
         <div class="header-courses">
             <h1>Courses</h1>
+
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle form-control" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">All Categories</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+            </li>
             <div class="categorylist">
                 <form>
                     <input type="text" placeholder="All Categories">
@@ -19,8 +30,8 @@
                 </form>
             </div>
             <div class="search-form">
-                <form>
-                    <input type="text" placeholder="Search Courses">
+                <form onkeyup="filterFunction()" role="search">
+                    <input type="search" placeholder="Search Courses">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </form>
             </div>
