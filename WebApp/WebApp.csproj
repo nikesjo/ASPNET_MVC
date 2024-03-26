@@ -8,6 +8,11 @@
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
+    <Content Remove="wwwroot\css\scss\sections\_cookieconsent.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\scss\sections\_cookieconsent.scss" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +27,7 @@
     <None Include="wwwroot\css\scss\sections\_accountsecurity.scss" />
     <None Include="wwwroot\css\scss\sections\_author.scss" />
     <None Include="wwwroot\css\scss\sections\_contact.scss" />
+    <None Include="wwwroot\css\scss\sections\_cookieconsent.scss" />
     <None Include="wwwroot\css\scss\sections\_courses.scss" />
     <None Include="wwwroot\css\scss\sections\_signup.scss" />
     <None Include="wwwroot\css\scss\sections\_descriptioncourse.scss" />

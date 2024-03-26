@@ -2718,3 +2718,8 @@ footer .container .social-media {
   gap: 5px;
   margin-left: 25px;
 }
+
+#cookie-consent {
+  padding: 1.5rem !important;
+  border-radius: 0;
+}
