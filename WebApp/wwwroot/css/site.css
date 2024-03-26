@@ -181,6 +181,13 @@ h6, .h6 {
   grid-template-rows: auto 1fr auto;
 }
 
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 a {
   line-height: 160%;
   font-weight: 400;
