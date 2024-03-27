@@ -10,7 +10,7 @@
             @media(max-width: 1200px) {
                 display: flex;
                 flex-direction: column;
-            }  
+            }
 
             .singlecourse-header {
 
@@ -26,11 +26,11 @@
                         gap: 10px;
 
                         .fa-regular {
-                            color: $theme;
+                            color: var(--color-theme);
                         }
 
                         .fa-circle-check {
-                            color: $theme;
+                            color: var(--color-theme);
                         }
                     }
                 }
@@ -52,7 +52,7 @@
                     justify-content: center;
                     align-items: center;
                     margin-top: 20px;
-                } 
+                }
 
                 .course-include {
                     display: flex;
@@ -72,7 +72,7 @@
                     }
 
                     .actual-price {
-                        color: $gray-600;
+                        color: var(--color-gray-600);
                         text-decoration: line-through;
                     }
                 }
@@ -80,7 +80,6 @@
                 .btn-theme-s {
                     width: 60%;
                 }
-
             }
         }
     }

@@ -16,7 +16,7 @@
                     display: block;
                 }
             }
-    
+
             .author-text {
                 display: flex;
                 flex-direction: column;
@@ -38,22 +38,20 @@
                 }
 
                 p {
-                    color: $gray-500;
+                    color: var(--color-gray-500);
 
                     @media (max-width: 602px) {
                         @include text-xs;
-                        color: $gray-500;
                     }
                 }
 
                 h2 {
-                    color: #ffff;
+                    color: var(--color-white);
 
                     @media (max-width: 602px) {
                         @include text-lead;
-                        color: #ffff;
+                        color: var(--color-white);
                     }
-
                 }
 
                 .author-buttons {
@@ -62,28 +60,28 @@
 
                     .btn-theme-s {
                         box-shadow: 0 4px 8px rgba(163, 4, 4, 0.1);
-                        background-color: red;
+                        background-color: var(--color-danger);
 
 
                         &:hover {
                             text-decoration: none;
-                            background: #4C82F7;
-                            color: $white;
-                        } 
+                            background-color: var(--color-info);
+                            color: var(--color-white);
+                        }
                     }
 
                     .btn-gray {
-                        background-color: #4C82F7;
-                        color: #ffff;
+                        background-color: var(--color-info);
+                        color: var(--color-white);
 
                         &:hover {
                             box-shadow: none;
                             text-decoration: none;
-                            background:  red;
-                            color: $white;
-                        } 
+                            background-color: var(--color-danger);
+                            color: var(--color-white);
+                        }
                     }
-                } 
+                }
             }
         }
     }

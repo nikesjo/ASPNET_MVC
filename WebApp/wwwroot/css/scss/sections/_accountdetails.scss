@@ -41,24 +41,24 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    background-color: $white;
-                    border: 1px solid $gray-300;
+                    background-color: var(--color-white);
+                    border: 1px solid var(--color-gray-300);
                     border-radius: 100%;
                     width: 40px;
                     height: 40px;
 
                     i {
-                        color: $gray-800;
+                        color: var(--color-gray-800);
                         font-size: 16px;
                         font-weight: 600;
                     }
 
                     &:hover {
                         text-decoration: none;
-                        background: $gray-600;
+                        background-color: var(--color-gray-600);
 
                         i {
-                            color: $white;
+                            color: var(--color-white);
                         }
                     }
                 }
@@ -69,7 +69,7 @@
                 flex-direction: column;
 
                 a {
-                    color: $gray-800;
+                    color: var(--color-gray-800);
                     padding: 10px;
                     @include text-nav;
                     text-decoration: none;
@@ -81,12 +81,12 @@
                     margin-left: 20px;
 
                     i {
-                        color: $gray-600;
+                        color: var(--color-gray-600);
                         margin-right: 10px;
                     }
 
                     &:hover {
-                        color: $theme;
+                        color: var(--color-theme);
                     }
                 }
 
@@ -95,7 +95,7 @@
                     justify-content: start;
                     font-size: 16px;
                     padding: 10px;
-                    color: $white;
+                    color: var(--color-white);
 
                     @include md {
                         width: 306px;
@@ -112,7 +112,7 @@
 
             @include lg {
                 padding: 50px 0 0 100px;
-                border-left: 1px solid $gray-300;
+                border-left: 1px solid var(--color-gray-300);
             }
 
             #statusMessage {
@@ -132,15 +132,15 @@
                 margin-bottom: 40px;
 
                 h5 {
-                    color: $theme;
+                    color: var(--color-theme);
                 }
 
                 label {
-                    color: $gray-900;
+                    color: var(--color-gray-900);
                     font-weight: 600;
 
                     span {
-                        color: $gray-600;
+                        color: var(--color-gray-600);
                     }
                 }
 
@@ -149,12 +149,12 @@
                     border-radius: 8px;
 
                     &::placeholder {
-                        color: $gray-500;
+                        color: var(--color-gray-500);
                     }
 
                     &:focus {
                         @include theme-secondary-shadow;
-                        border-color: $theme-opacity;
+                        border-color: var(--color-theme-opacity);
                     }
                 }
 
@@ -162,19 +162,19 @@
                     resize: none;
 
                     &::placeholder {
-                        color: $gray-500;
+                        color: var(--color-gray-500);
                     }
 
                     &:focus {
                         @include theme-secondary-shadow;
-                        border-color: $theme-opacity;
+                        border-color: var(--color-theme-opacity);
                     }
                 }
             }
 
             #addressChanges {
                 h5 {
-                    border-top: 1px solid $gray-300;
+                    border-top: 1px solid var(--color-gray-300);
                     padding-top: 25px;
                 }
             }

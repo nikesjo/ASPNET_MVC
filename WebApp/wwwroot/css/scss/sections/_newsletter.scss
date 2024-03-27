@@ -1,5 +1,5 @@
 .newsletter {
-    background-color: $gray-100;
+    background-color: var(--color-gray-100);
 
     .container {
         display: flex;
@@ -62,13 +62,13 @@
 
                     .form-check {
                         .form-check-input {
-                            border: 2px solid $gray-500;
+                            border: 2px solid var(--color-gray-500);
                             height: 18px;
                             width: 18px;
 
                             &:checked {
-                                background-color: $theme;
-                                border-color: $theme;
+                                background-color: var(--color-theme);
+                                border-color: var(--color-theme);
                             }
                         }
                     }
@@ -87,19 +87,19 @@
 
                 i {
                     position: absolute;
-                    color: $gray-500;
+                    color: var(--color-gray-500);
                     top: 15px;
                     left: 15px;
                 }
 
                 input {
-                    background-color: $white;
-                    color: $gray-500;
+                    background-color: var(--color-white);
+                    color: var(--color-gray-500);
                     text-decoration: none;
                     padding: 10px 40px;
                     border-radius: 8px;
                     outline: none;
-                    border: 1px solid $gray-400;
+                    border: 1px solid var(--color-gray-400);
                     width: 100%;
 
                     @include lg {
@@ -122,7 +122,7 @@
                 padding-top: 10px;
 
                 a {
-                    color: $theme;
+                    color: var(--color-theme);
                 }
             }
         }

@@ -9,22 +9,22 @@
             font-size: 14px;
 
             i {
-                color: $gray-600;
+                color: var(--color-gray-600);
             }
 
             a {
                 text-decoration: none;
-                color: $gray-600;
+                color: var(--color-gray-600);
 
                 &:hover {
                     transition: all 0.15s ease-in-out;
                     cursor: pointer;
-                    color: $info;
+                    color: var(--color-info);
                 }
             }
 
             .active {
-                color: $theme;
+                color: var(--color-theme);
             }
         }
 
@@ -36,7 +36,6 @@
             margin-bottom: 30px;
 
             h1 {
-
             }
 
             .categorylist {
@@ -116,12 +115,12 @@
                     }
 
                     .creator {
-                        color: $gray-600;
+                        color: var(--color-gray-600);
                     }
 
                     .price {
                         font-weight: 700;
-                        color: $theme;
+                        color: var(--color-theme);
                         border-bottom: 1px solid #DAD9D3;
                         padding-bottom: 15px;
                     }
@@ -132,12 +131,12 @@
                         gap: 5px;
 
                         .fa-regular {
-                            color: $gray-600;
+                            color: var(--color-gray-600);
                             margin-top: 3px;
                         }
 
                         p {
-                            color: $gray-600;
+                            color: var(--color-gray-600);
                         }
 
                         .thumbs-up {
@@ -161,7 +160,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                color: #191919;
+                color: var(--color-black);
                 font-size: 0.9rem;
                 text-decoration: none;
                 border: none;
@@ -176,7 +175,7 @@
                 &.active,
                 &:hover {
                     color: #FFFFFF;
-                    background-color: $info;
+                    background-color: var(--color-info);
                 }
             }
         }
@@ -184,7 +183,7 @@
         .work-section {
             display: flex;
             justify-content: center;
-            background-color: $gray-100;
+            background-color: var(--color-gray-100);
             align-items: center;
             gap: 80px;
 
@@ -192,17 +191,14 @@
 
                 h5 {
                     @include h6;
-                    color: $gray-700;
                     margin-top: 50px;
 
                     @include md {
                         @include h5;
-                        color: $gray-700;
                     }
 
                     @include xl {
                         @include h5;
-                        color: $gray-700;
                     }
                 }
 
@@ -219,7 +215,7 @@
                 }
 
                 .header-skills {
-                    color: $theme-secondary;
+                    color: var(--color-theme-secondary);
                 }
 
                 .btn-theme-s {
