@@ -18,7 +18,7 @@
     &:hover {
         text-decoration: none;
         background-color: var(--color-gray-700);
-        color: var(--color-white);
+        color: var(--color-gray-000);
     }
 }
 
@@ -35,7 +35,7 @@
         @include theme-secondary-shadow;
         text-decoration: none;
         background-color: var(--color-gray-700);
-        color: var(--color-white);
+        color: var(--color-gray-000);
     }
 }
 

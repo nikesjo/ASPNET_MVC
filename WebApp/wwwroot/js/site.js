@@ -22,7 +22,7 @@ checkScreenSize();
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    let sw = document.quearySelector('#switch-mode')
+    let sw = document.querySelector('#switch-mode')
 
     sw.addEventListener('change', function () {
         let theme = this.checked ? "dark" : "light"

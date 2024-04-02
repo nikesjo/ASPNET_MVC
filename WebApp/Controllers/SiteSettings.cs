@@ -8,7 +8,7 @@ public class SiteSettings : Controller
     {
         var option = new CookieOptions
         {
-            Expires = DateTime.Now.AddDays(60),
+            Expires = DateTime.Now.AddDays(60)
         };
         Response.Cookies.Append("ThemeMode", mode, option);
         return Ok();

@@ -25,13 +25,13 @@
 
 :root.dark {
   --color-gray-000: #0B0F19;
-  --color-gray-100: #33354D;
-  --color-gray-200: #565973;
+  --color-gray-100: #131620;
+  --color-gray-200: #181A22;
   --color-gray-300: #9397AD;
   --color-gray-400: #B4B7C9;
   --color-gray-500: #D4D7E5;
   --color-gray-600: #E2E5F1;
-  --color-gray-700: #EFF2FC;
+  --color-gray-700: #B5B7BA;
   --color-gray-800: #F3F6FF;
   --color-gray-900: #FFFFFF;
   --color-white: #FFFFFF;
@@ -53,6 +53,8 @@ html, body {
   color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 16px;
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-700);
 }
 
 .text-xs {
@@ -311,7 +313,7 @@ a:hover {
 .btn-theme:hover {
   text-decoration: none;
   background-color: var(--color-gray-700);
-  color: var(--color-white);
+  color: var(--color-gray-000);
 }
 
 .btn-theme-s {
@@ -334,7 +336,7 @@ a:hover {
   box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
   text-decoration: none;
   background-color: var(--color-gray-700);
-  color: var(--color-white);
+  color: var(--color-gray-000);
 }
 
 .btn-gray {
@@ -556,7 +558,7 @@ header .container .btn-mobilemenu:hover {
 }
 .showcase img {
   position: relative;
-  z-index: -1;
+  z-index: 1;
   width: 100%;
 }
 @media (min-width: 992px) {
@@ -680,7 +682,7 @@ header .container .btn-mobilemenu:hover {
 }
 
 .features {
-  background: var(--color-gray-100);
+  background-color: var(--color-gray-100);
   padding: 80px 0;
 }
 .features .container {
@@ -728,7 +730,7 @@ header .container .btn-mobilemenu:hover {
 }
 .features .container .tool-features .box:hover {
   cursor: pointer;
-  background-color: var(--color-white);
+  background-color: var(--color-gray-000);
   box-shadow: 0px 4px 9px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 20px -1px rgba(19, 16, 34, 0.05);
 }
 .features .container .tool-features .box img {
@@ -878,13 +880,13 @@ header .container .btn-mobilemenu:hover {
 }
 
 .download-apps {
-  background-color: var(--color-gray-100);
+  background-color: var(--color-gray-850);
 }
 .download-apps .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-gray-200);
+  background-color: var(--color-gray-830);
   flex: 1;
   padding: 50px 0;
 }
@@ -1040,6 +1042,7 @@ header .container .btn-mobilemenu:hover {
 .integrate-tools .container .tools .box:hover {
   transition: all 0.15s ease-in-out;
   cursor: pointer;
+  background-color: var(--color-gray-200);
   border: 1px solid transparent;
   border-radius: 8px;
   box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
@@ -1562,7 +1565,7 @@ footer .container .social-media {
 #contact {
   position: relative;
   z-index: 1;
-  background-color: var(--color-gray-100);
+  background-color: var(--color-gray-000);
   padding-bottom: 50px;
 }
 @media (min-width: 1200px) {
@@ -1649,7 +1652,7 @@ footer .container .social-media {
   display: none;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-white);
+  background-color: var(--color-gray-100);
   width: 60px;
   height: 60px;
   border-radius: 100%;
@@ -1676,7 +1679,8 @@ footer .container .social-media {
 #contact .container .contact-form {
   flex: 1;
   box-shadow: 0px 4px 13px -2px rgba(19, 16, 34, 0.06), 0px 4.8px 24.4px -6px rgba(19, 16, 34, 0.1);
-  background-color: var(--color-white);
+  background-color: var(--color-gray-000);
+  border: 1px solid var(--color-gray-100);
   display: flex;
   align-items: center;
   justify-content: center;
