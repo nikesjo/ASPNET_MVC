@@ -16,8 +16,23 @@
         </nav>
         <div class="header-courses">
             <h1>Courses</h1>
+            <form class="filters">
 
-            <li class="nav-item dropdown">
+                <div class="select">
+                    <div class="selected">All categories</div>
+                    <div class="select-options">
+                        <div class="option" data-value="all">All categories</div>
+                    </div>
+                </div>
+
+                <div class="input-search-group">
+                    <input id="searchQuery" name="searchQuery" placeholder="Search courses" />
+                    <i class="fa-regular fa-search"></i>
+                </div>
+
+            </form>
+
+@*             <li class="nav-item dropdown">
                 <a class="dropdown-toggle form-control" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">All Categories</a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Action</a></li>
@@ -38,9 +53,9 @@
                     <input type="search" placeholder="Search Courses">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </form>
-            </div>
+            </div> *@
         </div>
-        <div class="courses-square">
+        <div class="courses-square items">
             @if (Model.Courses != null)
             {
                 @foreach (var item in Model.Courses)

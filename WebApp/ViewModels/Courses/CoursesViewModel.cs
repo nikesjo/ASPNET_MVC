@@ -1,6 +1,9 @@
-﻿namespace WebApp.ViewModels.Courses;
+﻿using Infrastructure.Models;
+
+namespace WebApp.ViewModels.Courses;
 
 public class CoursesViewModel
 {
-    public IEnumerable<CourseViewModel> Courses { get; set; } = [];
+    public IEnumerable<CategoryModel>? Categories { get; set; }
+    public IEnumerable<CourseModel>? Courses { get; set; }
 }
