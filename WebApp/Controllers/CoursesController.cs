@@ -19,7 +19,7 @@ public class CoursesController(HttpClient http, CategoryService categoryService,
 
     [HttpGet]
     [Route("/courses")]
-    public async Task<IActionResult> Courses()
+    public async Task<IActionResult> Courses(string category = "", string searchQuery = "")
     {
         try
         {
@@ -40,7 +40,7 @@ public class CoursesController(HttpClient http, CategoryService categoryService,
             var viewModel = new CoursesViewModel
             {
                 Categories = await _categoryService.GetCategoriesAsync(),
-                Courses = await _courseService.GetCoursesAsync()
+                Courses = await _courseService.GetCoursesAsync(category, searchQuery)
             };
 
             return View(viewModel);
