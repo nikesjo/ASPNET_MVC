@@ -6,6 +6,7 @@
 
 <section id="courses">
     <div class="container">
+
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <i class="fa-solid fa-house"></i>
@@ -14,6 +15,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Courses</li>
             </ol>
         </nav>
+
         <div class="header-courses">
             <h1>Courses</h1>
             <form class="filters">
@@ -56,6 +58,30 @@
             </div> *@
         </div>
         <div class="courses-square items">
+
+            <div class="course" onclick="location.href='@Url.Action("Details", "Courses", new { id = ""})'">
+                <div class="best-seller">Best Seller</div>
+                <a class="btny btn-circle bookmark" asp-action="Join" asp-controller="Courses"><i class="fa-regular fa-bookmark"></i></a>
+                <img src="~/images/courses/@item.ImageUrl" alt="@item.ImageUrl">
+                <div class="content">
+                    <h5>@item.Title</h5>
+                    <p class="creator">By @item.Author</p>
+                    <div class="pricing">
+                        <div class="discount">$@item.DiscountPrice</div>
+                        <div class="original">$@item.OriginalPrice</div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="hours">
+                        <i class="fa-regular fa-clock">hours</i>
+                    </div>
+                    <div class="likes">
+                        <i class="fa-regular fa-thumbs-up">()</i>
+                    </div>
+                </div>
+            </div>
+
+
             @if (Model.Courses != null)
             {
                 @foreach (var item in Model.Courses)
@@ -65,17 +91,17 @@
                         {
                             <div class="best-seller">Best Seller</div>
                         }
-                        <img src="~/images/courses/@item.ImageName.ImageUrl" alt="@item.ImageName.AltText">
+                        <img src="~/images/courses/@item.ImageUrl" alt="@item.ImageUrl">
                         <div class="text-info">
                             <h5>@item.Title</h5>
                             <p class="creator">By @item.Author</p>
                             @if (item.DiscountPrice != null)
                             {
                                 <p class="discount-price">$@item.DiscountPrice</p>
-                                <p class="price">$@item.Price</p>
+                                <p class="price">$@item.OriginalPrice</p>
                             }else
                             {
-                                <p class="price">$@item.Price</p>
+                                <p class="price">$@item.OriginalPrice</p>
                             }
  
                             <div class="clock">
@@ -106,134 +132,7 @@
                     </div>
                 </div>
             </div>
-            <div class="grid-item">
-                <img src="images/courses/computer-course.svg" alt="">
-                <div class="text-info">
-                    <h5>Fullstack Web Developer Course from Scratch</h5>
-                    <p class="creator">By Robert Fox</p>
-                    <p class="price">$12.50</p>
-                    <div class="clock">
-                        <i class="fa-regular fa-clock"></i>
-                        <p>220 hours</p>
-                        <div class="thumbs-up">
-                            <i class="fa-regular fa-thumbs-up"></i>
-                            <p>92% (3,1K)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item">
-                <img src="images/courses/computer-course.svg" alt="">
-                <div class="text-info">
-                    <h5>Fullstack Web Developer Course from Scratch</h5>
-                    <p class="creator">By Robert Fox</p>
-                    <p class="price">$12.50</p>
-                    <div class="clock">
-                        <i class="fa-regular fa-clock"></i>
-                        <p>220 hours</p>
-                        <div class="thumbs-up">
-                            <i class="fa-regular fa-thumbs-up"></i>
-                            <p>92% (3,1K)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item">
-                <img src="images/courses/computer-course.svg" alt="">
-                <div class="text-info">
-                    <h5>Fullstack Web Developer Course from Scratch</h5>
-                    <p class="creator">By Robert Fox</p>
-                    <p class="price">$12.50</p>
-                    <div class="clock">
-                        <i class="fa-regular fa-clock"></i>
-                        <p>220 hours</p>
-                        <div class="thumbs-up">
-                            <i class="fa-regular fa-thumbs-up"></i>
-                            <p>92% (3,1K)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item">
-                <img src="images/courses/computer-course.svg" alt="">
-                <div class="text-info">
-                    <h5>Fullstack Web Developer Course from Scratch</h5>
-                    <p class="creator">By Robert Fox</p>
-                    <p class="price">$12.50</p>
-                    <div class="clock">
-                        <i class="fa-regular fa-clock"></i>
-                        <p>220 hours</p>
-                        <div class="thumbs-up">
-                            <i class="fa-regular fa-thumbs-up"></i>
-                            <p>92% (3,1K)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item">
-                <img src="images/courses/computer-course.svg" alt="">
-                <div class="text-info">
-                    <h5>Fullstack Web Developer Course from Scratch</h5>
-                    <p class="creator">By Robert Fox</p>
-                    <p class="price">$12.50</p>
-                    <div class="clock">
-                        <i class="fa-regular fa-clock"></i>
-                        <p>220 hours</p>
-                        <div class="thumbs-up">
-                            <i class="fa-regular fa-thumbs-up"></i>
-                            <p>92% (3,1K)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item">
-                <img src="images/courses/computer-course.svg" alt="">
-                <div class="text-info">
-                    <h5>Fullstack Web Developer Course from Scratch</h5>
-                    <p class="creator">By Robert Fox</p>
-                    <p class="price">$12.50</p>
-                    <div class="clock">
-                        <i class="fa-regular fa-clock"></i>
-                        <p>220 hours</p>
-                        <div class="thumbs-up">
-                            <i class="fa-regular fa-thumbs-up"></i>
-                            <p>92% (3,1K)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item">
-                <img src="images/courses/computer-course.svg" alt="">
-                <div class="text-info">
-                    <h5>Fullstack Web Developer Course from Scratch</h5>
-                    <p class="creator">By Robert Fox</p>
-                    <p class="price">$12.50</p>
-                    <div class="clock">
-                        <i class="fa-regular fa-clock"></i>
-                        <p>220 hours</p>
-                        <div class="thumbs-up">
-                            <i class="fa-regular fa-thumbs-up"></i>
-                            <p>92% (3,1K)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item">
-                <img src="images/courses/computer-course.svg" alt="">
-                <div class="text-info">
-                    <h5>Fullstack Web Developer Course from Scratch</h5>
-                    <p class="creator">By Robert Fox</p>
-                    <p class="price">$12.50</p>
-                    <div class="clock">
-                        <i class="fa-regular fa-clock"></i>
-                        <p>220 hours</p>
-                        <div class="thumbs-up">
-                            <i class="fa-regular fa-thumbs-up"></i>
-                            <p>92% (3,1K)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <div class="pagination">
             <div class="pagination center-content">
