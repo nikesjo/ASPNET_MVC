@@ -2,6 +2,7 @@
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using WebApp.ViewModels.Courses;
@@ -9,11 +10,12 @@ using WebApp.ViewModels.Courses;
 namespace WebApp.Controllers;
 
 [Authorize]
-public class CoursesController(HttpClient http, CategoryService categoryService, CourseService courseService) : Controller
+public class CoursesController(HttpClient http, CategoryService categoryService, CourseService courseService, IConfiguration configuration) : Controller
 {
     private readonly HttpClient _http = http;
     private readonly CategoryService _categoryService = categoryService;
     private readonly CourseService _courseService = courseService;
+    private readonly IConfiguration _configuration = configuration;
 
     [HttpGet]
     [Route("/courses")]
@@ -23,7 +25,7 @@ public class CoursesController(HttpClient http, CategoryService categoryService,
         {
             var tokenResponse = await _http.SendAsync(new HttpRequestMessage
             {
-                RequestUri = new Uri("https://localhost:7091/api/auth"),
+                RequestUri = new Uri(_configuration["ApiUris:Auth"]!),
                 Method = HttpMethod.Post
             });
 
@@ -37,15 +39,17 @@ public class CoursesController(HttpClient http, CategoryService categoryService,
 
             var viewModel = new CoursesViewModel
             {
-                Categories = await _categoryService.GetCategoriesAsync()
+                Categories = await _categoryService.GetCategoriesAsync(),
+                Courses = await _courseService.GetCoursesAsync()
             };
 
-            var response = await _http.GetAsync("https://localhost:7091/api/courses");
-            if (response.IsSuccessStatusCode)
-            {
-               viewModel.Courses = JsonConvert.DeserializeObject<IEnumerable<CourseModel>>(await response.Content.ReadAsStringAsync())!;
-                return View(viewModel);
-            }
+            return View(viewModel);
+
+            //var response = await _http.GetAsync(_configuration["ApiUris:Courses"]);
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    return View(viewModel);
+            //}
         }
         catch (Exception ex) { }
         return View();
