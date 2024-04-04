@@ -9,15 +9,13 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
 builder.Services.RegisterDbContexts(builder.Configuration);
 builder.Services.RegisterAuthentication(builder.Configuration);
+builder.Services.RegisterServices(builder.Configuration);
 builder.Services.AddSession(x =>
 {
     x.IdleTimeout = TimeSpan.FromMinutes(20);
     x.Cookie.IsEssential = true;
     x.Cookie.HttpOnly = true;
 });
-
-
-builder.Services.AddScoped<AddressManager>();
 
 
 
