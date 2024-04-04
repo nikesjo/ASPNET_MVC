@@ -1,4 +1,8 @@
-﻿
+﻿@model CoursesViewModel
+@{
+    ViewData["Title"] = "Courses";
+}
+
 
 <section id="courses">
     <div class="container">
@@ -37,6 +41,40 @@
             </div>
         </div>
         <div class="courses-square">
+            @if (Model.Courses != null)
+            {
+                @foreach (var item in Model.Courses)
+                {
+                    <div class="grid-item">
+                        @if (item.IsBestSeller)
+                        {
+                            <div class="best-seller">Best Seller</div>
+                        }
+                        <img src="~/images/courses/@item.ImageName.ImageUrl" alt="@item.ImageName.AltText">
+                        <div class="text-info">
+                            <h5>@item.Title</h5>
+                            <p class="creator">By @item.Author</p>
+                            @if (item.DiscountPrice != null)
+                            {
+                                <p class="discount-price">$@item.DiscountPrice</p>
+                                <p class="price">$@item.Price</p>
+                            }else
+                            {
+                                <p class="price">$@item.Price</p>
+                            }
+ 
+                            <div class="clock">
+                                <i class="fa-regular fa-clock"></i>
+                                <p>@item.Hours hours</p>
+                                <div class="thumbs-up">
+                                    <i class="fa-regular fa-thumbs-up"></i>
+                                    <p>@item.LikesInProcent (@item.LikesInNumbers)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
             <div class="grid-item">
                 <img src="images/courses/computer-course.svg" alt="">
                 <div class="text-info">
