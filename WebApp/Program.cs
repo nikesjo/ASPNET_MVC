@@ -2,14 +2,14 @@ using Infrastructure.Contexts;
 using Infrastructure.Entities;
 using Infrastructure.Helpers.Middlewares;
 using Infrastructure.Services;
-using Microsoft.EntityFrameworkCore;
+using WebApp.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRouting(x => x.LowercaseUrls = true);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+builder.Services.RegisterDbContexts(builder.Configuration);
 builder.Services.AddHttpClient();
 builder.Services.AddSession(x =>
 {
