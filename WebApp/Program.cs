@@ -21,7 +21,7 @@ builder.Services.AddSession(x =>
 builder.Services.AddDefaultIdentity<UserEntity>(x =>
 {
     x.User.RequireUniqueEmail = true;
-    x.SignIn.RequireConfirmedPhoneNumber = false;
+    x.SignIn.RequireConfirmedAccount = false;
     x.Password.RequiredLength = 8;
 }).AddEntityFrameworkStores<DataContext>();
 
