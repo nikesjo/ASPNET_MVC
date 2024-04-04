@@ -16,8 +16,9 @@ public class CourseService(HttpClient http, IConfiguration configuration)
             var response = await _http.GetAsync(_configuration["ApiUris:Courses"]);
             if (response.IsSuccessStatusCode)
             {
-                var courses = JsonConvert.DeserializeObject<IEnumerable<CourseModel>>(await response.Content.ReadAsStringAsync());
-                return courses ??= null!;
+                var result = JsonConvert.DeserializeObject<CourseResult>(await response.Content.ReadAsStringAsync());
+                if (result != null && result.Succeeded)
+                    return result.Courses ??= null!;
             }
         }
         catch (Exception ex) { }
