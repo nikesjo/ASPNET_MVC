@@ -8,12 +8,19 @@
     <div class="container">
 
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <i class="fa-solid fa-house"></i>
-                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
-                <i class="fa-solid fa-angles-right"></i>
-                <li class="breadcrumb-item active" aria-current="page">Courses</li>
-            </ol>
+            <ul class="breadcrumb">
+                
+                <li class="breadcrumb-item">
+                    <a asp-controller="Home" asp-action="Index">
+                        <span><i class="fa-solid fa-house" aria-hidden="true"></i></span>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span><i class="fa-solid fa-angles-right" aria-hidden="true"></i></span>
+                    <span>Courses</span>
+                </li>
+            </ul>
         </nav>
 
         <div class="header-courses">
@@ -40,29 +47,6 @@
                 </div>
 
             </form>
-
-@*             <li class="nav-item dropdown">
-                <a class="dropdown-toggle form-control" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">All Categories</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                </ul>
-            </li>
-            <div class="categorylist">
-                <form>
-                    <input type="text" placeholder="All Categories">
-                    <i class="fa-solid fa-chevron-down"></i>
-                </form>
-            </div>
-            <div class="search-form">
-                <form onkeyup="filterFunction()" role="search">
-                    <input type="search" placeholder="Search Courses">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </form>
-            </div> *@
         </div>
         @if (Model.Courses != null)
         {

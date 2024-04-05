@@ -4,6 +4,6 @@ namespace WebApp.ViewModels.Courses;
 
 public class CoursesViewModel
 {
-    public IEnumerable<CategoryModel>? Categories { get; set; }
-    public IEnumerable<CourseModel>? Courses { get; set; }
+    public IEnumerable<CategoryDto>? Categories { get; set; }
+    public IEnumerable<CourseDto>? Courses { get; set; }
 }

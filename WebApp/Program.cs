@@ -25,7 +25,8 @@ app.UseStatusCodePagesWithReExecute("/error", "?statusCode={0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-app.UseUserSessionValidation();
+app.UseSession();
+//app.UseUserSessionValidation();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllerRoute(

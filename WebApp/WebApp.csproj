@@ -49,7 +49,7 @@
     <None Include="wwwroot\images\brands\brand_2.svg" />
     <None Include="wwwroot\images\brands\brand_3.svg" />
     <None Include="wwwroot\images\brands\brand_4.svg" />
-    <None Include="wwwroot\images\courses\computer-course.svg" />
+    <None Include="wwwroot\images\courses\course_1.svg" />
     <None Include="wwwroot\images\icons\add-group.svg" />
     <None Include="wwwroot\images\icons\bell.svg" />
     <None Include="wwwroot\images\icons\chat.svg" />
