@@ -8,5 +8,5 @@
 @using Infrastructure.Models
 @using Infrastructure.Entities
 @using Microsoft.AspNetCore.Identity
-@inject UserManager<UserEntity> UserManager
-@inject SignInManager<UserEntity> SignInManager
+@inject UserManager<UserEntity> _userManager
+@inject SignInManager<UserEntity> _signInManager

@@ -1,5 +1,6 @@
 ﻿using Infrastructure.Contexts;
 using Infrastructure.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace WebApp.Configurations;
 
@@ -12,7 +13,9 @@ public static class AuthenticationConfiguration
             x.User.RequireUniqueEmail = true;
             x.SignIn.RequireConfirmedAccount = false;
             x.Password.RequiredLength = 8;
-        }).AddEntityFrameworkStores<DataContext>();
+        })
+            .AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<DataContext>();
 
         services.ConfigureApplicationCookie(x =>
         {

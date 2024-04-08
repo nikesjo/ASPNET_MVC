@@ -3,9 +3,7 @@ using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using WebApp.ViewModels.Account;
-using WebApp.ViewModels.Auth;
 using WebbApp.ViewModels.Account;
 
 namespace WebApp.Controllers;
@@ -22,6 +20,8 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
     [Route("/account/details")]
     public async Task<IActionResult> Details()
     {
+        var claims = HttpContext.User.Identities.FirstOrDefault();
+
         var viewModel = new AccountDetailsViewModel
         {
             ProfileInfo = await PopulateProfileInfoAsync()

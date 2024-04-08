@@ -1,5 +1,6 @@
 using Infrastructure.Helpers.Middlewares;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Identity;
 using WebApp.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +30,21 @@ app.UseSession();
 //app.UseUserSessionValidation();
 app.UseAuthentication();
 app.UseAuthorization();
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var rolemanager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+    string[] roles = ["Admin", "User"];
+    foreach(var role in roles)
+        if (!await rolemanager.RoleExistsAsync(role))
+        {
+            await rolemanager.CreateAsync(new IdentityRole(role));
+        }
+}
+
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
