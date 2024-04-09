@@ -1,12 +1,8 @@
 ﻿using Infrastructure.Models;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 using System.Diagnostics;
-using System.Net.Http.Headers;
 using WebApp.ViewModels.Courses;
 
 namespace WebApp.Controllers;
@@ -19,15 +15,24 @@ public class CoursesController(CategoryService categoryService, CourseService co
 
     [HttpGet]
     [Route("/courses")]
-    public async Task<IActionResult> Courses(string category = "", string searchQuery = "")
+    public async Task<IActionResult> Courses(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 6)
     {
         var viewModel = new CoursesViewModel();
         try
         {
+            var courseResult = await _courseService.GetCoursesAsync(HttpContext, category, searchQuery, pageNumber, pageSize);
+
             viewModel = new CoursesViewModel
             {
                 Categories = await _categoryService.GetCategoriesAsync(HttpContext),
-                Courses = await _courseService.GetCoursesAsync(HttpContext, category, searchQuery)
+                Courses = courseResult.Courses,
+                Pagination = new PaginationModel
+                {
+                    PageSize = pageSize,
+                    CurrentPage = pageNumber,
+                    TotalPages = courseResult.TotalPages,
+                    TotalItems = courseResult.TotalItems
+                }
             };
 
             var token = HttpContext.Session.GetString("token");
@@ -37,6 +42,7 @@ public class CoursesController(CategoryService categoryService, CourseService co
 
         }
         catch (Exception ex) { Debug.WriteLine("ERROR :: " + ex.Message); }
+
         return View(viewModel);
     }
 

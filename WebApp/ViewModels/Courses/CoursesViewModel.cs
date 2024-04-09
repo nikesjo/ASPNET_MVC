@@ -6,4 +6,5 @@ public class CoursesViewModel
 {
     public IEnumerable<CategoryDto>? Categories { get; set; }
     public IEnumerable<CourseDto>? Courses { get; set; }
+    public PaginationModel? Pagination { get; set; }
 }
