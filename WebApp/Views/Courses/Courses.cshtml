@@ -54,7 +54,7 @@
 
                 @foreach (var course in Model.Courses)
                 {
-                    <div class="grid-item course" onclick="location.href='@Url.Action("Details", "Courses", new { id = course.Id })'">
+                    <div class="grid-item course" onclick="location.href='@Url.Action("SingleCourse", "Courses", new { id = course.Id })'">
                         @if (course.IsBestSeller)
                         {
                             <div class="best-seller">Best Seller</div>
