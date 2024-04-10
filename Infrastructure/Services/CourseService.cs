@@ -18,8 +18,7 @@ public class CourseService(HttpClient http, IConfiguration configuration)
         {
             var tokenResponse = await _http.SendAsync(new HttpRequestMessage
             {
-                //RequestUri = new Uri(_configuration["ApiUris:Auth"]!),
-                RequestUri = new Uri("https://localhost:7091/api/auth"),
+                RequestUri = new Uri(_configuration["ApiUris:Auth"]!),
                 Method = HttpMethod.Post
             });
 
@@ -28,9 +27,9 @@ public class CourseService(HttpClient http, IConfiguration configuration)
                 httpContext.Session.SetString("token", await tokenResponse.Content.ReadAsStringAsync());
             }
 
-            var token = httpContext.Session.GetString("token");
+            //var token = httpContext.Session.GetString("token");
             _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", httpContext.Session.GetString("token"));
-            var response = await _http.GetAsync($"{_configuration["ApiUris:Courses"]}?category={Uri.UnescapeDataString(category)}&searchQuery={Uri.UnescapeDataString(searchQuery)}&pageNumber={pageNumber}&pageSize={pageSize}");
+            var response = await _http.GetAsync($"{_configuration["ApiUris:Courses"]}&category={Uri.UnescapeDataString(category)}&searchQuery={Uri.UnescapeDataString(searchQuery)}&pageNumber={pageNumber}&pageSize={pageSize}");
             if (response.IsSuccessStatusCode)
             {
                 var result = JsonConvert.DeserializeObject<CourseResult>(await response.Content.ReadAsStringAsync());
