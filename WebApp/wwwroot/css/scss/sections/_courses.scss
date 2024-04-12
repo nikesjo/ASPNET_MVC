@@ -5,6 +5,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            padding-top: 30px;
             margin-bottom: 20px;
             font-size: 14px;
 
@@ -25,6 +26,15 @@
 
             .active {
                 color: var(--color-theme);
+
+                i {
+                    padding-right: 15px;
+                    font-size: 12px;
+                }
+
+                &::before {
+                    display: none;
+                }
             }
         }
 
@@ -36,6 +46,11 @@
             margin-bottom: 30px;
 
             h1 {
+            }
+
+            .filters {
+                display: flex;
+                gap: 25px;
             }
 
             .categorylist {
@@ -73,7 +88,7 @@
             }
         }
 
-        .courses-square {
+        .items {
             display: grid;
             grid-template-columns: auto;
             gap: 25px;
@@ -84,45 +99,99 @@
                 gap: 25px;
             }
 
-            @include lg {
+            @include xl {
                 display: grid;
                 grid-template-columns: auto auto auto;
                 gap: 30px;
             }
 
-            .grid-item {
-                border: 1px solid #DAD9D3;
+            .course {
+                @include shadow-s;
+                position: relative;
+                border: none;
                 border-radius: 15px;
                 overflow: hidden;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                transition: box-shadow 0.3s ease-in-out;
+                transition: box-shadow 0.2s ease-in-out;
+                max-width: 416px;
+                height: 473px;
 
                 &:hover {
-                    box-shadow: 0 6px 12px rgba(0, 0, 0, 10);
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgb(160, 160, 160, 0.50);
+                }
+
+                .best-seller {
+                    @include badge-success;
+                    position: absolute;
+                    top: 15px;
+                    left: 15px;
+                }
+
+                .bookmark {
+                    position: absolute;
+                    top: 15px;
+                    right: 15px;
                 }
 
                 img {
-                    width: 100%;
+                    min-width: 100%;
                     height: auto;
                 }
 
-                .text-info {
+                .content {
                     text-align: left;
                     padding: 20px;
 
                     h5 {
                         margin-top: 10px;
+                        color: var(--color-gray-800);
                     }
 
-                    .creator {
-                        color: var(--color-gray-600);
+                    .author {
+                        @include text-s;
+                        color: var(--color-gray-700);
                     }
 
-                    .price {
+                    .pricing {
+                        display: flex;
+                        gap: 10px;
+                        font-size: 18px;
                         font-weight: 700;
-                        color: var(--color-theme);
-                        border-bottom: 1px solid #DAD9D3;
+                        border-bottom: 1px solid var(--color-gray-300);
                         padding-bottom: 15px;
+
+                        .discount {
+                            color: var(--color-danger);
+                        }
+
+                        .original {
+                            color: var(--color-theme);
+                        }
+
+                        .discount-enabled {
+                            color: var(--color-gray-600);
+                            font-weight: 400;
+                            font-size: 16px;
+                            text-decoration: line-through;
+                        }
+                    }
+
+                    .footer {
+                        @include text-s;
+                        display: flex;
+                        gap: 20px;
+                        color: var(--color-gray-600);
+                        padding-top: 20px;
+
+                        i {
+                            padding-right: 5px;
+                        }
+
+                        .hours {
+                        }
+
+                        .likes {
+                        }
                     }
 
                     .clock {
@@ -149,8 +218,7 @@
                 }
             }
         }
-
-        .pagination {
+        /*        .pagination {
             display: flex;
             gap: 8px;
             margin: 30px 0;
@@ -178,7 +246,7 @@
                     background-color: var(--color-info);
                 }
             }
-        }
+        }*/
 
         .work-section {
             display: flex;

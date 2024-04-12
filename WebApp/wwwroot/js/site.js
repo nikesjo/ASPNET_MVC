@@ -86,11 +86,11 @@ function updateCoursesByFilters() {
         fetch(url)
             .then(res => res.text())
             .then(data => {
-                const parer = new DOMParser()
+                const parser = new DOMParser()
                 const dom = parser.parseFromString(data, 'text/html')
-                document.querySelector('.items').innerHTML = dom.querySelector('items').innerHTML
+                document.querySelector('.items').innerHTML = dom.querySelector('.items').innerHTML
 
-                const pagination = dom.querySelector('pagination') ? dom.querySelector('.pagination').innerHTML : ''
+                const pagination = dom.querySelector('.pagination') ? dom.querySelector('.pagination').innerHTML : ''
                 document.querySelector('.pagination').innerHTML = pagination
             })
     }

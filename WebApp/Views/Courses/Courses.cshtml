@@ -50,11 +50,11 @@
         </div>
         @if (Model.Courses != null)
         {
-            <div class="courses-square items">
+            <div class="items">
 
                 @foreach (var course in Model.Courses)
                 {
-                    <div class="grid-item course" onclick="location.href='@Url.Action("SingleCourse", "Courses", new { id = course.Id })'">
+                    <div class="course" onclick="location.href='@Url.Action("SingleCourse", "Courses", new { id = course.Id })'">
                         @if (course.IsBestSeller)
                         {
                             <div class="best-seller">Best Seller</div>
@@ -64,9 +64,9 @@
 
                         <img src="~/images/courses/@course.ImageUrl" alt="@course.Title">
 
-                        <div class="text-info content">
+                        <div class="content">
                             <h5>@course.Title</h5>
-                            <p class="creator author">By @course.Author</p>
+                            <p class="author">By @course.Author</p>
                             <div class="pricing">
                                 @if (!string.IsNullOrEmpty(course.DiscountPrice))
                                 {
@@ -75,13 +75,13 @@
 
                                 <div class="original @(!string.IsNullOrEmpty(course.DiscountPrice) ? "discount-enabled" : "")">@course.OriginalPrice</div>
                             </div>
-                        </div>
-                        <div class="footer">
-                            <div class="hours">
-                                <i class="fa-regular fa-clock"></i>@course.Hours hours
-                            </div>
-                            <div class="likes">
-                                <i class="fa-regular fa-thumbs-up"></i>@course.LikesInProcent (@course.LikesInNumbers)
+                            <div class="footer">
+                                <div class="hours">
+                                    <i class="fa-regular fa-clock"></i>@course.Hours hours
+                                </div>
+                                <div class="likes">
+                                    <i class="fa-regular fa-thumbs-up"></i>@course.LikesInProcent (@course.LikesInNumbers)
+                                </div>
                             </div>
                         </div>
                     </div>

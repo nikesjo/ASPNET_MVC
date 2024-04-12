@@ -1,0 +1,66 @@
+﻿textarea,
+select,
+input:not([type="checkbox"]) {
+    min-width: 300px;
+    font-size: 16px;
+    font-family: "manrope";
+    font-weight: 400 !important;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--color-gray-400);
+
+    &::placeholder {
+        opacity: 0.5;
+    }
+}
+
+.input-search-group {
+    position: relative;
+
+    input {
+        position: relative;
+        padding-right: 40px;
+    }
+
+    i {
+        position: absolute;
+        top: 14px;
+        right: 1rem;
+    }
+}
+
+.select {
+    position: relative;
+    min-width: 240px;
+    background-image: url('data:image/svg+xml,<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.293 0.292969L6.00003 4.58597L1.70703 0.292969L0.29303 1.70697L6.00003 7.41397L11.707 1.70697L10.293 0.292969Z" fill="%230B0F19"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+
+    .selected {
+        padding: 10px 16px;
+        border-radius: 8px;
+        border: 1px solid var(--color-gray-400);
+        cursor: pointer;
+    }
+
+    .select-options {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-white);
+        border: 1px solid var(--color-gray-400);
+        z-index: 9999;
+
+        .option {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background-color: var(--color-gray-400);
+        }
+    }
+}

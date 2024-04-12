@@ -1,0 +1,8 @@
+﻿@mixin badge-success {
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+    padding: 0px 8px;
+    background-color: var(--color-success);
+    color: var(--color-white);
+}

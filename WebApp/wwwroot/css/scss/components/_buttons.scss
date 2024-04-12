@@ -148,3 +148,30 @@
         color: var(--color-white);
     }
 }
+
+.btn-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-300);
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+
+    i {
+        color: var(--color-gray-800);
+        font-size: 16px;
+    }
+
+    &:hover {
+        @include shadow-s;
+        text-decoration: none;
+        background-color: var(--color-white);
+
+        i {
+            color: var(--color-theme);
+            font-weight: 600;
+        }
+    }
+}
