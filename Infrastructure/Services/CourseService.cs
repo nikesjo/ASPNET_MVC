@@ -48,23 +48,35 @@ public class CourseService(HttpClient http, IConfiguration configuration, UserMa
 
         return null!;
     }
-    public async Task<CourseDto> GetCourseAsync(string id, HttpContext httpContext)
+    public async Task<CourseDto> GetCourseAsync(int id)
     {
-        if (httpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
+        var response = await _http.GetAsync($"{_configuration["ApiUris:SingleCourse"]}{id}?key={_configuration["ApiKey"]}");
+        if (response.IsSuccessStatusCode)
         {
-            _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-            var response = await _http.GetAsync($"{_configuration["ApiUris:Courses"]}{id}?key={_configuration["ApiKey"]}");
-            if (response.IsSuccessStatusCode)
-            {
-                var result = JsonConvert.DeserializeObject<CourseDto>(await response.Content.ReadAsStringAsync());
-                if (result != null)
-                    return result;
-            }
+            var result = JsonConvert.DeserializeObject<CourseDto>(await response.Content.ReadAsStringAsync());
+            if (result != null)
+                return result;
         }
 
         return null!;
     }
+    //public async Task<CourseDto> GetCourseAsync(string id, HttpContext httpContext)
+    //{
+    //    if (httpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
+    //    {
+    //        _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+    //        var response = await _http.GetAsync($"{_configuration["ApiUris:Courses"]}{id}?key={_configuration["ApiKey"]}");
+    //        if (response.IsSuccessStatusCode)
+    //        {
+    //            var result = JsonConvert.DeserializeObject<CourseDto>(await response.Content.ReadAsStringAsync());
+    //            if (result != null)
+    //                return result;
+    //        }
+    //    }
+
+    //    return null!;
+    //}
 
     //public async Task<SavedCourseModel> SaveCourseAsync(SavedCourseModel savedCourseModel)
     //{

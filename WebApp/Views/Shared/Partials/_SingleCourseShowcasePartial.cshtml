@@ -1,58 +1,64 @@
 ﻿@model SingleCourseViewModel
-@{
-    ViewData["Title"] = @Model.Course?.Title;
-}
+
 <section id="singlecourseshowcase">
-    <img src="/images/pcpicture.svg" alt="picture of pc">
-    <div class="container">
-        <div class="header-singlecourse">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <i class="fa-solid fa-house"></i>
-                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
-                    <i class="fa-solid fa-angles-right"></i>
-                    <li class="breadcrumb-item"><a asp-controller="Courses" asp-action="Courses">Courses</a></li>
-                    <i class="fa-solid fa-angles-right"></i>
-                    <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
-                </ol>
-            </nav>
-            <div class="seller-square">
-                <div class="green-box">
-                    <p>Best Seller</p>
+    @if (Model != null)
+    {
+        <img class="course-img" src="~/images/courses/@Model.ImageUrl" alt="@Model.Title">
+        <div class="container">
+            <div class="header-singlecourse">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <i class="fa-solid fa-house"></i>
+                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <i class="fa-solid fa-angles-right"></i>
+                        <li class="breadcrumb-item"><a asp-controller="Courses" asp-action="Courses">Courses</a></li>
+                        <i class="fa-solid fa-angles-right"></i>
+                        <li class="breadcrumb-item active" aria-current="page">@Model.Title</li>
+                    </ol>
+                </nav>
+                <div class="seller-square">
+                    @if (Model.IsBestSeller)
+                    {
+                        @* <div class="best-seller">Best Seller</div> *@
+                        <div class="green-box">
+                            <p>Best Seller</p>
+                        </div>
+                    }
+                    <div class="white-box">
+                        <p>Digital</p>
+                    </div>
                 </div>
-                <div class="white-box">
-                    <p>Digital</p>
+                <div class="text-header">
+                    <h1>@Model.Title</h1>
+                    <p>Egestas feugiat lorem eu neque suspendisse ullamcorper scelerisque aliquam mauris.</p>
                 </div>
-            </div>
-            <div class="text-header">
-                <h1>Fullstack Web Developer Course from Scratch</h1>
-                <p>Egestas feugiat lorem eu neque suspendisse ullamcorper scelerisque aliquam mauris.</p>
-            </div>
-            <div class="rating">
-                <div class="star">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <p>(1.2k reviews)</p>
+                <div class="rating">
+                    <div class="star">
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <p>(1.2k reviews)</p>
+                    </div>
+                    <div class="rating-thumb">
+                        <i class="fa-regular fa-thumbs-up"></i>
+                        <p>@Model.LikesInNumbers</p>
+                    </div>
+                    <div class="rating-clock">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>@Model.Hours hours</p>
+                    </div>
                 </div>
-                <div class="rating-thumb">
-                    <i class="fa-regular fa-thumbs-up"></i>
-                    <p>5K likes</p>
-                </div>
-                <div class="rating-clock">
-                    <i class="fa-regular fa-clock"></i>
-                    <p>148 hours</p>
-                </div>
-            </div>
-            <div class="img-text">
-                <img src="/images/author-image.svg" alt="picture of albert flores">
-                <div class="image-text-header">
-                    <P class="bold-p">Created by</P>
-                    <P class="p-normal">Albert Flores</P>
+                <div class="img-text">
+                    <img class="img-author" src="/images/author-image.svg" alt="picture of albert flores">
+                    <div class="image-text-header">
+                        <P class="bold-p">Created by</P>
+                        <P class="p-normal">Albert Flores</P>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
+
 </section>

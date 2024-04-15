@@ -1,4 +1,5 @@
-﻿
+﻿@model SingleCourseViewModel
+
 <section id="description-course">
     <div class="container">
         <div class="description-header">
@@ -21,11 +22,15 @@
                 <span class="course-include"><i class="fa-solid fa-download"></i></i><p>25 downloadable resources</p></span>
                 <span class="course-include"><i class="fa-regular fa-handshake"></i><p>Full lifetime access</p></span>
                 <span class="course-include"><i class="fa-solid fa-trophy"></i></i><p>Certificate of completion</p></span>
-                <div class="price-box">
-                    <p class="discount-price">$28.99</p>
-                    <p class="actual-price">$49.00</p>
+                <div class="pricing">
+                    @if (!string.IsNullOrEmpty(Model.DiscountPrice))
+                    {
+                        <div class="discount">@Model.DiscountPrice</div>
+                    }
+
+                    <div class="original @(!string.IsNullOrEmpty(Model.DiscountPrice) ? "discount-enabled" : "")">@Model.OriginalPrice</div>
                 </div>
-                <a class="btn-theme-s" href="#">Join course</a>
+                <a class="btn-theme-s" onclick="location.href='@Url.Action("AddCourse", "Courses", new { id = Model.Id })'">Join course</a>
             </div>
         </div>
     </div>

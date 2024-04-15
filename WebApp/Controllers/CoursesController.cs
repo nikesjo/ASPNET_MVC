@@ -1,4 +1,5 @@
-﻿using Infrastructure.Models;
+﻿using Azure;
+using Infrastructure.Models;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -54,26 +55,38 @@ public class CoursesController(CategoryService categoryService, CourseService co
 
     [HttpGet("{id}")]
     [Route("/courses/{id}")]
-    public async Task<IActionResult> SingleCourse(CourseDto courseDto, string id)
+    public async Task<IActionResult> SingleCourse(int id)
     {
-        var viewModel = new SingleCourseViewModel();
         try
         {
-            var courseResult = await _courseService.GetCourseAsync(id, HttpContext);
-
-            viewModel = new SingleCourseViewModel
+            var courseResult = await _courseService.GetCourseAsync(id);
+            if (courseResult != null)
             {
-                Course = courseDto,
-            };
+                var viewModel = new SingleCourseViewModel
+                {
+                    Id = courseResult.Id,
+                    Title = courseResult.Title,
+                    Author = courseResult.Author,
+                    OriginalPrice = courseResult.OriginalPrice,
+                    DiscountPrice = courseResult.DiscountPrice,
+                    Hours = courseResult.Hours,
+                    IsBestSeller = courseResult.IsBestSeller,
+                    LikesInProcent = courseResult.LikesInProcent,
+                    LikesInNumbers = courseResult.LikesInNumbers,
+                    ImageUrl = courseResult.ImageUrl,
+                    AuthorImageUrl = courseResult.AuthorImageUrl
+                };
+                return View(viewModel);
+            }
 
 
-            return View(viewModel);
+            
 
 
         }
         catch (Exception ex) { Debug.WriteLine("ERROR :: " + ex.Message); }
 
-        return View(viewModel);
+        return RedirectToAction("Error404", "Home");
     }
     #endregion
 
@@ -81,6 +94,7 @@ public class CoursesController(CategoryService categoryService, CourseService co
     //[HttpPost]
     //public async Task<IActionResult> AddCourse(CourseDto dto)
     //{
+    //    var claims = HttpContext.User.Identities.FirstOrDefault();
     //    var course = new SavedCourseModel
     //    {
     //        CourseId = dto.Id,

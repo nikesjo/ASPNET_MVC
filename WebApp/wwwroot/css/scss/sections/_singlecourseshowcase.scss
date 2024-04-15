@@ -1,18 +1,18 @@
 #singlecourseshowcase {
     position: relative;
 
-    img {
-        position: relative;
+    .course-img {
         width: 100%;
-        z-index: -1;
+        max-height: 677px;
+        z-index: 0;
+        object-fit: cover;
+        filter: brightness(50%);
     }
 
     .container {
-        height: 100%;
-
         .header-singlecourse {
             position: absolute;
-            top: 60px;
+            top: 40px;
 
             @media(max-width: 782px) {
                 top: 10px;
@@ -22,7 +22,6 @@
                 display: flex;
                 align-items: center;
                 gap: 15px;
-                margin-bottom: 20px;
                 font-size: 14px;
 
                 i {
@@ -89,11 +88,7 @@
 
             .text-header {
                 position: relative;
-                margin-top: 30px;
-
-                @media(max-width: 669px) {
-                    margin-top: 15px;
-                }
+                margin-top: 15px;
 
                 h1 {
                     @include h3;
@@ -134,16 +129,16 @@
                 position: relative;
                 display: none;
 
-                @media(min-width: 1078px) {
+                @include xl {
                     display: flex;
-                    margin-top: 80px;
+                    margin-top: 50px;
                 }
 
                 .star {
                     display: flex;
                     gap: 5px;
                     align-items: baseline;
-                    border-right: 1px solid var(--color-gray-500);
+                    border-right: 1px solid var(--color-gray-600);
                     height: 25px;
                     padding-right: 25px;
 
@@ -161,7 +156,7 @@
                     align-items: baseline;
                     gap: 5px;
                     margin-left: 30px;
-                    border-right: 1px solid var(--color-gray-500);
+                    border-right: 1px solid var(--color-gray-600);
                     height: 25px;
                     padding-right: 25px;
 
@@ -199,29 +194,27 @@
             }
 
             .img-text {
-                position: relative;
                 display: none;
 
-                @media(min-width: 1567px) {
+                @include xl {
                     display: flex;
                     align-items: center;
-                    margin-top: 50px;
+                    margin-top: 120px;
                 }
 
-
-
-                img {
+                .img-author {
                     width: 60px;
                     height: 60px;
                 }
 
                 .image-text-header {
                     color: var(--color-white);
-                    margin-left: 10px;
+                    margin-left: 15px;
                     margin-top: 18px;
 
                     .bold-p {
                         font-weight: 700;
+                        margin-bottom: 5px;
                     }
                 }
             }

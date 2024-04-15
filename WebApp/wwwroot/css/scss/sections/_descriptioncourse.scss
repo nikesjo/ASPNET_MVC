@@ -13,23 +13,22 @@
             }
 
             .singlecourse-header {
-
-                p {
-                    margin-top: 20px;
+                h1 {
+                    padding-bottom: 10px;
                 }
 
+
                 .learn-what {
+                    h2 {
+                        padding-top: 20px;
+                    }
 
                     .checked-info {
                         display: flex;
                         align-items: baseline;
                         gap: 10px;
 
-                        .fa-regular {
-                            color: var(--color-theme);
-                        }
-
-                        .fa-circle-check {
+                        i {
                             color: var(--color-theme);
                         }
                     }
@@ -39,40 +38,43 @@
             .singlecourse-box {
                 display: flex;
                 flex-direction: column;
-                padding-right: 100px;
-                padding-top: 30px;
-                padding-left: 30px;
-                padding-bottom: 30px;
+                padding: 30px 100px 40px 30px;
                 height: 100%;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-                @media(max-width: 1200px) {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    margin-top: 20px;
+                h4 {
+                    padding-bottom: 10px;
                 }
 
                 .course-include {
                     display: flex;
                     align-items: baseline;
                     gap: 10px;
+
+                    p {
+                        margin-bottom: 10px;
+                    }
                 }
 
-                .price-box {
+                .pricing {
                     display: flex;
-                    align-items: center;
                     gap: 10px;
-                    margin-top: 15px;
+                    font-size: 32px;
+                    font-weight: 700;
+                    padding: 25px 0 25px 0;
 
-                    .discount-price {
-                        @include text-lead;
-                        font-weight: 700;
+                    .discount {
+                        color: var(--color-gray-900);
                     }
 
-                    .actual-price {
+                    .original {
+                        color: var(--color-theme);
+                    }
+
+                    .discount-enabled {
+                        font-size: 20px;
                         color: var(--color-gray-600);
+                        font-weight: 400;
                         text-decoration: line-through;
                     }
                 }
