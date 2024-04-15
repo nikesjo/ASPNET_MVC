@@ -46,6 +46,14 @@ public class CoursesController(CategoryService categoryService, CourseService co
         return View(viewModel);
     }
 
+    [HttpPost]
+    public async Task<IActionResult> AddCourse(string userId)
+    {
+        
+
+        return View();
+    }
+
     [HttpGet]
     [Route("/courses/singlecourse")]
     public IActionResult SingleCourse()

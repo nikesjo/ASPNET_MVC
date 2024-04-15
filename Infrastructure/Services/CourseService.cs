@@ -1,5 +1,9 @@
-﻿using Infrastructure.Models;
+﻿using Infrastructure.Contexts;
+using Infrastructure.Entities;
+using Infrastructure.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System.Diagnostics;
@@ -7,10 +11,12 @@ using System.Net.Http.Headers;
 
 namespace Infrastructure.Services;
 
-public class CourseService(HttpClient http, IConfiguration configuration)
+public class CourseService(HttpClient http, IConfiguration configuration, UserManager<UserEntity> userManager, DataContext context)
 {
     private readonly HttpClient _http = http;
     private readonly IConfiguration _configuration = configuration;
+    private readonly UserManager<UserEntity> _userManager = userManager;
+    private readonly DataContext _context = context;
 
     public async Task<CourseResult> GetCoursesAsync(HttpContext httpContext, string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 10)
     {
@@ -39,6 +45,16 @@ public class CourseService(HttpClient http, IConfiguration configuration)
         }
         catch (Exception ex) { Debug.WriteLine("ERROR :: " + ex.Message); }
 
+        return null!;
+    }
+
+    public async Task<SavedCourseModel> SaveCourseAsync(SavedCourseModel savedCourseModel)
+    {
+        var savedCourses = await _context.SavedCourses.FindAsync(x => x.UserId == savedCourseModel.UserId, x => x.CourseId == savedCourseModel.CourseId);
+        //httpContext.User.Identity.Id = userId;
+        //httpContext.User.Identities.Equals(new[] { userId });
+        //var user = await httpContext.User.FindFirst(userId);
+        //var user = await _userManager.FindByIdAsync(userId);
         return null!;
     }
 }

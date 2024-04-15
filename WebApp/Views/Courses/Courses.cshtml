@@ -60,7 +60,7 @@
                             <div class="best-seller">Best Seller</div>
                         }
 
-                        <a class="btn btn-circle bookmark" asp-action="Join" asp-controller="Courses"><i class="fa-regular fa-bookmark"></i></a>
+                        <a class="btn btn-circle bookmark" onclick="location.href='@Url.Action("AddCourse", "Courses", new { id = course.Id })'"><i class="fa-regular fa-bookmark"></i></a>
 
                         <img src="~/images/courses/@course.ImageUrl" alt="@course.Title">
 

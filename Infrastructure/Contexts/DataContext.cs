@@ -11,15 +11,19 @@ public class DataContext : IdentityDbContext<UserEntity>
     }
 
     public DbSet<AddressEntity> Addresses { get; set; }
+    public DbSet<SavedCourseEntity> SavedCourses { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
 
         builder.Entity<UserEntity>()
-            .HasMany(u => u.Addresses)
+            .HasOne(u => u.Address)
             .WithOne(a => a.User)
-            .HasForeignKey(a => a.UserId)
+            .HasForeignKey<AddressEntity>(a => a.UserId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder.Entity<SavedCourseEntity>()
+            .HasKey(x => new { x.UserId, x.CourseId });
     }
 }
