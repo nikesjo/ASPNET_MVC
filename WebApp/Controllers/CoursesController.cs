@@ -65,6 +65,7 @@ public class CoursesController(CategoryService categoryService, CourseService co
     //}
 
     [HttpGet("{id}")]
+    [Route("/courses/{id}")]
     public async Task<IActionResult> SingleCourse(CourseDto courseDto, string id)
     {
         var viewModel = new SingleCourseViewModel();
