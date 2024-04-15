@@ -84,15 +84,14 @@ namespace WebApp.Controllers
         
         [HttpPost]
         [Route("/signin")]
-        public async Task<IActionResult> SignIn(SignInViewModel viewModel, string returnUrl)
+        public async Task<IActionResult> SignIn(SignInViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
                 var result = await _signInManager.PasswordSignInAsync(viewModel.Form.Email, viewModel.Form.Password, viewModel.Form.RememberMe, false);
                 if (result.Succeeded)
                 {
-                    if(!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                        return RedirectToAction(returnUrl);
+
 
                     return RedirectToAction("Details", "Account");
                 }
