@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net.Http.Headers;
+using System.Security.Claims;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Infrastructure.Services;
 
@@ -33,7 +35,6 @@ public class CourseService(HttpClient http, IConfiguration configuration, UserMa
                 httpContext.Session.SetString("token", await tokenResponse.Content.ReadAsStringAsync());
             }
 
-            //var token = httpContext.Session.GetString("token");
             _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", httpContext.Session.GetString("token"));
             var response = await _http.GetAsync($"{_configuration["ApiUris:Courses"]}&category={Uri.UnescapeDataString(category)}&searchQuery={Uri.UnescapeDataString(searchQuery)}&pageNumber={pageNumber}&pageSize={pageSize}");
             if (response.IsSuccessStatusCode)
@@ -47,14 +48,46 @@ public class CourseService(HttpClient http, IConfiguration configuration, UserMa
 
         return null!;
     }
-
-    public async Task<SavedCourseModel> SaveCourseAsync(SavedCourseModel savedCourseModel)
+    public async Task<CourseDto> GetCourseAsync(string id, HttpContext httpContext)
     {
-        var savedCourses = await _context.SavedCourses.FindAsync(x => x.UserId == savedCourseModel.UserId, x => x.CourseId == savedCourseModel.CourseId);
-        //httpContext.User.Identity.Id = userId;
-        //httpContext.User.Identities.Equals(new[] { userId });
-        //var user = await httpContext.User.FindFirst(userId);
-        //var user = await _userManager.FindByIdAsync(userId);
+        if (httpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
+        {
+            _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await _http.GetAsync($"{_configuration["ApiUris:Courses"]}{id}?key={_configuration["ApiKey"]}");
+            if (response.IsSuccessStatusCode)
+            {
+                var result = JsonConvert.DeserializeObject<CourseDto>(await response.Content.ReadAsStringAsync());
+                if (result != null)
+                    return result;
+            }
+        }
+
         return null!;
     }
+
+    //public async Task<SavedCourseModel> SaveCourseAsync(SavedCourseModel savedCourseModel)
+    //{
+    //    var savedCourses = await _context.SavedCourses.FindAsync(x => x.UserId == savedCourseModel.UserId, x => x.CourseId == savedCourseModel.CourseId);
+    //    //httpContext.User.Identity.Id = userId;
+    //    //httpContext.User.Identities.Equals(new[] { userId });
+    //    //var user = await httpContext.User.FindFirst(userId);
+    //    //var user = await _userManager.FindByIdAsync(userId);
+    //    return null!;
+    //}
+
+    //public async Task<IEnumerable<CourseDto>> GetSavedCourseAsync(SavedCourseModel savedCourseModel)
+    //{
+    //    var userId = await _userManager.Users.AnyAsync(x => x.Id == savedCourseModel.UserId);
+    //    var query = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)
+    //    //var query = _context.SavedCourses.Include(x => x.UserId).AsQueryable();
+    //    //query = query.OrderByDescending(o => o.CourseId);
+    //    //IQueryable<SavedCourseModel> courses = await _context.SavedCourseModel;
+    //    //var savedCourses = await _context.SavedCourses.FindAsync(x => x.UserId == savedCourseModel.UserId, x => x.CourseId == savedCourseModel.CourseId);
+    //    //httpContext.User.Identity.Id = userId;
+    //    //httpContext.User.Identities.Equals(new[] { userId });
+    //    //var user = await httpContext.User.FindFirst(userId);
+    //    //var user = await _userManager.FindByIdAsync(userId);
+    //    return null!;
+    //}
 }

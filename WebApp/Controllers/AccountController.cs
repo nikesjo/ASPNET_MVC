@@ -3,6 +3,7 @@ using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 using WebApp.ViewModels.Account;
 using WebbApp.ViewModels.Account;
 
@@ -159,20 +160,28 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
 
     private async Task<AddressInfoFormViewModel> PopulateAddressInfoAsync()
     {
-        var user = await _userManager.GetUserAsync(User);
-        if (user != null)
+        try
         {
-            var address = await _addressManager.GetAddressAsync(user.Id);
-            return new AddressInfoFormViewModel
+            var user = await _userManager.GetUserAsync(User);
+            if (user != null)
             {
-                Addressline_1 = address.AddressLine_1,
-                Addressline_2 = address.AddressLine_2,
-                PostalCode = address.PostalCode,
-                City = address.City
-            };
+                var address = await _addressManager.GetAddressAsync(user.Id);
+                if (address != null)
+                {
+                    return new AddressInfoFormViewModel
+                    {
+                        Addressline_1 = address.AddressLine_1,
+                        Addressline_2 = address.AddressLine_2,
+                        PostalCode = address.PostalCode,
+                        City = address.City
+                    };
+                }
+                return new AddressInfoFormViewModel();
+            }
         }
+        catch (Exception ex) { Debug.WriteLine("ERROR :: " + ex.Message); }
 
-        return new AddressInfoFormViewModel();
+        return null!;
     }
     #endregion
 

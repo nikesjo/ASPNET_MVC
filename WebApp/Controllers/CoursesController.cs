@@ -2,8 +2,13 @@
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Net.Http.Headers;
+using System.Security.Claims;
 using WebApp.ViewModels.Courses;
+using static System.Net.WebRequestMethods;
 
 namespace WebApp.Controllers;
 
@@ -46,18 +51,39 @@ public class CoursesController(CategoryService categoryService, CourseService co
         return View(viewModel);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> AddCourse(string userId)
-    {
-        
+    //[HttpPost]
+    //public async Task<IActionResult> AddCourse(CourseDto dto)
+    //{
+    //    var course = new SavedCourseModel
+    //    {
+    //        CourseId = dto.Id,
+    //        UserId = HttpContext.User.Id,
+    //    };
+    //    var userId = (HttpContext.Current.User.Identity as ClaimsIdentity).Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)
+    //    //var userId = HttpContext.User.Identity;
+    //    return View();
+    //}
 
-        return View();
-    }
-
-    [HttpGet]
-    [Route("/courses/singlecourse")]
-    public IActionResult SingleCourse()
+    [HttpGet("{id}")]
+    public async Task<IActionResult> SingleCourse(CourseDto courseDto, string id)
     {
-        return View();
+        var viewModel = new SingleCourseViewModel();
+        try
+        {
+            var courseResult = await _courseService.GetCourseAsync(id, HttpContext);
+
+            viewModel = new SingleCourseViewModel
+            {
+                Course = courseDto,
+            };
+
+
+            return View(viewModel);
+
+
+        }
+        catch (Exception ex) { Debug.WriteLine("ERROR :: " + ex.Message); }
+
+        return View(viewModel);
     }
 }
