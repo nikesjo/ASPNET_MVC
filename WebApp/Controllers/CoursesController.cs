@@ -18,6 +18,7 @@ public class CoursesController(CategoryService categoryService, CourseService co
     private readonly CategoryService _categoryService = categoryService;
     private readonly CourseService _courseService = courseService;
 
+    #region GET
     [HttpGet]
     [Route("/courses")]
     public async Task<IActionResult> Courses(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 6)
@@ -51,19 +52,6 @@ public class CoursesController(CategoryService categoryService, CourseService co
         return View(viewModel);
     }
 
-    //[HttpPost]
-    //public async Task<IActionResult> AddCourse(CourseDto dto)
-    //{
-    //    var course = new SavedCourseModel
-    //    {
-    //        CourseId = dto.Id,
-    //        UserId = HttpContext.User.Id,
-    //    };
-    //    var userId = (HttpContext.Current.User.Identity as ClaimsIdentity).Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)
-    //    //var userId = HttpContext.User.Identity;
-    //    return View();
-    //}
-
     [HttpGet("{id}")]
     [Route("/courses/{id}")]
     public async Task<IActionResult> SingleCourse(CourseDto courseDto, string id)
@@ -87,4 +75,19 @@ public class CoursesController(CategoryService categoryService, CourseService co
 
         return View(viewModel);
     }
+    #endregion
+
+
+    //[HttpPost]
+    //public async Task<IActionResult> AddCourse(CourseDto dto)
+    //{
+    //    var course = new SavedCourseModel
+    //    {
+    //        CourseId = dto.Id,
+    //        UserId = HttpContext.User.Id,
+    //    };
+    //    var userId = (HttpContext.Current.User.Identity as ClaimsIdentity).Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)
+    //    //var userId = HttpContext.User.Identity;
+    //    return View();
+    //}
 }
