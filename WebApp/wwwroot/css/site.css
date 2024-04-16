@@ -879,6 +879,17 @@ header .container .btn-mobilemenu:hover {
   font-size: 16px !important;
 }
 
+.light-dark-mode {
+  position: relative;
+}
+.light-dark-mode .dark-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: var(--color-gray-900);
+  width: 49.5vw;
+  z-index: -1;
+}
 .light-dark-mode .container {
   display: none;
   position: relative;
@@ -894,7 +905,6 @@ header .container .btn-mobilemenu:hover {
   left: 48%;
 }
 .light-dark-mode .container .dark-mode {
-  background-color: var(--color-gray-900);
   width: 50%;
   border-right: 2px solid var(--color-theme);
   display: flex;
@@ -902,7 +912,7 @@ header .container .btn-mobilemenu:hover {
   align-items: end;
 }
 .light-dark-mode .container .dark-mode h1 {
-  color: var(--color-white);
+  color: var(--color-gray-000);
   text-align: end;
   margin-right: 2%;
   margin-top: 15%;
@@ -913,7 +923,6 @@ header .container .btn-mobilemenu:hover {
   margin: 30px 0 80px 0;
 }
 .light-dark-mode .container .light-mode {
-  background-color: var(--color-white);
   width: 50%;
   border-left: 2px solid var(--color-theme);
 }
