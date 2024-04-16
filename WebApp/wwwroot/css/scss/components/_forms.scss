@@ -20,12 +20,18 @@ input:not([type="checkbox"]) {
     input {
         position: relative;
         padding-right: 40px;
+        background-color: var(--color-gray-000);
+        border: 1px solid var(--color-gray-400);
     }
 
     i {
         position: absolute;
         top: 14px;
         right: 1rem;
+    }
+
+    &::placeholder {
+        opacity: 0.5;
     }
 }
 
@@ -50,7 +56,7 @@ input:not([type="checkbox"]) {
         top: 100%;
         left: 0;
         right: 0;
-        background-color: var(--color-white);
+        background-color: var(--color-gray-000);
         border: 1px solid var(--color-gray-400);
         z-index: 9999;
 
@@ -61,6 +67,7 @@ input:not([type="checkbox"]) {
 
         .option:hover {
             background-color: var(--color-gray-400);
+            color: var(--color-gray-000);
         }
     }
 }

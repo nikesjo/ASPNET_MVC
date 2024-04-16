@@ -1,10 +1,23 @@
-﻿@model AccountDetailsViewModel
-<aside>
+﻿@inject UserManager<UserEntity> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+
+@if (user != null)
+{
     <div class="profile">
-        <img src="@Model.ProfileInfo?.ProfileImageUrl" alt="@($"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}")">
-        <a class="btn-refresh" href="#"><i class="fa-sharp fa-regular fa-arrows-rotate"></i></a>
-        <h5>@($"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}")</h5>
-        <p>@Model.ProfileInfo?.Email</p>
+        <div class="profile-image">
+            <img src="~/images/uploads/profiles/@user.ProfileImageUrl" alt="@user.FirstName @user.LastName">
+
+            <form enctype="multipart/form-data" method="post" asp-action="UploadProfileImage" asp-controller="Account">
+                <input id="fileUploader" type="file" name="file" hidden />
+                <label for="fileUploader" class="btn-circle btn-refresh"><i class="fa-sharp fa-regular fa-arrows-rotate"></i></label>
+            </form>
+        </div>
+        <div class="profile-info">
+            <h5 class="displayname">@user.FirstName @user.LastName</h5>
+            <p>@user.Email</p>
+        </div>
     </div>
 
     <nav>
@@ -13,4 +26,4 @@
         <a class="btn-transparent" asp-controller="Account" asp-action="SavedCourses"><i class="fa-regular fa-bookmark"></i><span>Saved Courses</span></a>
         <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></a>
     </nav>
-</aside>
+}

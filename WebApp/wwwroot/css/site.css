@@ -464,7 +464,7 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-white);
+  background-color: var(--color-gray-000);
   border: 1px solid var(--color-gray-300);
   border-radius: 100%;
   width: 40px;
@@ -477,7 +477,7 @@ a:hover {
 .btn-circle:hover {
   box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
   text-decoration: none;
-  background-color: var(--color-white);
+  background-color: var(--color-gray-000);
 }
 .btn-circle:hover i {
   color: var(--color-theme);
@@ -507,11 +507,16 @@ input:not([type=checkbox])::placeholder {
 .input-search-group input {
   position: relative;
   padding-right: 40px;
+  background-color: var(--color-gray-000);
+  border: 1px solid var(--color-gray-400);
 }
 .input-search-group i {
   position: absolute;
   top: 14px;
   right: 1rem;
+}
+.input-search-group::placeholder {
+  opacity: 0.5;
 }
 
 .select {
@@ -534,7 +539,7 @@ input:not([type=checkbox])::placeholder {
   top: 100%;
   left: 0;
   right: 0;
-  background-color: var(--color-white);
+  background-color: var(--color-gray-000);
   border: 1px solid var(--color-gray-400);
   z-index: 9999;
 }
@@ -544,6 +549,7 @@ input:not([type=checkbox])::placeholder {
 }
 .select .select-options .option:hover {
   background-color: var(--color-gray-400);
+  color: var(--color-gray-000);
 }
 
 .pagination {
@@ -556,7 +562,7 @@ input:not([type=checkbox])::placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--color-black);
+  color: var(--color-900);
   font-size: 0.9rem;
   text-decoration: none;
   border: none;
@@ -638,6 +644,7 @@ header .container #account-buttons {
 header .container #account-buttons img {
   width: 44px;
   height: 44px;
+  border-radius: 100%;
 }
 header .container #account-buttons .btn-gray {
   font-size: 16px;
@@ -1239,7 +1246,8 @@ header .container .btn-mobilemenu:hover {
   }
 }
 .newsletter .container #registerNewsletter .choose-newsletter .checkboxes .form-check .form-check-input {
-  border: 2px solid var(--color-gray-500);
+  background-color: var(--color-gray-000);
+  border: 2px solid var(--color-gray-400);
   height: 18px;
   width: 18px;
 }
@@ -1265,13 +1273,13 @@ header .container .btn-mobilemenu:hover {
   left: 15px;
 }
 .newsletter .container #registerNewsletter .subscribe input {
-  background-color: var(--color-white);
+  background-color: var(--color-gray-000);
+  border: 1px solid var(--color-gray-400);
   color: var(--color-gray-500);
   text-decoration: none;
   padding: 10px 40px;
   border-radius: 8px;
   outline: none;
-  border: 1px solid var(--color-gray-400);
   width: 100%;
 }
 @media (min-width: 992px) {
@@ -1344,12 +1352,13 @@ footer .container .social-media {
   justify-content: center;
   align-items: center;
 }
-#account-details .container aside .profile img {
+#account-details .container aside .profile .profile-image img {
   width: 120px;
   height: 120px;
   margin-bottom: 20px;
+  border-radius: 100%;
 }
-#account-details .container aside .profile .btn-refresh {
+#account-details .container aside .profile .profile-image .btn-refresh {
   box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
   position: absolute;
   top: 80px;
@@ -1357,23 +1366,23 @@ footer .container .social-media {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-white);
+  background-color: var(--color-gray-000);
   border: 1px solid var(--color-gray-300);
   border-radius: 100%;
   width: 40px;
   height: 40px;
 }
-#account-details .container aside .profile .btn-refresh i {
+#account-details .container aside .profile .profile-image .btn-refresh i {
   color: var(--color-gray-800);
   font-size: 16px;
   font-weight: 600;
 }
-#account-details .container aside .profile .btn-refresh:hover {
+#account-details .container aside .profile .profile-image .btn-refresh:hover {
   text-decoration: none;
   background-color: var(--color-gray-600);
 }
-#account-details .container aside .profile .btn-refresh:hover i {
-  color: var(--color-white);
+#account-details .container aside .profile .profile-image .btn-refresh:hover i {
+  color: var(--color-gray-000);
 }
 #account-details .container aside nav {
   display: flex;
@@ -1467,6 +1476,8 @@ footer .container .social-media {
 #account-details .container .details-preview form input {
   padding: 10px 15px;
   border-radius: 8px;
+  background-color: var(--color-gray-000);
+  border: 1px solid var(--color-gray-400);
 }
 #account-details .container .details-preview form input::placeholder {
   color: var(--color-gray-500);
@@ -1477,6 +1488,8 @@ footer .container .social-media {
 }
 #account-details .container .details-preview form textarea {
   resize: none;
+  background-color: var(--color-gray-000);
+  border: 1px solid var(--color-gray-400);
 }
 #account-details .container .details-preview form textarea::placeholder {
   color: var(--color-gray-500);
@@ -1533,7 +1546,7 @@ footer .container .social-media {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-white);
+  background-color: var(--color-gray-000);
   border: 1px solid var(--color-gray-300);
   border-radius: 100%;
   width: 40px;
@@ -1640,6 +1653,8 @@ footer .container .social-media {
 #account-security .container .security-preview form input {
   padding: 10px 15px;
   border-radius: 8px;
+  background-color: var(--color-gray-000);
+  border: 1px solid var(--color-gray-400);
 }
 #account-security .container .security-preview form input::placeholder {
   color: var(--color-gray-500);
@@ -1824,6 +1839,8 @@ footer .container .social-media {
 #contact .container .contact-form form input {
   padding: 10px 15px;
   border-radius: 8px;
+  background-color: var(--color-gray-000);
+  border: 1px solid var(--color-gray-400);
 }
 #contact .container .contact-form form input::placeholder {
   color: var(--color-gray-500);
@@ -1834,6 +1851,8 @@ footer .container .social-media {
 }
 #contact .container .contact-form form textarea {
   resize: none;
+  background-color: var(--color-gray-000);
+  border: 1px solid var(--color-gray-400);
 }
 #contact .container .contact-form form textarea::placeholder {
   color: var(--color-gray-500);
@@ -1846,6 +1865,8 @@ footer .container .social-media {
   padding: 10px 15px;
   border-radius: 8px;
   color: var(--color-gray-500);
+  background-color: var(--color-gray-000);
+  border: 1px solid var(--color-gray-400);
 }
 #contact .container .contact-form form select:focus {
   box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
@@ -2405,7 +2426,7 @@ footer .container .social-media {
   color: var(--color-white);
 }
 #singlecourseshowcase .container .header-singlecourse .seller-square .white-box {
-  background-color: var(--color-gray-200);
+  background-color: var(--color-gray-000);
   border-radius: 8px;
   width: 80px;
   height: 25px;
@@ -2415,7 +2436,7 @@ footer .container .social-media {
   justify-content: center;
   align-items: center;
   height: 100%;
-  color: var(--color-black);
+  color: var(--color-gray-900);
 }
 #singlecourseshowcase .container .header-singlecourse .text-header {
   position: relative;
@@ -2795,7 +2816,7 @@ footer .container .social-media {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-white);
+  background-color: var(--color-gray-000);
   border: 1px solid var(--color-gray-300);
   border-radius: 100%;
   width: 40px;

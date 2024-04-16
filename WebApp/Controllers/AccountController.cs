@@ -127,6 +127,14 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
     }
     #endregion
 
+    #region UploadProfileImage
+
+    [HttpPost]
+    public async Task<IActionResult> UploadProfileImage(IFormFile file)
+    {
+        return RedirectToAction("Details", "Account");
+    }
+    #endregion
 
     #region Populate Info
     private async Task<ProfileInfoViewModel> PopulateProfileInfoAsync()

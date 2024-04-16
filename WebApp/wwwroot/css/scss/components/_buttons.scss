@@ -153,7 +153,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-white);
+    background-color: var(--color-gray-000);
     border: 1px solid var(--color-gray-300);
     border-radius: 100%;
     width: 40px;
@@ -167,7 +167,7 @@
     &:hover {
         @include shadow-s;
         text-decoration: none;
-        background-color: var(--color-white);
+        background-color: var(--color-gray-000);
 
         i {
             color: var(--color-theme);

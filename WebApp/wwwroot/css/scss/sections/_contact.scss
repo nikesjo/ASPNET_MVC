@@ -152,6 +152,8 @@
                 input {
                     padding: 10px 15px;
                     border-radius: 8px;
+                    background-color: var(--color-gray-000);
+                    border: 1px solid var(--color-gray-400);
 
                     &::placeholder {
                         color: var(--color-gray-500);
@@ -165,6 +167,8 @@
 
                 textarea {
                     resize: none;
+                    background-color: var(--color-gray-000);
+                    border: 1px solid var(--color-gray-400);
 
                     &::placeholder {
                         color: var(--color-gray-500);
@@ -180,6 +184,8 @@
                     padding: 10px 15px;
                     border-radius: 8px;
                     color: var(--color-gray-500);
+                    background-color: var(--color-gray-000);
+                    border: 1px solid var(--color-gray-400);
 
                     &:focus {
                         @include theme-secondary-shadow;

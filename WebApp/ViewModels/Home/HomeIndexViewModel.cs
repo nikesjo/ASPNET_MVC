@@ -94,11 +94,5 @@ public class HomeIndexViewModel
             new() { ToolText = "Faucibus cursus maecenas lorem cursus nibh. Sociis sit risus id. Sit facilisis dolor arcu.", ToolImage = new ImageViewModel() { ImageUrl = "images/tools/evernote.svg", AltText = "EverNote logo"}},
         ],
     };
-
-    public NewsletterViewModel Newsletter { get; set; } = new NewsletterViewModel
-    {
-        Id = "newsletter",
-        Title = "Don't Want to Miss Anything?",
-        ArrowImage = new() { ImageUrl = "images/arrows.svg", AltText = "image of an arrow" },
-    };
+    public NewsletterViewModel Newsletter{ get; set; } = new NewsletterViewModel();
 }

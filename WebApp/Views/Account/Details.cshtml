@@ -5,8 +5,9 @@
 
 <section id="account-details">
     <div class="container">
-        @* <partial name="~/Views/Shared/Partials/_AsidePartial.cshtml" /> *@
+        
         <aside>
+            <partial name="~/Views/Shared/Partials/_AsidePartial.cshtml" />
             <div class="profile">
                 <img src="@Model.ProfileInfo?.ProfileImageUrl" alt="@($"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}")">
                 <a class="btn-refresh" href="#"><i class="fa-sharp fa-regular fa-arrows-rotate"></i></a>

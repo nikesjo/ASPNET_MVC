@@ -27,38 +27,41 @@
                 justify-content: center;
                 align-items: center;
 
-                img {
-                    width: 120px;
-                    height: 120px;
-                    margin-bottom: 20px;
-                }
-
-                .btn-refresh {
-                    @include shadow-s;
-                    position: absolute;
-                    top: 80px;
-                    right: 20px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    background-color: var(--color-white);
-                    border: 1px solid var(--color-gray-300);
-                    border-radius: 100%;
-                    width: 40px;
-                    height: 40px;
-
-                    i {
-                        color: var(--color-gray-800);
-                        font-size: 16px;
-                        font-weight: 600;
+                .profile-image {
+                    img {
+                        width: 120px;
+                        height: 120px;
+                        margin-bottom: 20px;
+                        border-radius: 100%;
                     }
 
-                    &:hover {
-                        text-decoration: none;
-                        background-color: var(--color-gray-600);
+                    .btn-refresh {
+                        @include shadow-s;
+                        position: absolute;
+                        top: 80px;
+                        right: 20px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: var(--color-gray-000);
+                        border: 1px solid var(--color-gray-300);
+                        border-radius: 100%;
+                        width: 40px;
+                        height: 40px;
 
                         i {
-                            color: var(--color-white);
+                            color: var(--color-gray-800);
+                            font-size: 16px;
+                            font-weight: 600;
+                        }
+
+                        &:hover {
+                            text-decoration: none;
+                            background-color: var(--color-gray-600);
+
+                            i {
+                                color: var(--color-gray-000);
+                            }
                         }
                     }
                 }
@@ -147,6 +150,8 @@
                 input {
                     padding: 10px 15px;
                     border-radius: 8px;
+                    background-color: var(--color-gray-000);
+                    border: 1px solid var(--color-gray-400);
 
                     &::placeholder {
                         color: var(--color-gray-500);
@@ -160,6 +165,8 @@
 
                 textarea {
                     resize: none;
+                    background-color: var(--color-gray-000);
+                    border: 1px solid var(--color-gray-400);
 
                     &::placeholder {
                         color: var(--color-gray-500);

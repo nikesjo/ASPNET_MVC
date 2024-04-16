@@ -14,7 +14,7 @@ public class UserEntity : IdentityUser
     public string? Bio { get; set; }
 
     [ProtectedPersonalData]
-    public string? ProfileImageUrl { get; set; }
+    public string? ProfileImageUrl { get; set; } = "avatar.jpg";
 
     public bool IsExternalAccount { get; set; } = false;
 
