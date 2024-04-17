@@ -1,5 +1,5 @@
 #program-details {
-    
+
     .container {
 
         .number {
@@ -8,13 +8,14 @@
             gap: 55px;
 
             .circle {
+                display: none;
                 height: 50px;
                 width: 50px;
                 border-radius: 50%;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-                
-                @media (max-width: 768px) {
-                    display: none;
+
+                @include lg {
+                    display: block;
                 }
 
                 p {
@@ -29,7 +30,7 @@
             }
 
             .square-text-details {
-                width: 650px;
+                max-width: 650px;
                 padding: 20px;
 
                 .circle-text {

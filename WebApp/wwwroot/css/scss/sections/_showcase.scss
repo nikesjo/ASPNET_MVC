@@ -14,7 +14,11 @@
         width: 100%;
 
         @include lg {
-            width: 45%;
+            width: 40%;
+        }
+
+        @include xl {
+            width: 50%;
         }
     }
 
@@ -39,9 +43,14 @@
             }
 
             @include xl {
-                margin-top: 100px;
+                margin-top: 70px;
                 width: 40%;
                 text-align: left;
+            }
+
+            @include xxl {
+                margin-top: 100px;
+                width: 40%;
             }
 
             h1 {

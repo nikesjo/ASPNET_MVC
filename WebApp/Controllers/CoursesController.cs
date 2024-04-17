@@ -1,4 +1,6 @@
 ﻿using Azure;
+using Infrastructure.Contexts;
+using Infrastructure.Entities;
 using Infrastructure.Models;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -6,18 +8,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Linq;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Claims;
+using System.Text;
 using WebApp.ViewModels.Courses;
 using static System.Net.WebRequestMethods;
 
 namespace WebApp.Controllers;
 
 [Authorize]
-public class CoursesController(CategoryService categoryService, CourseService courseService) : Controller
+public class CoursesController(CategoryService categoryService, CourseService courseService, HttpClient httpClient, DataContext context) : Controller
 {
     private readonly CategoryService _categoryService = categoryService;
     private readonly CourseService _courseService = courseService;
+    private readonly HttpClient _httpClient = httpClient;
+    private readonly DataContext _context = context;
 
     #region GET
     [HttpGet]
@@ -80,7 +87,7 @@ public class CoursesController(CategoryService categoryService, CourseService co
             }
 
 
-            
+
 
 
         }
@@ -90,6 +97,35 @@ public class CoursesController(CategoryService categoryService, CourseService co
     }
     #endregion
 
+
+    [HttpPost("{id}")]
+    public async Task<IActionResult> AddCourse(int id)
+    {
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                var userId = HttpContext.User.Identities.FirstOrDefault();
+                var savedCourse = new SavedCourseModel
+                {
+                    CourseId = id,
+                    UserId = userId?.ToString(),
+                };
+
+                if (savedCourse != null)
+                {
+                    await _context.SavedCourses.AddAsync(savedCourse);
+                    await _context.SaveChangesAsync();
+                }
+
+                return RedirectToAction("Courses", "Courses");
+            }
+            catch { }
+            
+        }
+
+        return RedirectToAction("Courses", "Courses");
+    }
 
     //[HttpPost]
     //public async Task<IActionResult> AddCourse(CourseDto dto)

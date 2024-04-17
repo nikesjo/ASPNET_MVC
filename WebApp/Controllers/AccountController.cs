@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApp.ViewModels.Account;
+using WebApp.ViewModels.Courses;
 using WebbApp.ViewModels.Account;
 
 namespace WebApp.Controllers;
@@ -215,18 +216,13 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
     #region Security
     [HttpGet]
     [Route("/account/security")]
-    public async Task<IActionResult> Security()
+    public IActionResult Security()
     {
-        var viewModel = new AccountSecurityViewModel
-        {
-            AccountDetailsInfo = new AccountDetailsViewModel
-            {
-                ProfileInfo = await PopulateProfileInfoAsync()
-            }
-        };
+        var viewModel = new AccountSecurityViewModel();
 
         return View(viewModel);
     }
+
     #endregion
 
 
@@ -243,7 +239,11 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
             var newPassword = viewModel.NewPassword;
 
 
-            var userEntity = new UserEntity();
+            var userEntity = new UserEntity
+            {
+                Id = user!.Id,
+                PasswordHash = currentPassword,
+            };
 
             var result = await _userManager.ChangePasswordAsync(userEntity, currentPassword, newPassword);
             if (result.Succeeded)
@@ -256,18 +256,43 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
     }
     #endregion
 
+    [HttpDelete]
+    public async Task<IActionResult> RemoveAccount(AccountSecurityViewModel viewModel)
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user != null)
+        {
+            await _userManager.DeleteAsync(user);
+        }
+
+        return RedirectToAction("Auth", "SignUp");
+    }
 
     #region Saved Courses
-    [HttpGet]
-    [Route("/account/savedcourses")]
-    public async Task<IActionResult> SavedCourses()
-    {
-        var viewModel = new AccountDetailsViewModel
-        {
-            ProfileInfo = await PopulateProfileInfoAsync()
-        };
+    //[HttpGet]
+    //[Route("/account/savedcourses")]
+    //public async Task<IActionResult> SavedCourses()
+    //{
+    //    //var viewModel = new AccountSecurityViewModel();
 
-        return View(viewModel);
-    }
+    //    //return View(viewModel);
+    //    return View();
+    //}
+
+    //[HttpPut]
+    //public async Task<IActionResult> RemoveCourses(CoursesViewModel viewModel)
+    //{
+
+
+    //    return View(viewModel);
+    //}
+
+    //[HttpPut]
+    //public async Task<IActionResult> RemoveCourse(CoursesViewModel viewModel)
+    //{
+
+
+    //    return View(viewModel);
+    //}
     #endregion
 }

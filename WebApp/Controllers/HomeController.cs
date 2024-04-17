@@ -41,11 +41,12 @@ namespace WebApp.Controllers
                 return BadRequest("Invalid email address");
             }
 
-            return RedirectToAction("Home", "Index", "newsletter");
+            return RedirectToAction("Index", "Home", "newsletter");
         }
 
         #endregion
 
+        #region Contact
         [HttpGet]
         [Route("/contact")]
         public IActionResult Contact()
@@ -54,14 +55,30 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        [Route("/contact")]
-        public IActionResult Contact(ContactFormViewModel viewModel)
+        //[Route("/contact")]
+        public async Task<IActionResult> Contact(ContactFormViewModel viewModel)
         {
-            
+            if (ModelState.IsValid)
+            {
+                var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync("https://localhost:7091/api/subscribers", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    return Ok("Your message was sent!");
+                }
+                //else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                //{
+                //    return Conflict("You are already subscribed");
+                //}
+            }
+            else
+            {
+                return BadRequest("Please enter fields properly");
+            }
 
-            return View(viewModel);
+            return RedirectToAction("Contact", "Home");
         }
-
+        #endregion
 
         [Route("/error")]
         public IActionResult Error404(int statusCode) => View();

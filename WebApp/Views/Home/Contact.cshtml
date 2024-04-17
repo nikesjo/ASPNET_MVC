@@ -44,12 +44,12 @@
                 <h2>Get In Contact With Us</h2>
                 <div class="col-12">
                     <label class="form-label" asp-for=FullName></label>
-                    <span asp-validation-for="FullName"></span>
+                    <span class="text-danger" asp-validation-for="FullName"></span>
                     <input class="form-control" asp-for="FullName" />
                 </div>
                 <div class="col-12">
                     <label class="form-label" asp-for=Email></label>
-                    <span asp-validation-for="Email"></span>
+                    <span class="text-danger" asp-validation-for="Email"></span>
                     <input class="form-control" asp-for="Email" />
                 </div>
                 <div class="col-12">
@@ -65,6 +65,7 @@
                 <div class="col-12">
                     <label class="form-label" asp-for=Message></label>
                     <textarea class="form-control" asp-for="Message" cols="30" rows="8"></textarea>
+                    <span class="text-danger" asp-validation-for="Message"></span>
                 </div>
                 <div class="col-auto">
                     <button type="submit" class="btn-theme">Send Contact Request</button>

@@ -12,10 +12,10 @@
     .container {
         .header-singlecourse {
             position: absolute;
-            top: 40px;
+            top: 10px;
 
-            @media(max-width: 782px) {
-                top: 10px;
+            @include md {
+                top: 40px;
             }
 
             .breadcrumb {
@@ -45,59 +45,44 @@
             }
 
             .seller-square {
-                position: relative;
                 display: flex;
                 flex-direction: row;
                 gap: 15px;
-                margin-top: 50px;
+                margin-top: 15px;
 
-                @media(max-width: 741px) {
-                    margin-top: 15px;
+                @include md {
+                    margin-top: 50px;
                 }
 
-                .green-box {
+                .best-seller {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     background-color: var(--color-success);
+                    color: var(--color-white);
                     border-radius: 8px;
                     width: 110px;
                     height: 25px;
-
-                    p {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        height: 100%;
-                        color: var(--color-white);
-                    }
                 }
 
-                .white-box {
-                    background-color: var(--color-gray-000);
+                .digital {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: var(--color-white);
+                    color: var(--color-black);
                     border-radius: 8px;
                     width: 80px;
                     height: 25px;
-
-                    p {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        height: 100%;
-                        color: var(--color-gray-900);
-                    }
                 }
             }
 
             .text-header {
-                position: relative;
                 margin-top: 15px;
 
                 h1 {
                     @include h3;
                     color: var(--color-white);
-
-                    @media(max-width: 621px) {
-                        @include text-lg;
-                        color: var(--color-white);
-                    }
 
                     @include xl {
                         @include h1;
@@ -106,32 +91,22 @@
                 }
 
                 p {
-                    @include text-xs;
+                    display: none;
+                    @include text-m;
                     color: var(--color-gray-400);
 
-                    @media(max-width: 621px) {
-                        @include text-xs;
-                        color: var(--color-gray-400);
-                    }
-
-                    @include xl {
-                        @include text-m;
-                        color: var(--color-gray-400);
-                    }
-
-                    @media(max-width: 468px) {
-                        display: none;
+                    @include md {
+                        display: block;
                     }
                 }
             }
 
             .rating {
-                position: relative;
                 display: none;
+                margin-top: 50px;
 
-                @include xl {
+                @include md {
                     display: flex;
-                    margin-top: 50px;
                 }
 
                 .star {

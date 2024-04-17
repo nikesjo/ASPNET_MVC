@@ -5,21 +5,8 @@
 
 <section id="account-security">
     <div class="container">
-        @* <partial name="~/Views/Shared/Partials/_AsidePartial.cshtml" /> *@
-        <aside>
-            <div class="profile">
-                <img src="@Model.AccountDetailsInfo?.ProfileInfo?.ProfileImageUrl" alt="@($"{Model.AccountDetailsInfo?.ProfileInfo?.FirstName} {Model.AccountDetailsInfo?.ProfileInfo?.LastName}")">
-                <a class="btn-refresh" href="#"><i class="fa-sharp fa-regular fa-arrows-rotate"></i></a>
-                <h5>@($"{Model.AccountDetailsInfo?.ProfileInfo?.FirstName} {Model.AccountDetailsInfo?.ProfileInfo?.LastName}")</h5>
-                <p>@Model.AccountDetailsInfo?.ProfileInfo?.Email</p>
-            </div>
-
-            <nav>
-                <a class="btn-transparent" asp-controller="Account" asp-action="Details"><i class="fa-regular fa-gear"></i><span>Account Details</span></a>
-                <a class="btn-theme-s" asp-controller="Account" asp-action="Security"><i class="fa-regular fa-lock"></i><span>Security</span></a>
-                <a class="btn-transparent" asp-controller="Account" asp-action="SavedCourses"><i class="fa-regular fa-bookmark"></i><span>Saved Courses</span></a>
-                <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></a>
-            </nav>
+        <aside class="account-menu">
+            <partial name="~/Views/Shared/Partials/_AsidePartial.cshtml" />
         </aside>
         <div class="security-preview">
             <h2>Security</h2>
@@ -33,12 +20,12 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6">
+                <div class="col-xl-6">
                     <label class="form-label" asp-for=CurrentPassword></label>
                     <span asp-validation-for="CurrentPassword"></span>
                     <input class="form-control" asp-for="CurrentPassword" />
                 </div>
-                <div class="col-lg-6">
+                <div class="col-xl-6">
                     <label class="form-label" asp-for=ConfirmNewPassword></label>
                     <span asp-validation-for="ConfirmNewPassword"></span>
                     <input class="form-control" asp-for="ConfirmNewPassword" />
