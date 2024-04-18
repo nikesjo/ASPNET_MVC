@@ -40,6 +40,7 @@
             </div>
         </div>
         <div class="contact-form">
+            <partial name="~/Views/Shared/Partials/_StatusMessagePartial.cshtml" />
             <form method="post" asp-controller="Home" asp-action="Contact" class="row g-4" novalidate>
                 <h2>Get In Contact With Us</h2>
                 <div class="col-12">
@@ -64,8 +65,8 @@
 
                 <div class="col-12">
                     <label class="form-label" asp-for=Message></label>
-                    <textarea class="form-control" asp-for="Message" cols="30" rows="8"></textarea>
                     <span class="text-danger" asp-validation-for="Message"></span>
+                    <textarea class="form-control" asp-for="Message" cols="30" rows="8"></textarea>
                 </div>
                 <div class="col-auto">
                     <button type="submit" class="btn-theme">Send Contact Request</button>

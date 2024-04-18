@@ -1,14 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Diagnostics;
 using System.Text;
 using WebApp.ViewModels.Home;
 using WebApp.ViewModels.Home.Partials;
 
 namespace WebApp.Controllers
 {
-    public class HomeController(HttpClient httpClient) : Controller
+    public class HomeController(HttpClient httpClient, IConfiguration configuration) : Controller
     {
         private readonly HttpClient _httpClient = httpClient;
+        private readonly IConfiguration _configuration = configuration;
 
         [Route("/")]
         public IActionResult Index()
@@ -26,10 +28,12 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
-                var response = await _httpClient.PostAsync("https://localhost:7091/api/subscribers", content);
+                var response = await _httpClient.PostAsync($"https://localhost:7091/api/subscribers?key={_configuration["ApiKey"]}", content);
                 if (response.IsSuccessStatusCode)
                 {
-                    return Ok("You are now subscribed");
+                    TempData["StatusMessage"] = "success|Your message was sent!";
+                    return Ok();
+                    //return Ok("You are now subscribed");
                 }
                 else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                 {
@@ -38,7 +42,9 @@ namespace WebApp.Controllers
             }
             else
             {
-                return BadRequest("Invalid email address");
+                //return BadRequest("Invalid email address");
+                ModelState.AddModelError("IncorrectValues", "Incorrect email address or password");
+                ViewData["StatusMessage"] = "danger|Incorrect email address or password";
             }
 
             return RedirectToAction("Index", "Home", "newsletter");
@@ -51,32 +57,37 @@ namespace WebApp.Controllers
         [Route("/contact")]
         public IActionResult Contact()
         {
-            return View();
+            var viewModel = new ContactFormViewModel();
+            return View(viewModel);
         }
 
         [HttpPost]
-        //[Route("/contact")]
+        [Route("/contact")]
         public async Task<IActionResult> Contact(ContactFormViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
-                var response = await _httpClient.PostAsync("https://localhost:7091/api/subscribers", content);
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    return Ok("Your message was sent!");
+                    var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
+                    var response = await _httpClient.PostAsync($"https://localhost:7091/api/contact?key={_configuration["ApiKey"]}", content);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewData["StatusMessage"] = "success|Your message was sent!";
+                    }
                 }
-                //else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
-                //{
-                //    return Conflict("You are already subscribed");
-                //}
+                catch
+                {
+                    ViewData["StatusMessage"] = "danger|Something went wrong.";
+                }
             }
             else
             {
-                return BadRequest("Please enter fields properly");
+                ModelState.AddModelError("IncorrectValues", "Incorrect email address or password");
+                ViewData["StatusMessage"] = "danger|Your message was not sent. Please enter fields properly.";
             }
 
-            return RedirectToAction("Contact", "Home");
+            return View();
         }
         #endregion
 

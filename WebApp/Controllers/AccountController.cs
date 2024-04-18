@@ -1,19 +1,20 @@
 ﻿using Infrastructure.Entities;
+using Infrastructure.Models;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApp.ViewModels.Account;
-using WebApp.ViewModels.Courses;
 using WebbApp.ViewModels.Account;
 
 namespace WebApp.Controllers;
 
 [Authorize]
-public class AccountController(UserManager<UserEntity> userManager, AddressManager addressManager) : Controller
+public class AccountController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, AddressManager addressManager) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
+    private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly AddressManager _addressManager = addressManager;
 
 
@@ -234,21 +235,35 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
         if (ModelState.IsValid)
         {
             var user = await _userManager.GetUserAsync(User);
-
-            var currentPassword = viewModel!.CurrentPassword;
-            var newPassword = viewModel.NewPassword;
-
-
-            var userEntity = new UserEntity
+            if (user != null)
             {
-                Id = user!.Id,
-                PasswordHash = currentPassword,
-            };
-
-            var result = await _userManager.ChangePasswordAsync(userEntity, currentPassword, newPassword);
-            if (result.Succeeded)
-            {
-                return RedirectToAction("SignIn", "Auth");
+                if (viewModel.Form != null)
+                {
+                    var changePassword = await _userManager.ChangePasswordAsync(user, viewModel.Form!.CurrentPassword, viewModel.Form.NewPassword);
+                    if (changePassword.Succeeded)
+                    {
+                        ViewData["SuccessMessage"] = "success|New password created";
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("IncorrectValues", "Incorrect password");
+                        ViewData["ErrorMessage"] = "danger|Incorrect password, try again.";
+                    }
+                }
+                if (viewModel.DeleteAccount != null && viewModel.DeleteAccount.ConfirmDelete)
+                {
+                    var result = await _userManager.DeleteAsync(user);
+                    if (result.Succeeded)
+                    {
+                        await _signInManager.SignOutAsync();
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("DeleteError", "Could not delete account");
+                        ViewData["ErrorMessage"] = "danger|Something went wrong, could not delete account.";
+                    }
+                }
             }
         }
 
@@ -256,17 +271,35 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
     }
     #endregion
 
-    [HttpDelete]
-    public async Task<IActionResult> RemoveAccount(AccountSecurityViewModel viewModel)
-    {
-        var user = await _userManager.GetUserAsync(User);
-        if (user != null)
-        {
-            await _userManager.DeleteAsync(user);
-        }
+    //[HttpDelete]
+    //public async Task<IActionResult> DeleteAccount(DeleteAccountModel deleteModel)
+    //{
+    //    var user = await _userManager.GetUserAsync(User);
+    //    if (user != null)
+    //    {
+    //        if (deleteModel.ConfirmDelete == true)
+    //        {
+    //            var result = await _userManager.DeleteAsync(user);
+    //            if (result.Succeeded)
+    //            {
+    //                await _signInManager.SignOutAsync();
+    //                return RedirectToAction("Index", "Home");
+    //            }
+    //            else
+    //            {
+    //                ModelState.AddModelError("DeleteError", "Could not delete account");
+    //                ViewData["ErrorMessage"] = "danger|Something went wrong, could not delete account.";
+    //            }
+    //        }
+    //        else
+    //        {
+    //            ModelState.AddModelError("DeleteError", "Could not delete account");
+    //            ViewData["ErrorMessage"] = "danger|Something went wrong, could not delete account.";
+    //        }
+    //    }
 
-        return RedirectToAction("Auth", "SignUp");
-    }
+    //    return RedirectToAction("Security", "Account");
+    //}
 
     #region Saved Courses
     //[HttpGet]

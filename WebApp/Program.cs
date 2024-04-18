@@ -1,5 +1,3 @@
-using Infrastructure.Helpers.Middlewares;
-using Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using WebApp.Configurations;
 
@@ -27,7 +25,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseSession();
-//app.UseUserSessionValidation();
 app.UseAuthentication();
 app.UseAuthorization();
 

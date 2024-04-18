@@ -1,30 +1,24 @@
-﻿using Azure;
-using Infrastructure.Contexts;
+﻿using Infrastructure.Contexts;
 using Infrastructure.Entities;
 using Infrastructure.Models;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using System.Diagnostics;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Security.Claims;
 using System.Text;
 using WebApp.ViewModels.Courses;
-using static System.Net.WebRequestMethods;
 
 namespace WebApp.Controllers;
 
 [Authorize]
-public class CoursesController(CategoryService categoryService, CourseService courseService, HttpClient httpClient, DataContext context) : Controller
+public class CoursesController(CategoryService categoryService, CourseService courseService, HttpClient httpClient, DataContext context, UserManager<UserEntity> userManager) : Controller
 {
     private readonly CategoryService _categoryService = categoryService;
     private readonly CourseService _courseService = courseService;
     private readonly HttpClient _httpClient = httpClient;
     private readonly DataContext _context = context;
+    private readonly UserManager<UserEntity> _userManager = userManager;
 
     #region GET
     [HttpGet]
@@ -97,36 +91,81 @@ public class CoursesController(CategoryService categoryService, CourseService co
     }
     #endregion
 
+    //[HttpPost]
+    //public async Task<IActionResult> AddCourse(SavedCourseModel model)
+    //{
+    //    if (ModelState.IsValid)
+    //    {
+    //        try
+    //        {
+    //            var course = new SavedCourseEntity
+    //            {
+    //                UserId = model.UserId!,
+    //                CourseId = model.CourseId
+    //            };
+    //            _context.SavedCourses.Add(course);
+    //            await _context.SaveChangesAsync();
+    //            return RedirectToAction("Courses", "Courses");
+    //        }
+    //        catch (Exception ex) { Debug.WriteLine("ERROR :: " + ex.Message); }
 
-    [HttpPost("{id}")]
-    public async Task<IActionResult> AddCourse(int id)
+    //    }
+
+    //    return RedirectToAction("Courses", "Courses");
+    //}
+
+    [HttpPost]
+    public async Task<IActionResult> AddCourse(int courseId)
     {
-        if (ModelState.IsValid)
+        // Hämta den inloggade användaren
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
         {
-            try
-            {
-                var userId = HttpContext.User.Identities.FirstOrDefault();
-                var savedCourse = new SavedCourseModel
-                {
-                    CourseId = id,
-                    UserId = userId?.ToString(),
-                };
-
-                if (savedCourse != null)
-                {
-                    await _context.SavedCourses.AddAsync(savedCourse);
-                    await _context.SaveChangesAsync();
-                }
-
-                return RedirectToAction("Courses", "Courses");
-            }
-            catch { }
-            
+            return Unauthorized(); // Användaren är inte inloggad
         }
 
-        return RedirectToAction("Courses", "Courses");
+        // Skapa ett nytt SavedCourseEntity-objekt för att spara bokmärket
+        var savedCourse = new SavedCourseEntity
+        {
+            UserId = user.Id,
+            CourseId = courseId
+        };
+
+        // Spara bokmärket i databasen
+        _context.SavedCourses.Add(savedCourse);
+        await _context.SaveChangesAsync();
+
+        return Ok();
     }
 
+    //[HttpPost("{id}")]
+    //public async Task<IActionResult> AddCourse(int id)
+    //{
+    //    if (ModelState.IsValid)
+    //    {
+    //        try
+    //        {
+    //            var userId = HttpContext.User.Identities.FirstOrDefault();
+    //            var savedCourse = new SavedCourseModel
+    //            {
+    //                CourseId = id,
+    //                UserId = userId?.ToString(),
+    //            };
+
+    //            if (savedCourse != null)
+    //            {
+    //                await _context.SavedCourses.AddAsync(savedCourse);
+    //                await _context.SaveChangesAsync();
+    //            }
+
+    //            return View();
+    //        }
+    //        catch (Exception ex) { Debug.WriteLine("ERROR :: " + ex.Message); }
+
+    //    }
+
+    //    return View();
+    //}
     //[HttpPost]
     //public async Task<IActionResult> AddCourse(CourseDto dto)
     //{

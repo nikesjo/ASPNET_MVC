@@ -42,8 +42,9 @@
                 <input id="email" class="form-input" asp-for="Email" />
                 <button id="form-submit" type="submit" class="btn-theme">Subscribe *</button>
             </div>
-            <span asp-validation-for="Email"></span>
+            <span class="text-danger" asp-validation-for="Email"></span>
             <p class="terms-and-privacy">* Yes, I agree to the <a asp-controller="About" asp-action="Terms">terms</a> and <a asp-controller="About" asp-action="Conditions">privacy policy.</a></p>
+            <partial name="~/Views/Shared/Partials/_StatusMessagePartial.cshtml" />
         </form>
     </div>
 </section>

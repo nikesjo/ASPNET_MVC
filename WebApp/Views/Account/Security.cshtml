@@ -14,21 +14,21 @@
                 <h5>Password</h5>
                 <div class="col-12">
                     <div class="col-lg-6">
-                        <label class="form-label" asp-for=NewPassword></label>
-                        <span asp-validation-for="NewPassword"></span>
-                        <input class="form-control" asp-for="NewPassword" />
+                        <label class="form-label" asp-for=@Model.Form!.NewPassword></label>
+                        <span asp-validation-for="@Model.Form!.NewPassword"></span>
+                        <input class="form-control" asp-for="@Model.Form!.NewPassword" />
                     </div>
                 </div>
 
                 <div class="col-xl-6">
-                    <label class="form-label" asp-for=CurrentPassword></label>
-                    <span asp-validation-for="CurrentPassword"></span>
-                    <input class="form-control" asp-for="CurrentPassword" />
+                    <label class="form-label" asp-for=@Model.Form!.CurrentPassword></label>
+                    <span asp-validation-for="@Model.Form!.CurrentPassword"></span>
+                    <input class="form-control" asp-for="@Model.Form!.CurrentPassword" />
                 </div>
                 <div class="col-xl-6">
-                    <label class="form-label" asp-for=ConfirmNewPassword></label>
-                    <span asp-validation-for="ConfirmNewPassword"></span>
-                    <input class="form-control" asp-for="ConfirmNewPassword" />
+                    <label class="form-label" asp-for=@Model.Form!.ConfirmNewPassword></label>
+                    <span asp-validation-for="@Model.Form!.ConfirmNewPassword"></span>
+                    <input class="form-control" asp-for="@Model.Form!.ConfirmNewPassword" />
                 </div>
 
                 <div class="col-auto">
@@ -45,8 +45,9 @@
                 <p>When you delete your account, your public profile will be deactivated immediately. If you change your mind before the 14 days are up, sign in with your email and password, and we’ll send you a link to reactivate your account.</p>
 
                 <div class="form-check">
-                    <input class="form-check-input" asp-for="DeleteAccount" />
-                    <label class="form-check-label" asp-for=DeleteAccount></label>
+                    <input class="form-check-input" asp-for="DeleteAccount!.ConfirmDelete" />
+                    <label class="form-check-label" asp-for=DeleteAccount!.ConfirmDelete></label>
+                    <span asp-validation-for="DeleteAccount!.ConfirmDelete"></span>
                 </div>
 
                 <div class="col-auto">
