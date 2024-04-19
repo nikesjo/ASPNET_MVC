@@ -114,6 +114,45 @@ function handleProfileImageUpload() {
     }
     catch { }
 }
+
+//document.addEventListener('DOMContentLoaded', function () {
+//    document.addEventListener('click', function (e) {
+//        if (e.target && e.target.matches("a.button-top, a.button-top i")) {
+//            e.preventDefault();
+
+//            var link = e.target.closest("a.button-top");
+//            var courseId = parseInt(link.getAttribute('data-courseid'), 10);
+//            console.log("Course ID:", courseId);
+
+//            // Retrieve token from session or local storage
+//            var token = sessionStorage.getItem('token'); // or localStorage.getItem('token');
+//            if (!token) {
+//                console.log("Token not found");
+//                return;
+//            }
+
+//            fetch('/courses/savecourse', {
+//                method: 'POST',
+//                headers: {
+//                    'Content-Type': 'application/json',
+//                    'Authorization': 'Bearer ' + token // Add bearer token
+//                },
+//                body: JSON.stringify({ CourseId: courseId })
+//            })
+//                .then(response => response.json())
+//                .then(data => {
+//                    if (data.success) {
+//                        link.classList.toggle('saved');
+//                    } else {
+//                        console.log("Error saving course.");
+//                    }
+//                })
+//                .catch(error => {
+//                    console.log("Error saving course:", error);
+//                });
+//        }
+//    });
+//});
 document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('click', function (e) {
         if (e.target && e.target.matches("a.button-top, a.button-top i")) {
@@ -123,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var courseId = parseInt(link.getAttribute('data-courseid'), 10);
             console.log("Course ID:", courseId);
 
-            fetch('api/courses/savecourse', {
+            fetch('/courses/savecourse', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -82,10 +82,6 @@ public class CoursesController(CategoryService categoryService, CourseService co
                 return View(viewModel);
             }
 
-
-
-
-
         }
         catch (Exception ex) { Debug.WriteLine("ERROR :: " + ex.Message); }
 

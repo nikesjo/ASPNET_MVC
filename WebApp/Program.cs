@@ -1,3 +1,4 @@
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using WebApp.Configurations;
 
@@ -15,7 +16,6 @@ builder.Services.AddSession(x =>
     x.Cookie.IsEssential = true;
     x.Cookie.HttpOnly = true;
 });
-
 
 
 var app = builder.Build();
