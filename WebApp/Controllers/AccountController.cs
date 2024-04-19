@@ -11,11 +11,12 @@ using WebbApp.ViewModels.Account;
 namespace WebApp.Controllers;
 
 [Authorize]
-public class AccountController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, AddressManager addressManager) : Controller
+public class AccountController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, AddressManager addressManager, CourseService courseService) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly AddressManager _addressManager = addressManager;
+    private readonly CourseService _courseService = courseService;
 
 
     #region Details
@@ -61,7 +62,8 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
                     {
                         ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to update basic information.");
                         ViewData["StatusMessage"] = "danger|Something went wrong! Unable to update basic information.";
-                    }else
+                    }
+                    else
                     {
                         ViewData["StatusMessage"] = "success|Basic Information was saved successfully.";
                     }
@@ -327,5 +329,24 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
 
     //    return View(viewModel);
     //}
+    #endregion
+    #region SavedCourses
+
+    [HttpGet]
+    [Route("/account/saved")]
+    public async Task<IActionResult> SavedCourses()
+    {
+        var viewModel = new SavedCoursesViewModel();
+
+
+        var user = await _userManager.GetUserAsync(User);
+        if (user != null)
+        {
+            viewModel.SavedCourses = await _courseService.GetCoursesByIdsAsync(user.Id);
+        }
+
+        return View(viewModel);
+    }
+
     #endregion
 }

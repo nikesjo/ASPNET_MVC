@@ -27,24 +27,25 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
-                var response = await _httpClient.PostAsync($"https://localhost:7091/api/subscribers?key={_configuration["ApiKey"]}", content);
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    TempData["StatusMessage"] = "success|Your message was sent!";
-                    return Ok();
-                    //return Ok("You are now subscribed");
+                    var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
+                    var response = await _httpClient.PostAsync($"https://localhost:7091/api/subscribers?key={_configuration["ApiKey"]}", content);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        TempData["StatusMessage"] = "success|You're now subscribed!";
+                    }
                 }
-                else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                catch
                 {
-                    return Conflict("You are already subscribed");
+                    TempData["StatusMessage"] = "danger|Something went wrong.";
                 }
+
             }
             else
             {
-                //return BadRequest("Invalid email address");
-                ModelState.AddModelError("IncorrectValues", "Incorrect email address or password");
-                ViewData["StatusMessage"] = "danger|Incorrect email address or password";
+                ModelState.AddModelError("IncorrectValues", "Incorrect email address");
+                TempData["StatusMessage"] = "danger|Incorrect email address.";
             }
 
             return RedirectToAction("Index", "Home", "newsletter");
@@ -83,11 +84,13 @@ namespace WebApp.Controllers
             }
             else
             {
-                ModelState.AddModelError("IncorrectValues", "Incorrect email address or password");
+                ModelState.AddModelError("IncorrectValues", "Incorrect message");
                 ViewData["StatusMessage"] = "danger|Your message was not sent. Please enter fields properly.";
             }
 
-            return View();
+            var contactViewModel = new ContactFormViewModel();
+
+            return View("Contact", contactViewModel);
         }
         #endregion
 

@@ -21,9 +21,9 @@
     </div>
 
     <nav>
-        <a class="btn-theme-s" asp-controller="Account" asp-action="Details"><i class="fa-regular fa-gear"></i><span>Account Details</span></a>
-        <a class="btn-transparent" asp-controller="Account" asp-action="Security"><i class="fa-regular fa-lock"></i><span>Security</span></a>
-        <a class="btn-transparent" asp-controller="Account" asp-action="SavedCourses"><i class="fa-regular fa-bookmark"></i><span>Saved Courses</span></a>
+        <a asp-controller="Account" asp-action="Details" class="@((ViewContext.RouteData.Values["Controller"] as string == "Account" && ViewContext.RouteData.Values["Action"] as string == "Details") ? "btn-theme-s" : "btn-transparent")"><i class="fa-regular fa-gear"></i><span>Account Details</span></a>
+        <a asp-controller="Account" asp-action="Security" class="@((ViewContext.RouteData.Values["Controller"] as string == "Account" && ViewContext.RouteData.Values["Action"] as string == "Security") ? "btn-theme-s" : "btn-transparent")"><i class="fa-regular fa-lock"></i><span>Security</span></a>
+        <a asp-controller="Account" asp-action="SavedCourses" class="@((ViewContext.RouteData.Values["Controller"] as string == "Account" && ViewContext.RouteData.Values["Action"] as string == "SavedCourses") ? "btn-theme-s" : "btn-transparent")"><i class="fa-regular fa-bookmark"></i><span>Saved Courses</span></a>
         <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></a>
     </nav>
 }

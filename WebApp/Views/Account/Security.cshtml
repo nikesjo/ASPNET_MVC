@@ -14,16 +14,15 @@
                 <h5>Password</h5>
                 <div class="col-12">
                     <div class="col-lg-6">
-                        <label class="form-label" asp-for=@Model.Form!.NewPassword></label>
-                        <span asp-validation-for="@Model.Form!.NewPassword"></span>
-                        <input class="form-control" asp-for="@Model.Form!.NewPassword" />
+                        <label class="form-label" asp-for=@Model.Form!.CurrentPassword></label>
+                        <span asp-validation-for="@Model.Form!.CurrentPassword"></span>
+                        <input class="form-control" asp-for="@Model.Form!.CurrentPassword" />
                     </div>
                 </div>
-
                 <div class="col-xl-6">
-                    <label class="form-label" asp-for=@Model.Form!.CurrentPassword></label>
-                    <span asp-validation-for="@Model.Form!.CurrentPassword"></span>
-                    <input class="form-control" asp-for="@Model.Form!.CurrentPassword" />
+                    <label class="form-label" asp-for=@Model.Form!.NewPassword></label>
+                    <span asp-validation-for="@Model.Form!.NewPassword"></span>
+                    <input class="form-control" asp-for="@Model.Form!.NewPassword" />
                 </div>
                 <div class="col-xl-6">
                     <label class="form-label" asp-for=@Model.Form!.ConfirmNewPassword></label>
@@ -40,7 +39,7 @@
             </form>
 
 
-            <form method="post" asp-controller="Account" asp-action="DeleteAccount" id="deleteAccount" class="row g-4" novalidate>
+            <form method="post" asp-controller="Account" asp-action="Security" id="deleteAccount" class="row g-4" novalidate>
                 <h5>Delete account</h5>
                 <p>When you delete your account, your public profile will be deactivated immediately. If you change your mind before the 14 days are up, sign in with your email and password, and we’ll send you a link to reactivate your account.</p>
 

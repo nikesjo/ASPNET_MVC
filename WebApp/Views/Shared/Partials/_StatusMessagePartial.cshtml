@@ -6,3 +6,11 @@
 
     <div id="statusMessage" class="alert alert-@messageType" role="alert">@messageText</div>
 }
+@if (TempData["StatusMessage"] != null)
+{
+    var messageParts = TempData["StatusMessage"]?.ToString()!.Split('|');
+    var messageType = messageParts?[0];
+    var messageText = messageParts?[1];
+
+    <div id="statusMessage" class="alert alert-@messageType" role="alert">@messageText</div>
+}
