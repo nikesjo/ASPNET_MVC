@@ -13,7 +13,7 @@
             <img id="logo-img" src="~/images/@(isDark ? "silicon-logo-dark-theme.svg" : "silicon-logo-light-theme.svg")" alt="Logotype for Silicon" />
         </a>
 
-        <div id="menu" class="hide">
+        <div id="menu">
             <nav>
                 <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="overview">Overview</a>
                 @if (_signInManager.IsSignedIn(User))
@@ -42,7 +42,7 @@
             <label>Dark</label>
         </div>
 
-        <div id="account-buttons" class="hide">
+        <div id="account-buttons">
             @if (_signInManager.IsSignedIn(User))
             {
 
@@ -55,7 +55,7 @@
             }
         </div>
 
-        <button onclick="toggleMenu()" class="btn-mobilemenu">
+        <button id="btn-mobile" onclick="toggleMenu()">
             <i class="fa-regular fa-bars"></i>
         </button>
     </div>

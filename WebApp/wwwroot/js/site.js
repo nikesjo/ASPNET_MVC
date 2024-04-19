@@ -153,36 +153,36 @@ function handleProfileImageUpload() {
 //        }
 //    });
 //});
-document.addEventListener('DOMContentLoaded', function () {
-    document.addEventListener('click', function (e) {
-        if (e.target && e.target.matches("a.button-top, a.button-top i")) {
-            e.preventDefault();
+//document.addEventListener('DOMContentLoaded', function () {
+//    document.addEventListener('click', function (e) {
+//        if (e.target && e.target.matches("a.button-top, a.button-top i")) {
+//            e.preventDefault();
 
-            var link = e.target.closest("a.button-top");
-            var courseId = parseInt(link.getAttribute('data-courseid'), 10);
-            console.log("Course ID:", courseId);
+//            var link = e.target.closest("a.button-top");
+//            var courseId = parseInt(link.getAttribute('data-courseid'), 10);
+//            console.log("Course ID:", courseId);
 
-            fetch('/courses/savecourse', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ CourseId: courseId })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        link.classList.toggle('saved');
-                    } else {
-                        console.log("Error saving course.");
-                    }
-                })
-                .catch(error => {
-                    console.log("Error saving course:", error);
-                });
-        }
-    });
-});
+//            fetch('/courses/savecourse', {
+//                method: 'POST',
+//                headers: {
+//                    'Content-Type': 'application/json'
+//                },
+//                body: JSON.stringify({ CourseId: courseId })
+//            })
+//                .then(response => response.json())
+//                .then(data => {
+//                    if (data.success) {
+//                        link.classList.toggle('saved');
+//                    } else {
+//                        console.log("Error saving course.");
+//                    }
+//                })
+//                .catch(error => {
+//                    console.log("Error saving course:", error);
+//                });
+//        }
+//    });
+//});
 //document.addEventListener('DOMContentLoaded', function () {
 //    document.addEventListener('click', function (e) {
 //        if (e.target && e.target.matches("a.bookmark, a.bookmark i")) {
@@ -214,3 +214,32 @@ document.addEventListener('DOMContentLoaded', function () {
 //        }
 //    });
 //});
+
+document.addEventListener('DOMContentLoaded', function () {
+    let links = document.querySelectorAll("a.button-top");
+    links.forEach(link => {
+        link.addEventListener('click', function () {
+            let courseId = parseInt(link.getAttribute('data-courseid'), 10);
+            console.log("Course ID:", courseId);
+            fetch('/courses/savecourse', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ CourseId: courseId })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        link.classList.toggle('saved');
+                    } else {
+                        console.log("Error saving course.");
+                    }
+                })
+                .catch(error => {
+                    console.log("Error saving course:", error);
+                });
+        })
+    })
+    
+});

@@ -4,9 +4,11 @@ header {
     .container {
         display: grid;
         align-items: center;
+        justify-content: center;
         grid-template-columns: 1fr auto;
-        grid-template-areas: "logo mobile";
+        grid-template-areas: "logo mobile" "menu menu" "buttons buttons";
         gap: 40px;
+        overflow-x: hidden;
 
         @include lg {
             grid-template-columns: auto 1fr auto auto;
@@ -42,8 +44,8 @@ header {
 
         #account-buttons {
             grid-area: buttons;
-            display: none;
             gap: 15px;
+            display: none;
 
             @include lg {
                 display: flex;
@@ -66,26 +68,57 @@ header {
             }
         }
 
-        .btn-mobilemenu {
+        #btn-mobile {
             grid-area: mobile;
             display: block;
             border: none;
+            background-color: transparent;
+
+            i {
+                color: var(--color-gray-900);
+            }
 
             &:hover {
                 @include shadow-s;
+                font-size: 1.1rem;
             }
 
             @include lg {
                 display: none;
             }
         }
-        /*        .hide {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: auto;
-        }*/
+
+        .hide {
+            display: none;
+        }
+    }
+}
+@media (max-width: 1199px) {
+    .container {
+        #menu {
+            display: none;
+
+            &.hide {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            nav {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        #account-buttons {
+            display: none;
+
+            &.hide {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
     }
 }
