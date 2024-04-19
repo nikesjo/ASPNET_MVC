@@ -90,116 +90,58 @@ public class CoursesController(CategoryService categoryService, CourseService co
     #endregion
 
     [HttpPost]
-    public async Task<IActionResult> SaveCourse([FromBody] SaveCourseDto saveCourseDto)
+    [Route("/courses/savecourse/{id}")]
+    public async Task<IActionResult> SaveCourse(int id)
     {
-        if (ModelState.IsValid)
+        try
         {
-            try
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
             {
-                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-                if (userId != null && saveCourseDto.CourseId != 0)
-                {
-                    await _courseService.SaveCourseForUserAsync(saveCourseDto.CourseId, userId);
-
-                    return Json(new { success = true });
-                }
+                return Unauthorized();
             }
-            catch (Exception)
+
+            var savedCourse = new SavedCourseEntity
             {
-                return Json(new { success = false });
+                UserId = user.Id,
+                CourseId = id
+            };
+
+            if (savedCourse != null)
+            {
+                _context.SavedCourses.Add(savedCourse!);
+                await _context.SaveChangesAsync();
+
+                return Json(new { success = true });
+                //return Ok();
             }
         }
-
-        return Json(new { success = false });
+        catch (Exception ex) { Debug.WriteLine("ERROR :: " + ex.Message); }
+        return Problem();
     }
 
     //[HttpPost]
-    //public async Task<IActionResult> AddCourse(SavedCourseModel model)
+    //public async Task<IActionResult> SaveCourse([FromBody] SaveCourseDto saveCourseDto)
     //{
     //    if (ModelState.IsValid)
     //    {
     //        try
     //        {
-    //            var course = new SavedCourseEntity
+    //            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+    //            if (userId != null && saveCourseDto.CourseId != 0)
     //            {
-    //                UserId = model.UserId!,
-    //                CourseId = model.CourseId
-    //            };
-    //            _context.SavedCourses.Add(course);
-    //            await _context.SaveChangesAsync();
-    //            return RedirectToAction("Courses", "Courses");
-    //        }
-    //        catch (Exception ex) { Debug.WriteLine("ERROR :: " + ex.Message); }
+    //                await _courseService.SaveCourseForUserAsync(saveCourseDto.CourseId, userId);
 
-    //    }
-
-    //    return RedirectToAction("Courses", "Courses");
-    //}
-
-    //[HttpPost]
-    //public async Task<IActionResult> AddCourse(int courseId)
-    //{
-    //    // Hämta den inloggade användaren
-    //    var user = await _userManager.GetUserAsync(User);
-    //    if (user == null)
-    //    {
-    //        return Unauthorized(); // Användaren är inte inloggad
-    //    }
-
-    //    // Skapa ett nytt SavedCourseEntity-objekt för att spara bokmärket
-    //    var savedCourse = new SavedCourseEntity
-    //    {
-    //        UserId = user.Id,
-    //        CourseId = courseId
-    //    };
-
-    //    // Spara bokmärket i databasen
-    //    _context.SavedCourses.Add(savedCourse);
-    //    await _context.SaveChangesAsync();
-
-    //    return Ok();
-    //}
-
-    //[HttpPost("{id}")]
-    //public async Task<IActionResult> AddCourse(int id)
-    //{
-    //    if (ModelState.IsValid)
-    //    {
-    //        try
-    //        {
-    //            var userId = HttpContext.User.Identities.FirstOrDefault();
-    //            var savedCourse = new SavedCourseModel
-    //            {
-    //                CourseId = id,
-    //                UserId = userId?.ToString(),
-    //            };
-
-    //            if (savedCourse != null)
-    //            {
-    //                await _context.SavedCourses.AddAsync(savedCourse);
-    //                await _context.SaveChangesAsync();
+    //                return Json(new { success = true });
     //            }
-
-    //            return View();
     //        }
-    //        catch (Exception ex) { Debug.WriteLine("ERROR :: " + ex.Message); }
-
+    //        catch (Exception)
+    //        {
+    //            return Json(new { success = false });
+    //        }
     //    }
 
-    //    return View();
-    //}
-    //[HttpPost]
-    //public async Task<IActionResult> AddCourse(CourseDto dto)
-    //{
-    //    var claims = HttpContext.User.Identities.FirstOrDefault();
-    //    var course = new SavedCourseModel
-    //    {
-    //        CourseId = dto.Id,
-    //        UserId = HttpContext.User.Id,
-    //    };
-    //    var userId = (HttpContext.Current.User.Identity as ClaimsIdentity).Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)
-    //    //var userId = HttpContext.User.Identity;
-    //    return View();
+    //    return Json(new { success = false });
     //}
 }

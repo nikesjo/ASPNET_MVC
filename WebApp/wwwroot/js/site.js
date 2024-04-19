@@ -115,6 +115,9 @@ function handleProfileImageUpload() {
     catch { }
 }
 
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
 //document.addEventListener('DOMContentLoaded', function () {
 //    document.addEventListener('click', function (e) {
 //        if (e.target && e.target.matches("a.button-top, a.button-top i")) {
@@ -153,36 +156,7 @@ function handleProfileImageUpload() {
 //        }
 //    });
 //});
-//document.addEventListener('DOMContentLoaded', function () {
-//    document.addEventListener('click', function (e) {
-//        if (e.target && e.target.matches("a.button-top, a.button-top i")) {
-//            e.preventDefault();
 
-//            var link = e.target.closest("a.button-top");
-//            var courseId = parseInt(link.getAttribute('data-courseid'), 10);
-//            console.log("Course ID:", courseId);
-
-//            fetch('/courses/savecourse', {
-//                method: 'POST',
-//                headers: {
-//                    'Content-Type': 'application/json'
-//                },
-//                body: JSON.stringify({ CourseId: courseId })
-//            })
-//                .then(response => response.json())
-//                .then(data => {
-//                    if (data.success) {
-//                        link.classList.toggle('saved');
-//                    } else {
-//                        console.log("Error saving course.");
-//                    }
-//                })
-//                .catch(error => {
-//                    console.log("Error saving course:", error);
-//                });
-//        }
-//    });
-//});
 //document.addEventListener('DOMContentLoaded', function () {
 //    document.addEventListener('click', function (e) {
 //        if (e.target && e.target.matches("a.bookmark, a.bookmark i")) {
@@ -215,34 +189,187 @@ function handleProfileImageUpload() {
 //    });
 //});
 
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+//document.addEventListener('DOMContentLoaded', function () {
+//    let links = document.querySelectorAll("a.button-top");
+//    links.forEach(link => {
+//        link.addEventListener('click', function () {
+//            let courseId = parseInt(link.getAttribute('data-courseid'), 10);
+//            console.log("Course ID:", courseId);
+//            fetch('/courses/savecourse', {
+//                method: 'POST',
+//                headers: {
+//                    'Content-Type': 'application/json'
+//                },
+//                body: JSON.stringify({ CourseId: courseId })
+//            })
+//                .then(response => response.json())
+//                .then(data => {
+//                    if (data.success) {
+//                        link.classList.toggle('saved');
+//                    } else {
+//                        console.log("Error saving course.");
+//                    }
+//                })
+//                .catch(error => {
+//                    console.log("Error saving course:", error);
+//                });
+//        })
+//    })
 
-document.addEventListener('DOMContentLoaded', function () {
-    let links = document.querySelectorAll("a.button-top");
-    links.forEach(link => {
-        link.addEventListener('click', function () {
-            let courseId = parseInt(link.getAttribute('data-courseid'), 10);
-            console.log("Course ID:", courseId);
-            fetch('/courses/savecourse', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ CourseId: courseId })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        link.classList.toggle('saved');
-                    } else {
-                        console.log("Error saving course.");
-                    }
-                })
-                .catch(error => {
-                    console.log("Error saving course:", error);
-                });
-        })
+//});
+//document.addEventListener('DOMContentLoaded', function () {
+//    document.addEventListener('click', function (e) {
+//        if (e.target && e.target.matches("a.button-top, a.button-top i")) {
+//            e.preventDefault();
+
+//            var link = e.target.closest("a.button-top");
+//            var courseId = parseInt(link.getAttribute('data-courseid'), 10);
+//            console.log("Course ID:", courseId);
+
+//            fetch('/courses/savecourse', {
+//                method: 'POST',
+//                headers: {
+//                    'Content-Type': 'application/json'
+//                },
+//                body: JSON.stringify({ CourseId: courseId })
+//            })
+//                .then(response => response.json())
+//                .then(data => {
+//                    if (data.success) {
+//                        link.classList.toggle('saved');
+//                    } else {
+//                        console.log("Error saving course.");
+//                    }
+//                })
+//                .catch(error => {
+//                    console.log("Error saving course:", error);
+//                });
+//        }
+//    });
+//});
+
+//document.addEventListener('DOMContentLoaded', function () {
+//    try {
+//        // Hämta referens till knappen för att spara bokmärke
+//        var bookmarkButton = document.getElementById("bookmark-button");
+
+//        // Lägg till en klickhändelse för att spara bokmärke när knappen klickas
+//        bookmarkButton.addEventListener("click", function (event) {
+//            event.preventDefault(); // Förhindra standardbeteendet för länken
+
+//            var courseId = parseInt(bookmarkButton.getAttribute("asp-route-id"), 10) // Hämta kursens ID från knappen
+//            console.log("Course ID:", courseId);
+//            // Skapa en AJAX-förfrågan för att spara bokmärket
+//            var xhr = new XMLHttpRequest();
+//            xhr.open("POST", "/Courses/SaveCourse/" + courseId, true);
+//            xhr.setRequestHeader("Content-Type", "application/json");
+
+//            // Vid mottagande av svar från servern
+//            xhr.onload = function () {
+//                if (xhr.status === 200) {
+//                    // Bokmärket sparades framgångsrikt
+//                    alert("Bokmärket har sparats!");
+//                } else {
+//                    // Något gick fel
+//                    alert("Ett fel uppstod. Försök igen senare.");
+//                }
+//            };
+
+//            // Skicka förfrågan
+//            xhr.send();
+//        });
+//    }
+//    catch (error) { console.log("Error saving course:", error) }
+
+//});
+
+//// Hämta referens till knappen för att spara bokmärke
+//var bookmarkButton = document.getElementById("bookmark-button");
+
+//// Lägg till en klickhändelse för att spara bokmärke när knappen klickas
+//bookmarkButton.addEventListener("click", function (event) {
+//    event.preventDefault(); // Förhindra standardbeteendet för länken
+
+//    var courseId = bookmarkButton.getAttribute("asp-route-id"); // Hämta kursens ID från knappen
+//    console.log("Course ID:", courseId);
+//    // Skicka AJAX-förfrågan med hjälp av Fetch API
+//    fetch("/Courses/SaveCourse/" + courseId, {
+//        method: "POST",
+//        headers: {
+//            "Content-Type": "application/json"
+//        }
+//    })
+//        .then(response => {
+//            if (!response.ok) {
+//                throw new Error("Ett fel uppstod. Försök igen senare.");
+//            }
+//            return response.json();
+//        })
+//        .then(data => {
+//            // Bokmärket sparades framgångsrikt
+//            alert("Bokmärket har sparats!");
+//        })
+//        .catch(error => {
+//            // Något gick fel
+//            alert(error.message);
+//        });
+//});
+
+//document.addEventListener('DOMContentLoaded', function () {
+//    document.addEventListener('click', function (e) {
+//        if (e.target && e.target.matches("a.bookmark, a.bookmark i")) {
+//            e.preventDefault();
+
+//            var link = e.target.closest("a.bookmark");
+//            var courseId = parseInt(link.getAttribute('data-courseid'), 10);
+//            //console.log("Course ID:", courseId);
+
+//            fetch('/Courses/SaveCourse', {
+//                method: 'POST',
+//                headers: {
+//                    'Content-Type': 'application/json'
+//                },
+//                body: JSON.stringify({ CourseId: courseId })
+//            })
+//                .then(response => response.json())
+//                .then(data => {
+//                    if (data.success) {
+//                        //var button = e.target.querySelector('.bookmark');
+//                        link.classList.toggle('saved');
+//                    } else {
+//                        console.log("Error saving course.");
+//                    }
+//                })
+//                .catch(error => {
+//                    console.log("Error saving course:", error);
+//                });
+//        }
+//    });
+//});
+
+const saveCourse = (id) => {
+    fetch(`/courses/savecourse/${id}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ CourseId: id })
     })
-    
-});
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                link.classList.toggle('saved');
+            } else {
+                console.log("Error saving course.");
+            }
+        })
+        .catch(error => {
+            console.log("Error saving course:", error);
+        });
+}
+
+//.then(response => response.text())
+//.then(data => {
+//    const parser = new DOMParser()
+//    const dom = parser.parseFromString(data, "text/html")
+//})

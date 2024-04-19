@@ -11,7 +11,7 @@
         <div class="box-savedcourses">
             <div class="saved-header">
                 <h2>Saved items</h2>
-                <a class="btn-gray" onclick="location.href='@Url.Action("RemoveCourses", "Courses")'"><i class="fa-regular fa-trash-can"></i></i><span>Delete all</span></a>
+                <a class="btn-gray" onclick="location.href='@Url.Action("RemoveCourses", "Courses")'"><i class="fa-regular fa-trash-can"></i><span>Delete all</span></a>
             </div>
             <div class="items">
                 @if (Model.SavedCourses != null)
@@ -56,49 +56,6 @@
                     <div>No courses found!</div>
                 }
             </div>
-        </div>
-        <div class="items">
-            @if (Model.SavedCourses != null)
-            {
-                @foreach (var course in Model.SavedCourses)
-                {
-                    <div class="course" onclick="location.href='@Url.Action("SingleCourse", "Courses", new { id = course.Id })'">
-                        @if (course.IsBestSeller)
-                        {
-                            <div class="best-seller">Best Seller</div>
-                        }
-
-                        <a class="btn-circle remove" onclick="location.href='@Url.Action("RemoveCourse", "Courses", new { id = course.Id })'" data-bs-toggle="tooltip" data-bs-title="Remove"><i class="fa-regular fa-bookmark"></i></a>
-
-                        <img src="~/images/courses/@course.ImageUrl" alt="@course.Title">
-
-                        <div class="content">
-                            <h5>@course.Title</h5>
-                            <p class="author">By @course.Author</p>
-                            <div class="pricing">
-                                @if (!string.IsNullOrEmpty(course.DiscountPrice))
-                                {
-                                    <div class="discount">@course.DiscountPrice</div>
-                                }
-
-                                <div class="original @(!string.IsNullOrEmpty(course.DiscountPrice) ? "discount-enabled" : "")">@course.OriginalPrice</div>
-                            </div>
-                            <div class="footer">
-                                <div class="hours">
-                                    <i class="fa-regular fa-clock"></i>@course.Hours hours
-                                </div>
-                                <div class="likes">
-                                    <i class="fa-regular fa-thumbs-up"></i>@course.LikesInProcent (@course.LikesInNumbers)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
-            }
-            else
-            {
-                <div>No courses found!</div>
-            }
         </div>
     </div>
 </section>
