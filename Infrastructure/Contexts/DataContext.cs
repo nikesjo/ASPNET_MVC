@@ -22,8 +22,5 @@ public class DataContext : IdentityDbContext<UserEntity>
             .WithOne(a => a.User)
             .HasForeignKey<AddressEntity>(a => a.UserId)
             .OnDelete(DeleteBehavior.Restrict);
-
-        builder.Entity<SavedCourseEntity>()
-            .HasKey(x => new { x.UserId, x.CourseId });
     }
 }

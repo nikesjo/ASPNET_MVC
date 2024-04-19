@@ -59,13 +59,20 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Infrastructure.Entities.SavedCourseEntity", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CourseId")
                         .HasColumnType("int");
 
-                    b.HasKey("UserId", "CourseId");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("SavedCourses");
                 });

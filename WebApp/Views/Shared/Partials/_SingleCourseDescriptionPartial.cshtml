@@ -32,7 +32,8 @@
                 </div>
 @*                 <button class="btn-circle bookmark" asp-action="AddCourse" asp-controller="Courses" asp-route-id="@Model.Id">Join course</button> *@
                 @* <a class="btn-theme-s" onclick="location.href='@Url.Action("AddCourse", "Courses", new { id = Model.Id })'">Join course</a> *@
-                <a class="btn-circle bookmark" asp-action="AddCourse" asp-controller="Courses" asp-route-id="@Model.Id">Join course</a>
+                @* <a class="btn-circle bookmark" asp-action="AddCourse" asp-controller="Courses" asp-route-id="@Model.Id">Join course</a> *@
+                <a class="btn-theme-s bookmark" data-courseid="@Model.Id">Join course</a>
             </div>
         </div>
     </div>

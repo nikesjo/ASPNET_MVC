@@ -114,3 +114,64 @@ function handleProfileImageUpload() {
     }
     catch { }
 }
+document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('click', function (e) {
+        if (e.target && e.target.matches("a.button-top, a.button-top i")) {
+            e.preventDefault();
+
+            var link = e.target.closest("a.button-top");
+            var courseId = parseInt(link.getAttribute('data-courseid'), 10);
+            console.log("Course ID:", courseId);
+
+            fetch('api/courses/savecourse', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ CourseId: courseId })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        link.classList.toggle('saved');
+                    } else {
+                        console.log("Error saving course.");
+                    }
+                })
+                .catch(error => {
+                    console.log("Error saving course:", error);
+                });
+        }
+    });
+});
+//document.addEventListener('DOMContentLoaded', function () {
+//    document.addEventListener('click', function (e) {
+//        if (e.target && e.target.matches("a.bookmark, a.bookmark i")) {
+//            e.preventDefault();
+
+//            var link = e.target.closest("a.bookmark");
+//            var courseId = parseInt(link.getAttribute('data-courseid'), 10);
+//            //console.log("Course ID:", courseId);
+
+//            fetch('/Courses/SaveCourse', {
+//                method: 'POST',
+//                headers: {
+//                    'Content-Type': 'application/json'
+//                },
+//                body: JSON.stringify({ CourseId: courseId })
+//            })
+//                .then(response => response.json())
+//                .then(data => {
+//                    if (data.success) {
+//                        //var button = e.target.querySelector('.bookmark');
+//                        link.classList.toggle('saved');
+//                    } else {
+//                        console.log("Error saving course.");
+//                    }
+//                })
+//                .catch(error => {
+//                    console.log("Error saving course:", error);
+//                });
+//        }
+//    });
+//});

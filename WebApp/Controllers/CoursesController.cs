@@ -3,9 +3,11 @@ using Infrastructure.Entities;
 using Infrastructure.Models;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 using System.Text;
 using WebApp.ViewModels.Courses;
 
@@ -91,6 +93,31 @@ public class CoursesController(CategoryService categoryService, CourseService co
     }
     #endregion
 
+    [HttpPost]
+    public async Task<IActionResult> SaveCourse([FromBody] SaveCourseDto saveCourseDto)
+    {
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+                if (userId != null && saveCourseDto.CourseId != 0)
+                {
+                    await _courseService.SaveCourseForUserAsync(saveCourseDto.CourseId, userId);
+
+                    return Json(new { success = true });
+                }
+            }
+            catch (Exception)
+            {
+                return Json(new { success = false });
+            }
+        }
+
+        return Json(new { success = false });
+    }
+
     //[HttpPost]
     //public async Task<IActionResult> AddCourse(SavedCourseModel model)
     //{
@@ -114,29 +141,29 @@ public class CoursesController(CategoryService categoryService, CourseService co
     //    return RedirectToAction("Courses", "Courses");
     //}
 
-    [HttpPost]
-    public async Task<IActionResult> AddCourse(int courseId)
-    {
-        // Hämta den inloggade användaren
-        var user = await _userManager.GetUserAsync(User);
-        if (user == null)
-        {
-            return Unauthorized(); // Användaren är inte inloggad
-        }
+    //[HttpPost]
+    //public async Task<IActionResult> AddCourse(int courseId)
+    //{
+    //    // Hämta den inloggade användaren
+    //    var user = await _userManager.GetUserAsync(User);
+    //    if (user == null)
+    //    {
+    //        return Unauthorized(); // Användaren är inte inloggad
+    //    }
 
-        // Skapa ett nytt SavedCourseEntity-objekt för att spara bokmärket
-        var savedCourse = new SavedCourseEntity
-        {
-            UserId = user.Id,
-            CourseId = courseId
-        };
+    //    // Skapa ett nytt SavedCourseEntity-objekt för att spara bokmärket
+    //    var savedCourse = new SavedCourseEntity
+    //    {
+    //        UserId = user.Id,
+    //        CourseId = courseId
+    //    };
 
-        // Spara bokmärket i databasen
-        _context.SavedCourses.Add(savedCourse);
-        await _context.SaveChangesAsync();
+    //    // Spara bokmärket i databasen
+    //    _context.SavedCourses.Add(savedCourse);
+    //    await _context.SaveChangesAsync();
 
-        return Ok();
-    }
+    //    return Ok();
+    //}
 
     //[HttpPost("{id}")]
     //public async Task<IActionResult> AddCourse(int id)

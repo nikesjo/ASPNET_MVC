@@ -53,13 +53,15 @@
 
                 @foreach (var course in Model.Courses)
                 {
+                    <a class="button-top" data-courseid="@course.Id"><i class="fa-regular fa-bookmark"></i></a>
                     <div class="course" onclick="location.href='@Url.Action("SingleCourse", "Courses", new { id = course.Id })'">
                         @if (course.IsBestSeller)
                         {
                             <div class="best-seller">Best Seller</div>
                         }
                         @* <button class="btn-circle bookmark" asp-action="AddCourse" asp-controller="Courses" asp-route-id="@course.Id"><i class="fa-regular fa-bookmark"></i></button> *@
-                        <a class="btn-circle bookmark" asp-action="AddCourse" asp-controller="Courses" asp-route-id="@course.Id"><i class="fa-regular fa-bookmark"></i></a>
+                        @* <a class="btn-circle bookmark" asp-action="AddCourse" asp-controller="Courses" asp-route-id="@course.Id"><i class="fa-regular fa-bookmark"></i></a> *@
+                        @* <a class="btn-circle bookmark" data-courseid="@course.Id"><i class="fa-regular fa-bookmark"></i></a> *@
 
                         <img src="~/images/courses/@course.ImageUrl" alt="@course.Title">
 
