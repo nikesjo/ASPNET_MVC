@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using System.Security.Claims;
 using WebApp.ViewModels.Account;
 using WebbApp.ViewModels.Account;
 
@@ -27,7 +26,6 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
     [Route("/account/details")]
     public async Task<IActionResult> Details()
     {
-        var claims = HttpContext.User.Identities.FirstOrDefault();
 
         var viewModel = new AccountDetailsViewModel
         {

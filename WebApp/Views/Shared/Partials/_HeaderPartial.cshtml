@@ -7,7 +7,7 @@
     var isDark = (themeMode == "dark") ? true : false;
 }
 
-<header>
+<header class="@(ViewData["HeaderClass"] ?? "")">
     <div class="container">
         <a id="logo" asp-controller="Home" asp-action="Index">
             <img id="logo-img" src="~/images/@(isDark ? "silicon-logo-dark-theme.svg" : "silicon-logo-light-theme.svg")" alt="Logotype for Silicon" />

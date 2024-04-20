@@ -1,0 +1,126 @@
+.contact-page-header {
+    padding: 15px 0;
+    background-color: var(--color-gray-100);
+
+    .container {
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        grid-template-columns: 1fr auto;
+        grid-template-areas: "logo mobile" "menu menu" "buttons buttons";
+        gap: 40px;
+        overflow-x: hidden;
+
+        @include xl {
+            grid-template-columns: auto 1fr auto auto;
+            grid-template-areas: "logo menu switch buttons";
+        }
+
+        #logo {
+            grid-area: logo;
+        }
+
+        #menu {
+            grid-area: menu;
+            display: none;
+
+            @include xl {
+                display: block;
+            }
+
+            nav {
+                display: flex;
+                gap: 15px;
+            }
+        }
+
+        .btn-switch {
+            grid-area: switch;
+            display: none;
+
+            @include xl {
+                display: block;
+            }
+        }
+
+        #account-buttons {
+            grid-area: buttons;
+            gap: 15px;
+            display: none;
+
+            @include xl {
+                display: flex;
+            }
+
+            img {
+                width: 44px;
+                height: 44px;
+                border-radius: 100%;
+            }
+
+            .btn-gray {
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            .btn-theme {
+                font-size: 16px;
+                font-weight: 600;
+            }
+        }
+
+        #btn-mobile {
+            grid-area: mobile;
+            display: block;
+            border: none;
+            background-color: transparent;
+
+            i {
+                color: var(--color-gray-900);
+            }
+
+            &:hover {
+                @include shadow-s;
+                font-size: 1.1rem;
+            }
+
+            @include xl {
+                display: none;
+            }
+        }
+
+        .hide {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 1199px) {
+    .container {
+        #menu {
+            display: none;
+
+            &.hide {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            nav {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        #account-buttons {
+            display: none;
+
+            &.hide {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}
