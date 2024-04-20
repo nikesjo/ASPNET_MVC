@@ -23,7 +23,6 @@ public class CoursesController(CategoryService categoryService, CourseService co
     private readonly DataContext _context = context;
     private readonly UserManager<UserEntity> _userManager = userManager;
 
-    #region GET
     [HttpGet]
     [Route("/courses")]
     public async Task<IActionResult> Courses(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 6)
@@ -88,7 +87,7 @@ public class CoursesController(CategoryService categoryService, CourseService co
 
         return RedirectToAction("Error404", "Home");
     }
-    #endregion
+
 
     [HttpPost]
     [Route("/courses/savecourse/{courseId}")]
@@ -126,29 +125,4 @@ public class CoursesController(CategoryService categoryService, CourseService co
         catch (Exception ex) { Debug.WriteLine("ERROR :: " + ex.Message); }
         return Problem();
     }
-
-    //[HttpPost]
-    //public async Task<IActionResult> SaveCourse([FromBody] SaveCourseDto saveCourseDto)
-    //{
-    //    if (ModelState.IsValid)
-    //    {
-    //        try
-    //        {
-    //            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-    //            if (userId != null && saveCourseDto.CourseId != 0)
-    //            {
-    //                await _courseService.SaveCourseForUserAsync(saveCourseDto.CourseId, userId);
-
-    //                return Json(new { success = true });
-    //            }
-    //        }
-    //        catch (Exception)
-    //        {
-    //            return Json(new { success = false });
-    //        }
-    //    }
-
-    //    return Json(new { success = false });
-    //}
 }

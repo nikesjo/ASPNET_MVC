@@ -25,12 +25,12 @@
                 align-items: baseline;
                 margin-bottom: 30px;
 
-
                 .btn-gray {
                     height: 60%;
                     background-color: transparent;
                     border: 1px solid var(--color-danger);
                     color: var(--color-danger);
+                    cursor: pointer;
 
                     &:hover {
                         text-decoration: none;

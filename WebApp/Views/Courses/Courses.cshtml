@@ -53,18 +53,11 @@
 
                 @foreach (var course in Model.Courses)
                 {
-                    
-                   @*  <a id="bookmark-button" class="btn-circle bookmark" asp-action="SaveCourse" asp-controller="Courses" asp-route-id="@course.Id" data-bs-toggle="tooltip" data-bs-title="Save Course"><i class="fa-regular fa-bookmark"></i></a> *@
                     <div class="course">
                         @if (course.IsBestSeller)
                         {
                             <div class="best-seller">Best Seller</div>
                         }
-
-                        @* <button class="btn-circle bookmark" asp-action="AddCourse" asp-controller="Courses" asp-route-id="@course.Id"><i class="fa-regular fa-bookmark"></i></button> *@
-                        @* <a class="btn-circle bookmark" asp-action="AddCourse" asp-controller="Courses" asp-route-id="@course.Id"><i class="fa-regular fa-bookmark"></i></a> *@
-                        @* <a class="btn-circle bookmark" data-courseid="@course.Id"><i class="fa-regular fa-bookmark"></i></a> *@
-                        @* <a class="btn-circle bookmark" data-courseid="@course.Id" data-bs-toggle="tooltip" data-bs-title="Save Course"><i class="fa-regular fa-bookmark"></i></a> *@
 
                         <button id="bookmark-button" class="btn-circle bookmark" onclick="saveCourse(@course.Id)" data-bs-toggle="tooltip" data-bs-title="Save Course"><i class="fa-regular fa-bookmark"></i></button>
                         
@@ -120,7 +113,7 @@
                 <button class="btn-theme-s">Work with us</button>
             </div>
             <div class="work-img">
-                <img src="images/work-image.svg" alt="">
+                <img src="~/images/work-image.svg" alt="">
             </div>
         </div>
     </div>

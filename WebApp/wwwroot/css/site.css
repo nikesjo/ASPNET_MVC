@@ -2456,9 +2456,6 @@ footer .container .social-media {
   width: 60%;
   cursor: pointer;
 }
-#description-course .container .description-header .singlecourse-box a {
-  cursor: pointer;
-}
 
 #program-details .container .number {
   display: flex;
@@ -2612,6 +2609,7 @@ footer .container .social-media {
   background-color: transparent;
   border: 1px solid var(--color-danger);
   color: var(--color-danger);
+  cursor: pointer;
 }
 #saved-courses .container .box-savedcourses .saved-header .btn-gray:hover {
   text-decoration: none;

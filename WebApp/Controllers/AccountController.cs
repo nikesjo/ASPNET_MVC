@@ -1,22 +1,25 @@
-﻿using Infrastructure.Entities;
-using Infrastructure.Models;
+﻿using Infrastructure.Contexts;
+using Infrastructure.Entities;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Security.Claims;
 using WebApp.ViewModels.Account;
 using WebbApp.ViewModels.Account;
 
 namespace WebApp.Controllers;
 
 [Authorize]
-public class AccountController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, AddressManager addressManager, CourseService courseService) : Controller
+public class AccountController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, AddressManager addressManager, CourseService courseService, DataContext context) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly AddressManager _addressManager = addressManager;
     private readonly CourseService _courseService = courseService;
+    private readonly DataContext _context = context;
 
 
     #region Details
@@ -37,7 +40,6 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
         return View(viewModel);
     }
     #endregion
-
 
     #region [HttpPost] Details
     [HttpPost]
@@ -215,7 +217,6 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
     }
     #endregion
 
-
     #region Security
     [HttpGet]
     [Route("/account/security")]
@@ -227,7 +228,6 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
     }
 
     #endregion
-
 
     #region [HttpPost] Security
     [HttpPost]
@@ -273,67 +273,10 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
     }
     #endregion
 
-    //[HttpDelete]
-    //public async Task<IActionResult> DeleteAccount(DeleteAccountModel deleteModel)
-    //{
-    //    var user = await _userManager.GetUserAsync(User);
-    //    if (user != null)
-    //    {
-    //        if (deleteModel.ConfirmDelete == true)
-    //        {
-    //            var result = await _userManager.DeleteAsync(user);
-    //            if (result.Succeeded)
-    //            {
-    //                await _signInManager.SignOutAsync();
-    //                return RedirectToAction("Index", "Home");
-    //            }
-    //            else
-    //            {
-    //                ModelState.AddModelError("DeleteError", "Could not delete account");
-    //                ViewData["ErrorMessage"] = "danger|Something went wrong, could not delete account.";
-    //            }
-    //        }
-    //        else
-    //        {
-    //            ModelState.AddModelError("DeleteError", "Could not delete account");
-    //            ViewData["ErrorMessage"] = "danger|Something went wrong, could not delete account.";
-    //        }
-    //    }
-
-    //    return RedirectToAction("Security", "Account");
-    //}
-
-    #region Saved Courses
-    //[HttpGet]
-    //[Route("/account/savedcourses")]
-    //public async Task<IActionResult> SavedCourses()
-    //{
-    //    //var viewModel = new AccountSecurityViewModel();
-
-    //    //return View(viewModel);
-    //    return View();
-    //}
-
-    //[HttpPut]
-    //public async Task<IActionResult> RemoveCourses(CoursesViewModel viewModel)
-    //{
-
-
-    //    return View(viewModel);
-    //}
-
-    //[HttpPut]
-    //public async Task<IActionResult> RemoveCourse(CoursesViewModel viewModel)
-    //{
-
-
-    //    return View(viewModel);
-    //}
-    #endregion
     #region SavedCourses
 
     [HttpGet]
-    [Route("/account/saved")]
+    [Route("/account/savedcourses")]
     public async Task<IActionResult> SavedCourses()
     {
         var viewModel = new SavedCoursesViewModel();
@@ -346,6 +289,71 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
         }
 
         return View(viewModel);
+    }
+
+    [HttpPost]
+    [Route("/courses/removeallcourses")]
+    public async Task<IActionResult> RemoveAllCourses()
+    {
+        try
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+
+            var savedCourses = await _context.SavedCourses
+                .Where(sc => sc.UserId == user.Id)
+                .ToListAsync();
+
+            if (savedCourses == null || savedCourses.Count == 0)
+            {
+                return Json(new { success = false, message = "No courses found to remove." });
+            }
+
+            _context.SavedCourses.RemoveRange(savedCourses);
+            await _context.SaveChangesAsync();
+
+            return Json(new { success = true });
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine("ERROR :: " + ex.Message);
+            return Problem();
+        }
+    }
+
+    [HttpPost]
+    [Route("/courses/removecourse/{courseId}")]
+    public async Task<IActionResult> RemoveCourse(int courseId)
+    {
+        try
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+
+            var savedCourse = await _context.SavedCourses
+                .FirstOrDefaultAsync(x => x.UserId == user.Id && x.CourseId == courseId);
+
+            if (savedCourse == null)
+            {
+                return Json(new { success = false, message = "Course not found." });
+            }
+
+            _context.SavedCourses.Remove(savedCourse);
+            await _context.SaveChangesAsync();
+
+            return Json(new { success = true });
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine("ERROR :: " + ex.Message);
+            return Problem();
+        }
     }
 
     #endregion

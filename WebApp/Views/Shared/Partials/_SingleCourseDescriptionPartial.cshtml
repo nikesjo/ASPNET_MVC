@@ -30,12 +30,7 @@
 
                     <div class="original @(!string.IsNullOrEmpty(Model.DiscountPrice) ? "discount-enabled" : "")">@Model.OriginalPrice</div>
                 </div>
-@*                 <button class="btn-circle bookmark" asp-action="AddCourse" asp-controller="Courses" asp-route-id="@Model.Id">Join course</button> *@
-                @* <a class="btn-theme-s" onclick="location.href='@Url.Action("AddCourse", "Courses", new { id = Model.Id })'">Join course</a> *@
-                @* <a class="btn-circle bookmark" asp-action="AddCourse" asp-controller="Courses" asp-route-id="@Model.Id">Join course</a> *@
-                @* <a class="btn-theme-s bookmark" data-courseid="@Model.Id">Join course</a> *@
-                @* <a class="button-top" data-courseid="@Model.Id">Join course</a> *@
-                <a id="bookmark-button" class="btn-theme-s" asp-action="SaveCourse" asp-controller="Courses" asp-route-id="@Model.Id">Join course</a>
+                <button id="bookmark-button" class="btn-theme-s" onclick="saveCourse(@Model.Id)">Join course</button>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@ namespace Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20240416151836_profile-image")]
-    partial class profileimage
+    partial class Profileimage
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
