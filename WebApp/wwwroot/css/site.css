@@ -1912,20 +1912,38 @@ footer .container .social-media {
   top: 15px;
   right: 15px;
 }
-#courses .container .items .course.saved {
-  color: var(--color-theme);
-}
 #courses .container .items .course img {
   min-width: 100%;
   height: auto;
 }
 #courses .container .items .course .content {
   text-align: left;
-  padding: 20px;
+  padding: 10px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 220px;
 }
 #courses .container .items .course .content h5 {
-  margin-top: 10px;
+  line-height: 160%;
+  font-weight: 400;
+  color: var(--color-gray-700);
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
   color: var(--color-gray-800);
+  font-weight: 800;
+}
+@media (min-width: 1200px) {
+  #courses .container .items .course .content h5 {
+    line-height: 160%;
+    font-weight: 400;
+    color: var(--color-gray-700);
+    font-family: "Manrope", sans-serif;
+    font-weight: 800;
+    color: var(--color-gray-900);
+    font-size: 20px !important;
+    color: var(--color-gray-800);
+  }
 }
 #courses .container .items .course .content .author {
   line-height: 160%;
@@ -1940,8 +1958,8 @@ footer .container .social-media {
   gap: 10px;
   font-size: 18px;
   font-weight: 700;
-  border-bottom: 1px solid var(--color-gray-300);
   padding-bottom: 15px;
+  margin-top: auto;
 }
 #courses .container .items .course .content .pricing .discount {
   color: var(--color-danger);
@@ -1962,9 +1980,11 @@ footer .container .social-media {
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
   display: flex;
+  margin-top: auto;
   gap: 20px;
   color: var(--color-gray-600);
   padding-top: 20px;
+  border-top: 1px solid var(--color-gray-300);
 }
 #courses .container .items .course .content .footer i {
   padding-right: 5px;
@@ -2654,7 +2674,7 @@ footer .container .social-media {
   top: 15px;
   left: 15px;
 }
-#saved-courses .container .box-savedcourses .items .course .bookmark {
+#saved-courses .container .box-savedcourses .items .course .remove {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -2665,11 +2685,32 @@ footer .container .social-media {
 }
 #saved-courses .container .box-savedcourses .items .course .content {
   text-align: left;
-  padding: 20px;
+  padding: 5px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 220px;
 }
 #saved-courses .container .box-savedcourses .items .course .content h5 {
-  margin-top: 10px;
+  line-height: 160%;
+  font-weight: 400;
+  color: var(--color-gray-700);
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
   color: var(--color-gray-800);
+  font-weight: 800;
+}
+@media (min-width: 1200px) {
+  #saved-courses .container .box-savedcourses .items .course .content h5 {
+    line-height: 160%;
+    font-weight: 400;
+    color: var(--color-gray-700);
+    font-family: "Manrope", sans-serif;
+    font-weight: 800;
+    color: var(--color-gray-900);
+    font-size: 20px !important;
+    color: var(--color-gray-800);
+  }
 }
 #saved-courses .container .box-savedcourses .items .course .content .author {
   line-height: 160%;
@@ -2684,8 +2725,8 @@ footer .container .social-media {
   gap: 10px;
   font-size: 18px;
   font-weight: 700;
-  border-bottom: 1px solid var(--color-gray-300);
   padding-bottom: 15px;
+  margin-top: auto;
 }
 #saved-courses .container .box-savedcourses .items .course .content .pricing .discount {
   color: var(--color-danger);
@@ -2706,9 +2747,11 @@ footer .container .social-media {
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
   display: flex;
+  margin-top: auto;
   gap: 20px;
   color: var(--color-gray-600);
   padding-top: 20px;
+  border-top: 1px solid var(--color-gray-300);
 }
 #saved-courses .container .box-savedcourses .items .course .content .footer i {
   padding-right: 5px;

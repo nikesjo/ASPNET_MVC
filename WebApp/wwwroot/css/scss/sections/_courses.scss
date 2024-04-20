@@ -102,16 +102,10 @@
                     left: 15px;
                 }
 
-
-
                 .bookmark {
                     position: absolute;
                     top: 15px;
                     right: 15px;
-                }
-
-                &.saved {
-                    color: var(--color-theme);
                 }
 
                 img {
@@ -121,11 +115,21 @@
 
                 .content {
                     text-align: left;
-                    padding: 20px;
+                    padding: 10px 20px 20px 20px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 220px;
 
                     h5 {
-                        margin-top: 10px;
+                        @include text-m;
                         color: var(--color-gray-800);
+                        font-weight: 800;
+
+                        @include xl {
+                            @include h5;
+                            color: var(--color-gray-800);
+                        }
                     }
 
                     .author {
@@ -138,8 +142,8 @@
                         gap: 10px;
                         font-size: 18px;
                         font-weight: 700;
-                        border-bottom: 1px solid var(--color-gray-300);
                         padding-bottom: 15px;
+                        margin-top: auto;
 
                         .discount {
                             color: var(--color-danger);
@@ -160,9 +164,11 @@
                     .footer {
                         @include text-s;
                         display: flex;
+                        margin-top: auto;
                         gap: 20px;
                         color: var(--color-gray-600);
                         padding-top: 20px;
+                        border-top: 1px solid var(--color-gray-300);
 
                         i {
                             padding-right: 5px;
