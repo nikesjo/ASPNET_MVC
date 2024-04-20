@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Diagnostics;
 using System.Text;
 using WebApp.ViewModels.Home;
 using WebApp.ViewModels.Home.Partials;
@@ -95,9 +94,9 @@ namespace WebApp.Controllers
         #endregion
 
         [Route("/error")]
-        public IActionResult Error404(int statusCode) => View();
+        public IActionResult Error404() => View();
 
         [Route("/denied")]
-        public IActionResult AccessDenied(int statusCode) => View();
+        public IActionResult AccessDenied() => View();
     }
 }

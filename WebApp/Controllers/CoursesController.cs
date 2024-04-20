@@ -3,23 +3,20 @@ using Infrastructure.Entities;
 using Infrastructure.Models;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using System.Security.Claims;
 using System.Text;
 using WebApp.ViewModels.Courses;
 
 namespace WebApp.Controllers;
 
 [Authorize]
-public class CoursesController(CategoryService categoryService, CourseService courseService, HttpClient httpClient, DataContext context, UserManager<UserEntity> userManager) : Controller
+public class CoursesController(CategoryService categoryService, CourseService courseService, DataContext context, UserManager<UserEntity> userManager) : Controller
 {
     private readonly CategoryService _categoryService = categoryService;
     private readonly CourseService _courseService = courseService;
-    private readonly HttpClient _httpClient = httpClient;
     private readonly DataContext _context = context;
     private readonly UserManager<UserEntity> _userManager = userManager;
 

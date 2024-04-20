@@ -1038,7 +1038,7 @@ header .container .hide {
   top: 0;
   bottom: 0;
   background-color: var(--color-gray-900);
-  width: 50vw;
+  width: 49.7vw;
   z-index: -1;
 }
 .light-dark-mode .container {

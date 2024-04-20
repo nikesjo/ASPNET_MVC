@@ -2,7 +2,6 @@
 using Infrastructure.Entities;
 using Infrastructure.Models;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -11,11 +10,10 @@ using System.Net.Http.Headers;
 
 namespace Infrastructure.Services;
 
-public class CourseService(HttpClient http, IConfiguration configuration, UserManager<UserEntity> userManager, DataContext context)
+public class CourseService(HttpClient http, IConfiguration configuration, DataContext context)
 {
     private readonly HttpClient _http = http;
     private readonly IConfiguration _configuration = configuration;
-    private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly DataContext _context = context;
 
     public async Task<CourseResult> GetCoursesAsync(HttpContext httpContext, string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 10)
