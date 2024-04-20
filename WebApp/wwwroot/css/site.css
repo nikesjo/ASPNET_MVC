@@ -2661,9 +2661,6 @@ footer .container .social-media {
   top: 15px;
   right: 15px;
 }
-#saved-courses .container .box-savedcourses .items .course.saved {
-  color: var(--color-theme);
-}
 #saved-courses .container .box-savedcourses .items .course img {
   min-width: 100%;
   height: auto;

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Security.Claims;
 using System.Text;
@@ -90,8 +91,8 @@ public class CoursesController(CategoryService categoryService, CourseService co
     #endregion
 
     [HttpPost]
-    [Route("/courses/savecourse/{id}")]
-    public async Task<IActionResult> SaveCourse(int id)
+    [Route("/courses/savecourse/{courseId}")]
+    public async Task<IActionResult> SaveCourse(int courseId)
     {
         try
         {
@@ -101,10 +102,17 @@ public class CoursesController(CategoryService categoryService, CourseService co
                 return Unauthorized();
             }
 
+            var existingSavedCourse = await _context.SavedCourses.FirstOrDefaultAsync(x => x.UserId == user.Id && x.CourseId == courseId);
+
+            if (existingSavedCourse != null)
+            {
+                return Json(new { success = false, message = "Course is already saved." });
+            }
+
             var savedCourse = new SavedCourseEntity
             {
                 UserId = user.Id,
-                CourseId = id
+                CourseId = courseId
             };
 
             if (savedCourse != null)
@@ -113,7 +121,6 @@ public class CoursesController(CategoryService categoryService, CourseService co
                 await _context.SaveChangesAsync();
 
                 return Json(new { success = true });
-                //return Ok();
             }
         }
         catch (Exception ex) { Debug.WriteLine("ERROR :: " + ex.Message); }

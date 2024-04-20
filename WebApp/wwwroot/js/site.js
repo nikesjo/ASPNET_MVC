@@ -347,20 +347,23 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 //    });
 //});
 
-const saveCourse = (id) => {
-    fetch(`/courses/savecourse/${id}`, {
+const saveCourse = (courseId) => {
+    //let link = document.getElementById("a.bookmark-button");
+
+    fetch(`/courses/savecourse/${courseId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ CourseId: id })
+        body: JSON.stringify({ CourseId: courseId })
     })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                link.classList.toggle('saved');
+                alert("Course is now saved!");
+                /*button.classList.toggle('saved');*/
             } else {
-                console.log("Error saving course.");
+                alert(data.message);
             }
         })
         .catch(error => {
@@ -373,3 +376,9 @@ const saveCourse = (id) => {
 //    const parser = new DOMParser()
 //    const dom = parser.parseFromString(data, "text/html")
 //})
+
+//let links = document.querySelectorAll("a.bookmark-button");
+//    links.forEach(link => {
+//        link.addEventListener('click', function () {
+//            let courseId = parseInt(link.getAttribute('data-courseid'), 10);
+//            console.log("Course ID:", courseId);

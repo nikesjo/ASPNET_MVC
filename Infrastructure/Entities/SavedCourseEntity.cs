@@ -1,5 +1,4 @@
-﻿using Infrastructure.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Infrastructure.Entities;
 

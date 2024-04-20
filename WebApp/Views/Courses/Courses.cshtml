@@ -53,9 +53,9 @@
 
                 @foreach (var course in Model.Courses)
                 {
-                   
+                    
                    @*  <a id="bookmark-button" class="btn-circle bookmark" asp-action="SaveCourse" asp-controller="Courses" asp-route-id="@course.Id" data-bs-toggle="tooltip" data-bs-title="Save Course"><i class="fa-regular fa-bookmark"></i></a> *@
-                    <div class="course" onclick="location.href='@Url.Action("SingleCourse", "Courses", new { id = course.Id })'">
+                    <div class="course">
                         @if (course.IsBestSeller)
                         {
                             <div class="best-seller">Best Seller</div>
@@ -66,11 +66,11 @@
                         @* <a class="btn-circle bookmark" data-courseid="@course.Id"><i class="fa-regular fa-bookmark"></i></a> *@
                         @* <a class="btn-circle bookmark" data-courseid="@course.Id" data-bs-toggle="tooltip" data-bs-title="Save Course"><i class="fa-regular fa-bookmark"></i></a> *@
 
-                        <button class="btn-circle bookmark" onclick="saveCourse(@course.Id)" data-bs-toggle="tooltip" data-bs-title="Save Course"><i class="fa-regular fa-bookmark"></i></button>
+                        <button id="bookmark-button" class="btn-circle bookmark" onclick="saveCourse(@course.Id)" data-bs-toggle="tooltip" data-bs-title="Save Course"><i class="fa-regular fa-bookmark"></i></button>
                         
                         <img src="~/images/courses/@course.ImageUrl" alt="@course.Title">
 
-                        <div class="content">
+                        <div class="content" onclick="location.href='@Url.Action("SingleCourse", "Courses", new { id = course.Id })'">
                             <h5>@course.Title</h5>
                             <p class="author">By @course.Author</p>
                             <div class="pricing">
